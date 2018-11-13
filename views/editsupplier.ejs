@@ -1,0 +1,176 @@
+
+    <!DOCTYPE html>
+    <html >
+    <head>
+      <!-- Site made with Mobirise Website Builder v4.8.3, https://mobirise.com -->
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="generator" content="Mobirise v4.8.3, mobirise.com">
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+      <link rel="shortcut icon" href="/assets/images/logo2.png" type="image/x-icon">
+      <meta name="description" content="Website Builder Description">
+      <title>Login</title>
+      <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
+      <link rel="stylesheet" href="/assets/tether/tether.min.css">
+      <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+      <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+      <link rel="stylesheet" href="/assets/animatecss/animate.min.css">
+      <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+      <link rel="stylesheet" href="/assets/theme/css/style.css">
+      <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+      
+      
+      
+    </head>
+
+            <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-e">
+          
+                  <% if (user_status == "loggined" ) {%>
+          
+              <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+                  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <div class="hamburger">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                  </button>
+                  <div class="menu-logo">
+                      <div class="navbar-brand">
+                          
+                          <span class="navbar-caption-wrap"><a class="navbar-caption text-success display-5" href="/">
+                                  fastbuy.co</a></span>
+                      </div>
+                  </div>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
+                                   <a class="nav-link link text-white display-4" onclick="suppliers.submit();">
+                                      <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                                      Update 
+                                  </a> 
+                          
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link link text-white display-4" href="/supplierlogin"><span class="mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
+                                      
+                                      Summary
+                                  </a>
+                              </li></ul>
+                          
+                      </div>
+              </nav>
+              <% } else { %>
+                  
+                      <% } %>
+          </section>
+    <div class="container">
+        <% if (message != '') { %>
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+      
+    
+        <% if (supplier) { %>
+            <br>
+            <br>
+            <br>
+            <br>
+        <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+                Edit Suppliers Information</h2>
+        <form id="suppliers" class="add-player-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                   
+                <div class="form-group col-md-9">
+                        <label style=" font-weight: bold;">Supplier Name</label>
+                    <input type="text" class="form-control" name="supplier_name" id="supplier_name" value="<%= supplier.supplier_name %>" placeholder="Company name" required>
+                </div>
+                <div class="form-group col-md-4">
+                        <label for="position" style=" font-weight: bold;">Business Type</label>
+                        <select id="position" name="business_type" class="form-control" required>
+                            <option selected><%= supplier.business_type %></option>
+                            <option>Fabrication-Machining</option>
+                            <option>Fabrication-Sheetmetal</option>
+                            <option>Fabrication-Surface finishing</option>
+                            <option>Electrical-IT</option>
+                            <option>Electrical-Cables and Accessories</option>
+                            <option>Electrical-Electrical module</option>
+                            <option>Mechanic-Meter/Valve</option>
+                            <option>Mechanic-Fitting/Bearing/Screws</option>
+                            <option>Consumables-Safety</option>
+                            <option>Consumables-Cleaner</option>
+                            <option>Consumables-Tools</option>
+                            <option>Consumables-Others</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                            <label for="number" style=" font-weight: bold;">Year of Establishment</label>
+                            <input type="number" class="form-control" name="found_year" id="found_year" placeholder="Year of Establishment" value="<%= supplier.found_year %>" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                                <label for="number" style=" font-weight: bold;">ทุนจดทะเบียน</label>
+                                <input type="number" class="form-control" name="reg_cap" id="reg_cap" placeholder="ทุนจดทะเบียน" value="<%= supplier.reg_cap %>" required>
+                            </div>
+                <div class="form-group col-md-6">
+                        <label style=" font-weight: bold;;">Supplier Information</label>
+                    <textarea type="text" class="form-control" rows="6" name="supplier_info" id="supplier_name" required> <%= supplier.supplier_info %>
+                </textarea>
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                            <label style=" font-weight: bold;">Product Information</label>
+                            <textarea type="text" class="form-control" rows="6" name="product_info" id="product_info" placeholder="Product information" > <%= supplier.product_info %>
+                        </textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label style=" font-weight: bold;">Supplier Capacity</label>
+                                    <textarea type="text" class="form-control" rows="4" name="capacity" id="capacity" placeholder="Supplier Capacity" > <%= supplier.capacity %>
+                                </textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                            <label style=" font-weight: bold;">Address</label>
+                                            <textarea type="text" class="form-control" rows="4" name="address" id="address" placeholder="Company address" > <%= supplier.address %>
+                                        </textarea>
+                                            </div>
+                                    <div class="form-group col-md-6">
+                                            <label style=" font-weight: bold;">Company Website</label>
+                                            <input type="text" class="form-control" name="website" id="website" value="<%= supplier.website %>" placeholder="Company website" >
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                                <label style=" font-weight: bold;">Sale Contact Email</label>
+                                                <input type="text" class="form-control" name="sale_email" id="sale_email" value="<%= supplier.sale_email %>" placeholder="Sale Contact Email" >
+                                            </div>
+                                        
+            </div>
+            <div class="form-row">
+          
+                <div class="col-md-12">
+                    <label for="supplier-img"><b>Company Image</b></label><br>
+                    <input type="file" name="image" id="supplier-img" class="" >
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg float-right">Update</button>
+        </form>
+        <% } else { %>
+            <p class="text-center">Player Not Found. Go <a href="/add">here</a> to add players.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+<script src="/assets/web/assets/jquery/jquery.min.js"></script>
+<script src="/assets/popper/popper.min.js"></script>
+<script src="/assets/tether/tether.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/smoothscroll/smooth-scroll.js"></script>
+<script src="/assets/dropdown/js/script.min.js"></script>
+<script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+<script src="/assets/viewportchecker/jquery.viewportchecker.js"></script>
+<script src="/assets/theme/js/script.js"></script>
+<script src="/assets/formoid/formoid.min.js"></script>
+
+
+<input name="animation" type="hidden">
+</html>

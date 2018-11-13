@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.8.3, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.3, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="/assets/images/logo2.png" type="image/x-icon">
+  <meta name="description" content="Website Builder Description">
+  <title>Login</title>
+  <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/assets/animatecss/animate.min.css">
+  <link rel="stylesheet" href="/assets/theme/css/style.css">
+  <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+       
+
+
+
+<section class="mbr-section form1 cid-r87NPN690r" id="form1-f">
+
+        <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-e">
+          
+                <% if (user_status == "loggined" ) {%>
+        
+            <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                <div class="menu-logo">
+                    <div class="navbar-brand">
+                        
+                        <span class="navbar-caption-wrap"><a class="navbar-caption text-success display-5" href="/">
+                                fastbuy.co</a></span>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
+                                 <a class="nav-link link text-white display-4"  onclick="suppliers.submit();">
+                                    <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                                    Update 
+                                </a> 
+                        
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link text-white display-4" href="/supplierlogin"><span class="mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
+                                    
+                                    Summary
+                                </a>
+                            </li></ul>
+                        
+                    </div>
+            </nav>
+            <% } else { %>
+                
+                    <% } %>
+        </section>
+
+        <section class="mbr-section form1 cid-r87NPN690r" id="form1-f">
+
+    
+<br><br>
+
+    
+                <section class="header9 cid-r847h2HHxw mbr-fullscreen" id="header9-7">
+  
+                <div class="container">
+                        <% if (message != '') { %>
+                            <p class="text-center text-danger"><%= message %></p>
+                        <% } %>
+                      
+                    
+                        <% if (supplier) { %>
+                            <br>
+                            <br>
+                        <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+                                Additional Information</h2>
+                             
+                                <form id="suppliers" class="add-player-form" action="" method="post" enctype="multipart/form-data">
+                            
+                            <div class="form-row">
+                                    
+                          
+                            
+                                  <div class="form-group col-md-3">
+                                        <label for="position" style=" font-weight: bold;">Maximum Credit term</label>
+                                        <select id="position" name="credit_term" class="form-control" required>
+                                            <option selected><%= supplier.credit_term %></option>
+                                            <option>0 days</option>
+                                            <option>15 days</option>
+                                            <option>30 days</option>
+                                            <option>60 days</option>
+                                            <option>90 days</option>
+
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                            <label for="position" style=" font-weight: bold;">Specific Area</label>
+                                            <select id="position" name="specific_area" class="form-control" required>
+                                                    <option selected><%= supplier.specific_area %></option>
+                                                    <option>ไม่ระบุ</option>
+                                                    <option>กรุงเทพและปริมณฑล</option>
+                                                    <option>ในจังหวัดเดียวกันเท่านั้น</option>
+
+                                                
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                                <label style=" font-weight: bold;">Minimum order quantity</label>
+                                                <input type="text" class="form-control" name="moq" id="moq" value="<%= supplier.moq %>" placeholder="กำหนดจำนวนสั่ง" >
+                                            </div>
+                                            <div class="form-group col-md-9 " >
+                                                    <label style=" font-weight: bold;" >Company Certificate</label>
+                                                    <input type="text" class="form-control" name="certificate" id="certificate" value="<%= supplier.certificate %>" placeholder="Company certificate" >
+                                                </div>
+                                        <div class="form-group col-md-8 align-center">
+                                                
+                                               
+                                                <br>
+                                    <div class="form-check form-check-inline">
+                                            <% if (supplier.BOI === "BOI") { %>
+                                            <input class="form-check-input" type="checkbox" name="BOI" id="BOI" value="BOI" checked>
+                                            <% } else { %>
+                                                <input class="form-check-input" type="checkbox" name="BOI" id="BOI" value="BOI">
+                                           
+                                                <% } %>
+                                            <label class="form-check-label" for="inlineCheckbox1"  style=" font-weight: bold;" >BOI</label>
+                                         
+                                        </div>
+                                          <div class="form-check form-check-inline">
+                                                <% if (supplier.VAT === "VAT") { %>
+                                            <input class="form-check-input" type="checkbox" name="VAT" id="VAT" value="VAT" checked>
+                                            <% } else { %>
+                                                <input class="form-check-input" type="checkbox" name="VAT" id="VAT" value="VAT" >
+                                                <% } %>
+
+                                            <label class="form-check-label" for="inlineCheckbox2" style=" font-weight: bold;" >VAT</label>
+                                          </div>
+                                        </div>
+                                      
+                                        
+                                          <br>
+                                         <br>
+                                         
+                                         <div class="form-group col-md-8 align-center">
+                            <button type="submit" class="btn btn-warning btn-lg ">Update</button> 
+                        </div>
+                        </div>
+                        </div>
+                        </form>
+                        <% } else { %>
+                            <p class="text-center">Player Not Found. Go <a href="/add">here</a> to add players.</p>
+                        <% } %>
+                   
+            </div>
+                </section>
+            </section>
+
+  <script src="/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="/assets/popper/popper.min.js"></script>
+  <script src="/assets/tether/tether.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="/assets/dropdown/js/script.min.js"></script>
+  <script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="/assets/viewportchecker/jquery.viewportchecker.js"></script>
+  <script src="/assets/theme/js/script.js"></script>
+  <script src="/assets/formoid/formoid.min.js"></script>
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

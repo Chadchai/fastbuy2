@@ -1,0 +1,50 @@
+<% include partials/header.ejs %>
+
+<body>
+       <section class="header9 cid-r847h2HHxw mbr-fullscreen" id="header9-7">
+  
+    <div class="container">
+
+            <div class="row justify-content-center">
+                    <div class="media-container-column col-lg-8" >
+
+            <h1><span class="fa fa-sign-in"></span>Supplier Login</h1>
+
+            <!-- show any messages that come back with authentication -->
+            <% if (message.length > 0) { %>
+                <div class="alert alert-danger">
+                    <%= message %>
+                </div>
+                <% } %>
+
+                    <!-- LOGIN FORM -->
+                    <div class="row row-sm-offset">
+                            <div class="col-md-8 multi-horizontal" data-for="name">
+                    <form action="/login" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+
+                        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                    </form>
+                            </div>
+
+                    <hr>
+
+                    <p>Need an account? <a href="/register">Signup</a></p>
+                    <!-- <p>Or go <a href="/">home</a>.</p> -->
+
+        </div>
+  </div>
+    </div>
+</div>
+    </section>
+   
+        
+</body>
+
