@@ -15,8 +15,8 @@
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.0",
-    "express-fileupload": "^1.0.0"
-
+    "express-fileupload":"^1.0.0" ,
+    "mysql":"2.16.0"
   },
   "author": "",
   "license": "ISC"
