@@ -238,14 +238,14 @@ if (typeof req.files.image !== "undefined"){
                 res.redirect('/');
             }
         
-            let query2 = "INSERT INTO `RFQ` (customer_id, customer_name,supplier_id, supplier_name) VALUES ('" +
+            let query2 = "INSERT INTO `rfq` (customer_id, customer_name,supplier_id, supplier_name) VALUES ('" +
             result[0].customer_id + "', '" + result[0].customer_name + "', '" + result1[0].supplier_id + "', '" + result1[0].supplier_name +  "')";
             
             db.query(query2, (err, result2) => {
                 if (err) {
                     res.redirect('/');
                 }
-                //console.log(result2.insertId);
+                console.log(result2.insertId);
                 // let query3 = "SELECT COUNT(rfq_id) AS numberofid FROM RFQ;";
                 // db.query(query3, (err, result3) => {
                 //     if (err) {
@@ -253,13 +253,13 @@ if (typeof req.files.image !== "undefined"){
                 //     }
                
         
-            var supplierEmail = result1[0].email;
-        var subject ="RFQ# " +  result2.insertId +" from " + result[0].customer_name;
-       // +  result2[0].rfq_id +
-        var emailBody =  "";;
-        // var attach = 'path';
-        var mail = "mailto:"+supplierEmail+"?subject="+subject+"&body="+encodeURIComponent(emailBody);
-        res.redirect(mail);
+    //         var supplierEmail = result1[0].email;
+    //     var subject ="RFQ# " +  result2.insertId +" from " + result[0].customer_name;
+    //    // +  result2[0].rfq_id +
+    //     var emailBody =  "";;
+    //     // var attach = 'path';
+    //     var mail = "mailto:"+supplierEmail+"?subject="+subject+"&body="+encodeURIComponent(emailBody);
+    //     res.redirect(mail);
     });
     });
     });
