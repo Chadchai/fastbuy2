@@ -14,7 +14,7 @@ const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,
 const {supplierSignupPage,addSupplier , supplierLoginPage,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
 const port = process.env.PORT || 8000;
-const port = process.env.PORT || 8000;
+
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
