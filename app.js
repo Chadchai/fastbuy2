@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList, sendMail} = require('./routes/customerlogin');
 const {supplierSignupPage,addSupplier , supplierLoginPage,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 
 // create connection to database
@@ -71,6 +71,9 @@ app.get('/suppliersummary/:id', supplierSummaryPage);
 app.get('/sendmail/:cid/:sid', sendMail);
 
 // set the app to listen on the port
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+// app.listen(port, () => {
+//     console.log(`Server running on port: ${port}`);
+// });
+server.listen(port, () => {
+    console.log("App is running on port " + port);
 });
