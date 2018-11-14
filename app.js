@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const path = require('path');
 const app = express();
 //For user login
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 
 // const {getHomePage} = require('./routes/index');
@@ -13,25 +13,25 @@ const jwt = require('jsonwebtoken');
 const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList, sendMail} = require('./routes/customerlogin');
 const {supplierSignupPage,addSupplier , supplierLoginPage,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
-var port = process.env.PORT ||3000;
+const port = process.env.PORT || 8000;
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'nodesql'
-});
+// const db = mysql.createConnection ({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'root',
+//     database: 'nodesql'
+// });
 
-// connect to database
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
-global.db = db;
+// // connect to database
+// db.connect((err) => {
+//     if (err) {
+//         throw err;
+//     }
+//     console.log('Connected to database');
+// });
+// global.db = db;
 
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
