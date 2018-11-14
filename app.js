@@ -71,9 +71,7 @@ app.get('/suppliersummary/:id', supplierSummaryPage);
 app.get('/sendmail/:cid/:sid', sendMail);
 
 // set the app to listen on the port
-// app.listen(port, () => {
-//     console.log(`Server running on port: ${port}`);
-// });
-server.listen(port, () => {
-    console.log("App is running on port " + port);
+app.listen(port, () => {
+    console.log(`Server running on port: ${port}`);
 });
+app.listen(process.env.PORT || port)
