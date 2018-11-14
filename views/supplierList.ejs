@@ -121,9 +121,10 @@
                                 <td ><%= supplier.address %></td>
                              
                                  <td  >
-                                         <a style="color: blue;font-weight: bold" onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' ">ขอราคา</a> 
-                                        <!-- <a  window.location.href = "mailto:" + email + "?subject=" + subject;  rel="noopener" class="btn btn-sm btn-success">Ask price</a> 
-                             -->
+                                         <!-- <a style="color: blue;font-weight: bold" onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' ">ขอราคา</a> 
+                                         -->
+                                         <a style="color: blue;font-weight: bold" >ขอราคา</a> 
+                                        
                                          </td> 
                             </tr>
                         <% }) %>

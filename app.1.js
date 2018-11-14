@@ -13,25 +13,25 @@ const app = express();
 const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList, sendMail} = require('./routes/customerlogin');
 const {supplierSignupPage,addSupplier , supplierLoginPage,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
-const port = process.env.PORT || 8000;
+const port = 5000;
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-// const db = mysql.createConnection ({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'root',
-//     database: 'nodesql'
-// });
+ const db = mysql.createConnection ({
+    host: 'localhost',
+     user: 'root',
+    password: 'root',
+    database: 'nodesql'
+ });
 
 // // connect to database
-// db.connect((err) => {
-//     if (err) {
-//         throw err;
-//     }
-//     console.log('Connected to database');
-// });
-// global.db = db;
+ db.connect((err) => {
+     if (err) {
+         throw err;
+     }
+     console.log('Connected to database');
+ });
+ global.db = db;
 
 // configure middleware
 app.set('port', process.env.port || port); // set express to use this port
