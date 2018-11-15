@@ -71,173 +71,69 @@
             <% } %>
         </section>
         
-<section class="engine"><a href="https://mobiri.se/b">create your own website</a></section><section class="section-table cid-r8lMaOmi2Y" id="table1-r">
-
-  
-  
-  <div class="container ">
-      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
-          List of suppliers</h2>
-      
-      <div class="table-wrapper">
-        <div class="container">
-          <div class="row search">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <div class="dataTables_filter">
-                  <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                  <input class="form-control input-sm" id="myInput" onkeyup="myFunction()">
-                  <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                </div> -->
-            </div>
-          </div>
-        </div>
-
-        
-                <% if (suppliers.length > 0) {%>
-          <table id="supplierList" class="table isSearch" cellspacing="0">
-            <thead>
-                
-               <tr class="table-heads ">
-                  
-                           
-                            <th  scope="col"  >Logo</th> 
-                            <th  scope="col" >Company name</th>
-                            <th  scope="col" >Company Information</th>
-                            <th  scope="col" >Location</th>
-   
-                             <th  scope="col" >Action</th> 
-                        </tr> 
-            </thead>
-
-            <tbody>
-                    <% suppliers.forEach((supplier, index) => { %>
-              
-                        <tr>
-                                <!-- <th scope="row"><%= supplier.id %></th>-->
-                                <td ><img src="/assets/img/<%= supplier.Photo %>" class="player-img" style="width:100px" alt=""></td> 
-                                <td ><%= supplier.supplier_name %></td>
-                                <td ><%= supplier.supplier_info%></td>
-                                <td ><%= supplier.address %></td>
-                             
-                                 <td  >
-                                         <!-- <a style="color: blue;font-weight: bold" onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' ">ขอราคา</a> 
-                                         -->
-                                         <a style="color: blue;font-weight: bold" >ขอราคา</a> 
-                                        
-                                         </td> 
-                            </tr>
-                        <% }) %>
-                    </tbody>
-                  </table>
-                  <% } else { %>
-                    <p class="text-center">No supplier found.</p>
-                <% } %>
-                  
-        
-         <!-- <div class="container table-info-container">
-          <div class="row info">
-            <div class="col-md-12">
-              <div class="dataTables_info mbr-fonts-style display-7">
-                <span class="infoBefore">Showing</span>
-                <span class="inactive infoRows"></span>
-                <span class="infoAfter">entries</span> 
-                <span class="infoFilteredBefore">(filtered from</span>
-                <span class="inactive infoRows"></span>
-                <span class="infoFilteredAfter"> total entries)</span>
-              </div>
-            </div>
-             <div class="col-md-6"></div>
-          </div>
-        </div> 
-      </div> -->
-    </div>
-    <!-- <button type="submit" class="btn btn-warning btn-lg" onclick="location.href='mailto:user@example.com?subject=Subject&body=message%20goes%20here';">Login</button>
-    <div class="button" onclick="location.href='mailto:user@example.com?subject=Subject&body=message%20goes%20here';">Send E-Mail</div> -->
-
-</section>
-<section class="features18 popup-btn-cards cid-r9umpetzm0" id="features18-1g">
+<section class="features18 popup-btn-cards cid-r9umpetzm0" style="background-color:white" id="features18-1g">
 
     
 
     
         <div class="container">
-            <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
-                Supplier List</h2>
-            <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light">
+            
+                <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
+                        Supplier List</h2>
+            <!-- <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light">
                 In browser you will see buttons when hover on cards
-            </h3>
+            </h3> -->
+            <div class="table-wrapper">
+                    <!-- <div class="container">
+            <div class="row search">
+                    <div class="col-md-8">  </div>
+                    <div class="col-md-4">
+                        <div class="dataTables_filter">
+                          <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                          <input class="form-control input-sm" id="myInput" onkeyup="myFunction()">
+                           <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                        </div> 
+                    </div>
+                  </div>
+                </div>
+            </div> -->
+          
             <div class="media-container-row pt-5 ">
-                
+                    <% if (suppliers.length > 0) {%>
+                        <% suppliers.forEach((supplier, index) => { %>
                 <div class="card p-3 col-12 col-md-6 col-lg-4">
                     <div class="card-wrapper ">
                         <div class="card-img">
                             <div class="mbr-overlay"></div>
                             <div class="mbr-section-btn text-center">
-                                <a href="https://mobirise.com" class="btn btn-primary display-4">Learn More</a>
-                            </div>
-                            <img src="assets/images/01.jpg" alt="Mobirise">
+                                <!-- <a onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' " class="btn btn-primary display-4">ขอราคา</a>
+                         -->   </div> 
+                            <img src="/assets/img/<%= supplier.Photo %>" class="player-img" alt="Mobirise"> 
                         </div>
                         <div class="card-box">
                             <h4 class="card-title mbr-fonts-style display-7">
-                                No Coding
+                                    <%= supplier.supplier_name %>
                             </h4>
                             <p class="mbr-text mbr-fonts-style align-left display-7">
-                                Mobirise is an easy website builder - just drop site elements to your page, add content and style it to look the way you like.
+                                   <%= supplier.supplier_info%>
+                                   <br>
+                                    <%= supplier.address %>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="card p-3 col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper">
-                        <div class="card-img">
-                            <div class="mbr-overlay"></div>
-                            <div class="mbr-section-btn text-center">
-                                <a href="https://mobirise.com" class="btn btn-primary display-4">Learn More</a>
-                            </div>
-                            <img src="assets/images/02.jpg" alt="Mobirise">
-                        </div>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7">
-                                Mobile Friendly
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                               All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="card p-3 col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper">
-                        <div class="card-img">
-                            <div class="mbr-overlay"></div>
-                            <div class="mbr-section-btn text-center">
-                                <a href="https://mobirise.com" class="btn btn-primary display-4">Learn More</a>
-                            </div>
-                            <img src="assets/images/03.jpg" alt="Mobirise">
-                        </div>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7">
-                                Unique Styles
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                Mobirise offers many site blocks in several themes, and though these blocks are pre-made, they are flexible.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                
+            
+                <% }) %>
+                <% } else { %>
+                    <p class="text-center">No supplier found.</p>
+                <% } %>
             </div>
+        </div>
         </div>
     </section>
 <section class="footer3 cid-r8lNbxz0YH" id="footer3-u">
 
     
-
-    
-
     <div class="container">
         <div class="media-container-row content">
             <div class="col-md-2 col-sm-4">
