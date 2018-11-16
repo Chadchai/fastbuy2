@@ -216,7 +216,7 @@ if (typeof req.files.image !== "undefined"){
 
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined"
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType
             });
             //console.log(result1);
         });
