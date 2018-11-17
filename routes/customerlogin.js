@@ -129,7 +129,7 @@ if (typeof req.files.image !== "undefined"){
     // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
     // var cloudinary_upload_preset ='pqoenb7k';
     
-    image_name = customerName + '.' + fileExtension;
+    // image_name = customerName + '.' + fileExtension;
     let filename = 'company_logo/' + image_name
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
