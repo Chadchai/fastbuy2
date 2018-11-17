@@ -125,12 +125,13 @@ if (typeof req.files.image !== "undefined"){
     let uploadedFile = req.files.image;
     let image_name = uploadedFile.name;
     let fileExtension = uploadedFile.mimetype.split('/')[1];
-    let image_name1 = uploadedFile.name.split('.')[1];
+    let image_name1 = uploadedFile.name.split('.')[0];
     // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
     // var cloudinary_upload_preset ='pqoenb7k';
     
     //image_name = customerName + '.' + fileExtension;
     let filename = 'company_logo/' + image_name1
+    console.log(filename);
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
                uploadedFile.mv(`public/assets/img/${image_name}`, (err ) => {
@@ -143,7 +144,7 @@ if (typeof req.files.image !== "undefined"){
   function(error, result) {console.log(result, error)});
           
             let query = "UPDATE `customers` SET `customer_name` = '" + customerName + "', `customer_info` = '" + customerInfo  + "', `address` = '" + address + "', `website` = '" + website + "', `photo` = '" + image_name + "', `reg_cap` = '" + regCap +"', `found_year` = '" + foundYear + "', `buyer_email` = '" + buyerEmail + "' WHERE `customer_id` = '" + customerId + "'";
-            console.log(query);
+            
             
             db.query(query, (err, result) => {
                 if (err) {
