@@ -121,7 +121,7 @@ if (typeof req.files.image !== "undefined"){
     image_name = customerName + '.' + fileExtension;
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
-            uploadedFile.mv(`public/assets/img/${image_name}`, (err ) => {
+            uploadedFile.mv(`https://github.com/Chadchai/fastbuy2/upload/master/public/assets/img/${image_name}`, (err ) => {
                 if (err) {
                     return res.status(500).send(err);
                 }
