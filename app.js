@@ -4,6 +4,14 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
 const app = express();
+var cloudinary = require('cloudinary');
+
+cloudinary.config({ 
+    cloud_name: 'hdzvdkljx', 
+    api_key: '245568641867713', 
+    api_secret: 'fUEhfjczQdqFYl6TIp_gA_CyY-I' 
+  });
+  
 //For user login
 // const jwt = require('jsonwebtoken');
 

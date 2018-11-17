@@ -1,4 +1,11 @@
 const fs = require('fs');
+var cloudinary = require('cloudinary');
+
+cloudinary.config({ 
+    cloud_name: 'hdzvdkljx', 
+    api_key: '245568641867713', 
+    api_secret: 'fUEhfjczQdqFYl6TIp_gA_CyY-I' 
+  });
 
 module.exports = {
     getHome: (req, res) => {
@@ -118,15 +125,22 @@ if (typeof req.files.image !== "undefined"){
     let uploadedFile = req.files.image;
     let image_name = uploadedFile.name;
     let fileExtension = uploadedFile.mimetype.split('/')[1];
+    let filename = 'company_logo/' + image_name
+    // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
+    // var cloudinary_upload_preset ='pqoenb7k';
+    
     image_name = customerName + '.' + fileExtension;
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
-            uploadedFile.mv(`public/assets/img/${image_name}`, (err ) => {
+               uploadedFile.mv(`public/assets/img/${image_name}`, (err ) => {
                 if (err) {
-                    return res.status(500).send(err);
-                }
+                     return res.status(500).send(err);
+                 }
                 
-            });
+             });
+            cloudinary.v2.uploader.upload(`public/assets/img/${image_name}`, {public_id: filename } ,
+  function(error, result) {console.log(result, error)});
+          
             let query = "UPDATE `customers` SET `customer_name` = '" + customerName + "', `customer_info` = '" + customerInfo  + "', `address` = '" + address + "', `website` = '" + website + "', `photo` = '" + image_name + "', `reg_cap` = '" + regCap +"', `found_year` = '" + foundYear + "', `buyer_email` = '" + buyerEmail + "' WHERE `customer_id` = '" + customerId + "'";
            // console.log(query);
             
