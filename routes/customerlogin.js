@@ -125,12 +125,12 @@ if (typeof req.files.image !== "undefined"){
     let uploadedFile = req.files.image;
     let image_name = uploadedFile.name;
     let fileExtension = uploadedFile.mimetype.split('/')[1];
-    
+    let image_name1 = uploadedFile.name.split('.')[1];
     // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
     // var cloudinary_upload_preset ='pqoenb7k';
     
-    // image_name = customerName + '.' + fileExtension;
-    let filename = 'company_logo/' + image_name
+    //image_name = customerName + '.' + fileExtension;
+    let filename = 'company_logo/' + image_name1
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
                uploadedFile.mv(`public/assets/img/${image_name}`, (err ) => {
