@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fs = require('fs');
+
 var cloudinary = require('cloudinary');
 
 cloudinary.config({ 
