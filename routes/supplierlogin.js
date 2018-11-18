@@ -1,5 +1,13 @@
 const fs = require('fs');
+const fs = require('fs');
+var cloudinary = require('cloudinary');
 
+cloudinary.config({ 
+    cloud_name: 'hdzvdkljx', 
+    api_key: '245568641867713', 
+    api_secret: 'fUEhfjczQdqFYl6TIp_gA_CyY-I' 
+  });
+  
 module.exports = {
    
     supplierSignupPage: (req, res) => {
@@ -134,6 +142,13 @@ if (typeof req.files.image !== "undefined"){
     let uploadedFile = req.files.image;
     let image_name = uploadedFile.name;
     let fileExtension = uploadedFile.mimetype.split('/')[1];
+  
+    let image_name1 = uploadedFile.name.split('.')[0];
+    // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
+    // var cloudinary_upload_preset ='pqoenb7k';
+    
+    //image_name = customerName + '.' + fileExtension;
+    let filename = 'supplier_logo/' + image_name1
     image_name = supplierName + '.' + fileExtension;
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
@@ -143,6 +158,10 @@ if (typeof req.files.image !== "undefined"){
                 }
                 
             });
+            
+            cloudinary.v2.uploader.upload(`public/assets/img/${image_name}`, {public_id: filename } ,
+            function(error, result) {console.log(result, error)});
+
             let query = "UPDATE `suppliers` SET `supplier_name` = '" + supplierName + "', `supplier_info` = '" + supplierInfo + "', `product_info` = '" + productInfo + "', `capacity` = '" + capacity + "', `address` = '" + address + "', `website` = '" + website + "', `photo` = '" + image_name + "', `reg_cap` = '" + regCap +"', `found_year` = '" + foundyear + "', `business_type` = '" + businessType +"', `sale_email` = '" + saleemail + "' WHERE `supplier_id` = '" + supplierId + "'";
             // console.log(query);
             
@@ -150,6 +169,7 @@ if (typeof req.files.image !== "undefined"){
                 if (err) {
                     return res.status(500).send(err);
                 }
+
                 let query1 = "SELECT * FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
         db.query(query1, (err, result1) => {
             if (err) {

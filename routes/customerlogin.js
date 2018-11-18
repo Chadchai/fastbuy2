@@ -124,7 +124,7 @@ module.exports = {
 if (typeof req.files.image !== "undefined"){
     let uploadedFile = req.files.image;
     let image_name = uploadedFile.name;
-    let fileExtension = uploadedFile.mimetype.split('/')[1];
+    // let fileExtension = uploadedFile.mimetype.split('/')[1];
     let image_name1 = uploadedFile.name.split('.')[0];
     // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
     // var cloudinary_upload_preset ='pqoenb7k';
