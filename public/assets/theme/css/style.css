@@ -11,3 +11,9 @@
 	top: 0;
 	left: -2400px;
 }
+.grid-item { width: 100%; 
+	height: 400px;     
+	float: left;
+margin: 1px;
+	border: 1px solid hsla(240, 1%, 64%, 0.5); }
+.grid-item--width2 { width: 400px; }

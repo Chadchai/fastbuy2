@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   
   
 </head>
@@ -76,14 +78,14 @@
     
 
     
-        <div class="container">
+        <div class="container" style="width:100%">
             
                 <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
-                        Supplier List -  <%= businessType %></h2>
-            <!-- <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light">
-                In browser you will see buttons when hover on cards
-            </h3> -->
-            <div class="table-wrapper">
+                        Supplier List </h2>
+             <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light">
+                 <%= businessType %>
+            </h3> 
+         
                     <!-- <div class="container">
             <div class="row search">
                     <div class="col-md-8">  </div>
@@ -97,21 +99,28 @@
                   </div>
                 </div>
             </div> -->
-          
-            <div class="media-container-row pt-5 ">
+            
+            <div class="grid" data-masonry='{ "itemSelector": ".grid-item"}'>
                     <% if (suppliers.length > 0) {%>
+                      
                         <% suppliers.forEach((supplier, index) => { %>
-                            <div class="col-md-8 col-lg-8">
-                <div class="card p-4 col-12 col-md-6 col-lg-4">
+            
+    
+                      
+                            <div class="col-md-3">                  
+       <div class="grid-item">
                     <div class="card-wrapper ">
                         <div class="card-img" >
-                            <div class="mbr-overlay"></div>
+                            <div class="mbr-overlay">
+                                
+                            </div>
                             <div class="mbr-section-btn text-center">
                                 <!-- <a onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' " class="btn btn-primary display-4">ขอราคา</a>
                                     --> 
                            </div> 
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" alt="Mobirise"> 
                         </div>
+                    
                         <div class="card-box">
                             <h4 class="card-title mbr-fonts-style display-7">
                                     <%= supplier.supplier_name %>
@@ -123,16 +132,25 @@
                             </p>
                         </div>
                     </div>
+                    
+                    </div>
                 </div>
+               
+ 
+           
+             
+             
             
                 <% }) %>
+            
+       
                 <% } else { %>
                     <p class="text-center">No supplier found.</p>
                 <% } %>
             </div>
         </div>
-        </div>
-        </div>
+      
+       
     </section>
 <section class="footer3 cid-r8lNbxz0YH" id="footer3-u">
 
@@ -290,7 +308,7 @@ function myFunction() {
   <script src="/assets/datatables/data-tables.bootstrap4.min.js"></script>
   <script src="/assets/theme/js/script.js"></script>
   <script src="/assets/formoid/formoid.min.js"></script>
-  
+ 
   
   <input name="animation" type="hidden">
   </body>

@@ -131,7 +131,7 @@ if (typeof req.files.image !== "undefined"){
     
     //image_name = customerName + '.' + fileExtension;
     let filename = 'company_logo/' + image_name1
-    console.log(filename);
+    //console.log(filename);
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
                uploadedFile.mv(`public/assets/img/${image_name}`, (err ) => {
@@ -261,7 +261,7 @@ if (typeof req.files.image !== "undefined"){
                 if (err) {
                     res.redirect('/');
                 }
-                console.log(result2.insertId);
+                //console.log(result2.insertId);
                 // let query3 = "SELECT COUNT(rfq_id) AS numberofid FROM RFQ;";
                 // db.query(query3, (err, result3) => {
                 //     if (err) {
