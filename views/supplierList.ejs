@@ -20,9 +20,9 @@
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 
-  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
   
   
 </head>
@@ -78,59 +78,73 @@
     
 
     
-        <div class="container" style="width:100%">
-            
+        <div class="container" style="width:120%">
+            <div class="row search">
+            <div class="col-md-8">  
                 <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
                         Supplier List </h2>
              <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light">
                  <%= businessType %>
             </h3> 
-         
-                    <!-- <div class="container">
-            <div class="row search">
-                    <div class="col-md-8">  </div>
+        </div>
+    
+                    <!-- <div class="container"> -->
+            
+                            
                     <div class="col-md-4">
                         <div class="dataTables_filter">
                           <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                          <input class="form-control input-sm" id="myInput" onkeyup="myFunction()">
-                           <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                        </div> 
+                          <input class="form-control input-sm" id="quicksearch1" >
+                         
+                           <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                   -->      </div> 
                     </div>
-                  </div>
                 </div>
-            </div> -->
+          <br>
+          <br>
             
-            <div class="grid" data-masonry='{ "itemSelector": ".grid-item"}'>
+            <div class="grid" data-isotope='{ "itemSelector": ".grid-item"}'>
                     <% if (suppliers.length > 0) {%>
                       
                         <% suppliers.forEach((supplier, index) => { %>
             
     
-                      
-                            <div class="col-md-3">                  
-       <div class="grid-item">
+                           
+                            <div class="col-md-4">                  
+       <div id="supplier_info" class="grid-item">
                     <div class="card-wrapper ">
-                        <div class="card-img" >
-                            <div class="mbr-overlay">
+                        <div class="card-img"  >
+                            <div class="mbr-overlay" >
                                 
                             </div>
-                            <div class="mbr-section-btn text-center">
-                                <!-- <a onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' " class="btn btn-primary display-4">ขอราคา</a>
-                                    --> 
+                            <div class="mbr-section-btn text-right">
+                                 <!-- <a onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' " class="btn btn-primary display-4">ขอราคา</a>
+                                    -->
+                                   
+                                   
                            </div> 
-                            <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" alt="Mobirise"> 
+                            <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
                         </div>
+                        <label class="container-check" > <h4 style="color:rgb(28, 49, 243);font-weight: bold">ขอราคา</h4>
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
                     
-                        <div class="card-box">
+                        <div  class="card-box">
                             <h4 class="card-title mbr-fonts-style display-7">
                                     <%= supplier.supplier_name %>
                             </h4>
-                            <p class="mbr-text mbr-fonts-style align-left display-7">
+                            <p  class="mbr-text mbr-fonts-style align-left display-7">
+
                                    <%= supplier.supplier_info%>
                                    <br>
                                     <%= supplier.address %>
+                                   
+                                    
                             </p>
+                       
                         </div>
+                      
                     </div>
                     
                     </div>
@@ -152,6 +166,7 @@
       
        
     </section>
+    
 <section class="footer3 cid-r8lNbxz0YH" id="footer3-u">
 
     
@@ -268,33 +283,57 @@
 </section>
 
 <script>
-function myFunction() {
+
   // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("supplierList");
-  tr = table.getElementsByTagName("tr");
+  // quick search regex
+var qsRegex;
+var buttonFilter;
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    td1 = tr[i].getElementsByTagName("td")[2];
-    td2 = tr[i].getElementsByTagName("td")[3];
-    if (td || td1 || td2 ) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-        
-      } else {
-        tr[i].style.display = "none";
-        
-      }
-    } 
-
+// init Isotope
+var $grid = $('.grid').isotope({
+  itemSelector: '.element-item',
+  layoutMode: 'fitRows',
+  filter: function() {
+    var $this = $(this);
+    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+    
+    return searchResult;
   }
+});
+
+// use value of search field to filter
+var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+  $grid.isotope();
+}) );
+
+
+//   // change is-checked class on buttons
+// $('.button-group').each( function( i, buttonGroup ) {
+//   var $buttonGroup = $( buttonGroup );
+//   $buttonGroup.on( 'click', 'button', function() {
+//     $buttonGroup.find('.is-checked').removeClass('is-checked');
+//     $( this ).addClass('is-checked');
+//   });
+// });
   
-  
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    var args = arguments;
+    var _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
 }
+
+
 </script>
   <script src="/assets/web/assets/jquery/jquery.min.js"></script>
   <script src="/assets/popper/popper.min.js"></script>
@@ -308,7 +347,7 @@ function myFunction() {
   <script src="/assets/datatables/data-tables.bootstrap4.min.js"></script>
   <script src="/assets/theme/js/script.js"></script>
   <script src="/assets/formoid/formoid.min.js"></script>
- 
+  
   
   <input name="animation" type="hidden">
   </body>
