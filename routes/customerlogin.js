@@ -245,7 +245,7 @@ let search ="";
         let search = req.params.search;
         console.log(search);
     
-              query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; // query database to get all the players
+              query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; // query database to get all the players
        
          let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
 
