@@ -256,12 +256,23 @@ if (typeof req.files.image !== "undefined"){
                 x[i] = results[i].rfqdate;
                 y[i] = results[i].COUNT;
             }
-            
-            
+        });
+            let query1 = "SELECT customer_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  customer_name ORDER BY COUNT DESC;"
+            db.query(query1, (err, results) => {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                console.log(query1);
+                c = [];
+                q = [];
+                for( var i in results ) {
+                    c[i] = results[i].customer_name;
+                    q[i] = results[i].COUNT;
+                }
            
         res.render('supplierSummary.ejs', {
             title: "Welcome to Socka | Add a new player"
-            ,message: '', user_status: "loggined",supplier_id:supplierId,months:x,rfqqty:y
+            ,message: '', user_status: "loggined",supplier_id:supplierId,months:x,rfqqty:y,customer:c,rfqqty1:q
         });
         // console.log(x);
         // console.log(y);
@@ -271,7 +282,8 @@ if (typeof req.files.image !== "undefined"){
         // console.log(results);
        
         
-    });
+  
+});
     },
 
 

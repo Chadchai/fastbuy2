@@ -243,7 +243,7 @@ let search ="";
         let businessType = req.params.business_type;
         let customerId = req.params.id;
         let search = req.params.search;
-        console.log(search);
+        // console.log(search);
     
               query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; // query database to get all the players
        
