@@ -109,8 +109,8 @@
   <div class="col-md-9" >
   <canvas id="myChart1" width="400" height="200"></canvas>
 </div>
-<input id="months" type="text" class="form-control" name="months"  value="<%= months %>">
-<input id="rfqqty" type="text" class="form-control" name="rfqqty" value="<%= rfqqty %>">
+<input id="months" type="hidden" class="form-control" name="months"  value="<%= months %>">
+<input id="rfqqty" type="hidden" class="form-control" name="rfqqty" value="<%= rfqqty %>">
 </div>
 </div>
 <section class="footer3 cid-r8azJEXKOZ" id="footer3-i">
@@ -233,16 +233,16 @@
 <script>
 var ctx = document.getElementById("myChart").getContext('2d');
 var ctx1 = document.getElementById("myChart1").getContext('2d')
-var label1 = document.getElementById("months");
-var data1 = document.getElementById("rfqqty");
+var label1 = document.getElementById("months").value.split(',');
+var data1 = document.getElementById("rfqqty").value.split(',');
 
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: Array(label1),
+        labels: label1,
         datasets: [{
             label: '# of RFQ',
-            data: Array(data1),
+            data: data1,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 

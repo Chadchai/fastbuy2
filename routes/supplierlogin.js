@@ -244,7 +244,7 @@ if (typeof req.files.image !== "undefined"){
     },
     supplierSummaryPage: (req, res) => {
         let supplierId = req.params.id;
-        let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  MONTH(rfq_date);"
+        let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  MONTH(rfq_date) ORDER BY MONTH(rfq_date) DESC;"
         db.query(query, (err, results) => {
             if (err) {
                 return res.status(500).send(err);
@@ -263,9 +263,9 @@ if (typeof req.files.image !== "undefined"){
             title: "Welcome to Socka | Add a new player"
             ,message: '', user_status: "loggined",supplier_id:supplierId,months:x,rfqqty:y
         });
-        console.log(x);
-        console.log(y);
-        console.log(supplierId);
+        // console.log(x);
+        // console.log(y);
+        // console.log(supplierId);
    
         // console.log(query);
         // console.log(results);
