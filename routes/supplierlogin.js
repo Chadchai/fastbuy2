@@ -262,7 +262,7 @@ if (typeof req.files.image !== "undefined"){
                 if (err) {
                     return res.status(500).send(err);
                 }
-                console.log(query1);
+                
                 c = [];
                 q = [];
                 for( var i in results ) {
