@@ -92,10 +92,9 @@
             
                             
                     <div class="col-md-4">
-                            <input class="form-control input-sm" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
-                         
                         <div class="dataTables_filter">
                           <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                          <input class="form-control input-sm" id="quicksearch" value="<%= businessType %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
                           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
                          
                            <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
@@ -115,6 +114,11 @@
                             <div class="col-md-4">                  
        <div id="supplier_info" class="grid-item">
                     <div class="card-wrapper ">
+                         
+                            <label class="container-check" style="background-color:white" > <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
+                                <input type="checkbox">
+                                <span class="checkmark" ></span>
+                              </label>
                         <div class="card-img"  >
                             <div class="mbr-overlay" >
                                 
@@ -127,11 +131,7 @@
                            </div> 
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
                         </div>
-                   
-                        <label class="container-check" > <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                          </label>
+                  
                     
                         <div  class="card-box">
                             <h4 class="card-title mbr-fonts-style display-7">
