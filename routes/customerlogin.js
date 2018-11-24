@@ -229,10 +229,40 @@ if (typeof req.files.image !== "undefined"){
                 if (err) {
                     res.redirect('/');
                 }
+let search ="";
+            res.render('supplierList.ejs', {
+                title: "Welcome to Socka | View Players"
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search
+            });
+            //console.log(result1);
+        });
+    });
+    },
+    getSearchList: (req, res) => {
+       
+        let businessType = req.params.business_type;
+        let customerId = req.params.id;
+        let search = req.params.search;
+        console.log(search);
+    
+              query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; // query database to get all the players
+       
+         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
+
+        // execute query
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+           
+            db.query(query1, (err, result1) => {
+                if (err) {
+                    res.redirect('/');
+                }
 
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search
             });
             //console.log(result1);
         });

@@ -94,7 +94,8 @@
                     <div class="col-md-4">
                         <div class="dataTables_filter">
                           <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                          <input class="form-control input-sm" id="quicksearch1" >
+                          <input class="form-control input-sm" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+                          <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
                          
                            <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                    -->      </div> 
@@ -125,7 +126,8 @@
                            </div> 
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
                         </div>
-                        <label class="container-check" > <h4 style="color:rgb(28, 49, 243);font-weight: bold">ขอราคา</h4>
+                   
+                        <label class="container-check" > <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
                             <input type="checkbox">
                             <span class="checkmark"></span>
                           </label>
@@ -283,56 +285,18 @@
 </section>
 
 <script>
-
+function myFunction() {
   // Declare variables 
-  // quick search regex
-var qsRegex;
-var buttonFilter;
-
-// init Isotope
-var $grid = $('.grid').isotope({
-  itemSelector: '.element-item',
-  layoutMode: 'fitRows',
-  filter: function() {
-    var $this = $(this);
-    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
-    
-    return searchResult;
+  var search = document.getElementById("quicksearch").value; 
+  var search1 = document.getElementById("quicksearch1").value; 
+  if (search !== ""){
+    window.location.href= '/getsearchlist/' + search1 + "/" +search;
+  } else {
+    window.location.href= '/getsupplierlist/' + search1;
   }
-});
-
-// use value of search field to filter
-var $quicksearch = $('#quicksearch').keyup( debounce( function() {
-  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $grid.isotope();
-}) );
-
-
-//   // change is-checked class on buttons
-// $('.button-group').each( function( i, buttonGroup ) {
-//   var $buttonGroup = $( buttonGroup );
-//   $buttonGroup.on( 'click', 'button', function() {
-//     $buttonGroup.find('.is-checked').removeClass('is-checked');
-//     $( this ).addClass('is-checked');
-//   });
-// });
-  
-
-// debounce so filtering doesn't happen every millisecond
-function debounce( fn, threshold ) {
-  var timeout;
-  threshold = threshold || 100;
-  return function debounced() {
-    clearTimeout( timeout );
-    var args = arguments;
-    var _this = this;
-    function delayed() {
-      fn.apply( _this, args );
-    }
-    timeout = setTimeout( delayed, threshold );
-  };
+ 
 }
-
+ 
 
 </script>
   <script src="/assets/web/assets/jquery/jquery.min.js"></script>
