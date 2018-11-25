@@ -78,7 +78,7 @@
     
 
     
-        <div class="container" style="width:120%">
+        <div class="container" style="width:100%">
             <div class="row search">
             <div class="col-md-8">  
                 <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
@@ -115,10 +115,13 @@
        <div id="supplier_info" class="grid-item">
                     <div class="card-wrapper ">
                          
-                            <label class="container-check" style="background-color:white" > <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
-                                <input type="checkbox">
+                            <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
+                                <input type="checkbox" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value)">
                                 <span class="checkmark" ></span>
+                                <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.supplier_id %>">
                               </label>
+                              
+                        
                         <div class="card-img"  >
                             <div class="mbr-overlay" >
                                 
@@ -296,10 +299,25 @@ function myFunction() {
     window.location.href= '/getsupplierlist/' + search1;
   }
  
+};
+var array = [];
+function addInList(checkbox,supplierId) {
+
+    if(checkbox.checked == true){
+        var newItem = supplierId;
+
+
+array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
+
+console.log(array);
+    }else{
+        array.indexOf(newItem) === -1 ? array.splice(array.indexOf(newItem)) : console.log("already removed");
+        console.log(array);
+   }
 }
- 
 
 </script>
+
   <script src="/assets/web/assets/jquery/jquery.min.js"></script>
   <script src="/assets/popper/popper.min.js"></script>
   <script src="/assets/tether/tether.min.js"></script>
