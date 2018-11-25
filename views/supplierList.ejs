@@ -111,16 +111,16 @@
           <br>
           <br>
             
-            <div class="grid" data-isotope='{ "itemSelector": ".grid-item"}'>
+            <div class="grid" data-masonry='{ "itemSelector": ".grid-item"}'>
                     <% if (suppliers.length > 0) {%>
                       
                         <% suppliers.forEach((supplier, index) => { %>
             
     
                            
-                            <div class="col-md-4">                  
-       <div id="supplier_info" class="grid-item">
-                    <div class="card-wrapper ">
+                            <div class="col-md-6">                  
+       <div  class="grid-item" >
+                  
                          
                             <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
                                 <input type="checkbox" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value)">
@@ -133,12 +133,7 @@
                             <div class="mbr-overlay" >
                                 
                             </div>
-                            <div class="mbr-section-btn text-right">
-                                 <!-- <a onclick="location.href='/sendmail/<%= customer.customer_id %>/<%= supplier.supplier_id %>' " class="btn btn-primary display-4">ขอราคา</a>
-                                    -->
-                                   
-                                   
-                           </div> 
+                           
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
                         </div>
                   
@@ -156,7 +151,7 @@
                                     
                             </p>
                        
-                        </div>
+                     
                       
                     </div>
                     
