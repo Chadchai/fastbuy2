@@ -72,7 +72,7 @@ app.post('/supplier', supplierLogin);
 app.post('/customer', customerLogin);
 app.get('/productlist/:id', productListPage);
 app.get('/suppliersummary/:id', supplierSummaryPage);
-app.get('/sendmail/:cid/:sid', sendMail);
+app.get('/sendmail/:cid/:sid/:sidg', sendMail);
 
 // set the app to listen on the port
 app.listen(port, () => {

@@ -1,5 +1,6 @@
 const fs = require('fs');
 var cloudinary = require('cloudinary');
+const querystring = require('querystring');  
 
 cloudinary.config({ 
     cloud_name: 'hdzvdkljx', 
@@ -271,6 +272,8 @@ let search ="";
     sendMail: (req, res) => {
     let customerId = req.params.cid;
     let supplierId = req.params.sid;
+    // let supplierEmail = req.query.sidg;
+    // console.log(supplierEmail);
     let query = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "' ";
     let query1 = "SELECT * FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
     db.query(query, (err, result) => {
@@ -291,7 +294,7 @@ let search ="";
                 if (err) {
                     res.redirect('/');
                 }
-                //console.log(result2.insertId);
+                console.log(result2.insertId);
                 // let query3 = "SELECT COUNT(rfq_id) AS numberofid FROM RFQ;";
                 // db.query(query3, (err, result3) => {
                 //     if (err) {
@@ -302,10 +305,14 @@ let search ="";
     //         var supplierEmail = result1[0].email;
     //     var subject ="RFQ# " +  result2.insertId +" from " + result[0].customer_name;
     //    // +  result2[0].rfq_id +
-    //     var emailBody =  "";;
+      var emailBody =  "";
     //     // var attach = 'path';
-    //     var mail = "mailto:"+supplierEmail+"?subject="+subject+"&body="+encodeURIComponent(emailBody);
-    //     res.redirect(mail);
+    // for( var i = 0; i < supplierEmail.length; i ++ ) {
+    // //   var mail = "mailto:"+supplierEmail[i]+"?subject= RFQ"+"&body="+encodeURIComponent(emailBody);
+    // // res.redirect(mail);
+    // console.log(supplierEmail[i]);
+    // }
+
     });
     });
     });
