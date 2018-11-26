@@ -16,11 +16,10 @@
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="/assets/dropdown/css/style.css">
   <link rel="stylesheet" href="/assets/animatecss/animate.min.css">
-  <link rel="stylesheet" href="/assets/datatables/data-tables.bootstrap4.min.css">
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+  
 
 
   
@@ -73,7 +72,7 @@
             <% } %>
         </section>
         
-<section class="features18 popup-btn-cards cid-r9umpetzm0" style="background-color:white" id="features18-1g">
+<section class="features18 popup-btn-cards cid-r9umpetzm0" id="features18-1g"></section>
 
     
 
@@ -110,33 +109,31 @@
                 </div>
           <br>
           <br>
+ 
             
             <div class="grid" data-masonry='{ "itemSelector": ".grid-item"}'>
                     <% if (suppliers.length > 0) {%>
                       
                         <% suppliers.forEach((supplier, index) => { %>
             
-    
-                           
-                            <div class="col-md-6">                  
-       <div  class="grid-item" >
-                  
-                         
+                            <div class="col-md-4">
+                            <div class="grid-item">
+                                   
+                              
+            
                             <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
                                 <input type="checkbox" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value)">
                                 <span class="checkmark" ></span>
                                 <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.sale_email %>">
                               </label>
                               
-                        
+                             
                         <div class="card-img"  >
-                            <div class="mbr-overlay" >
-                                
-                            </div>
+                      
                            
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
                         </div>
-                  
+                  <br>
                     
                         <div  class="card-box">
                             <h4 class="card-title mbr-fonts-style display-7">
@@ -152,14 +149,12 @@
                             </p>
                        
                      
-                      
+                        </div>
+                
                     </div>
-                    
-                    </div>
-                </div>
-               
+              
  
-           
+                </div>
              
              
             
@@ -169,87 +164,13 @@
                 <% } else { %>
                     <p class="text-center">No supplier found.</p>
                 <% } %>
-            </div>
+            
         </div>
-      
-       
+       </div>
+ 
     </section>
     
-    <section class="cid-raqq2LH4NR" id="footer5-1n">
-
     
-
-    
-
-            <div class="container">
-                <div class="media-container-row">
-                    <div class="col-md-3">
-                        <div class="media-wrap">
-                            <a href="https://mobirise.com/">
-                               <img src="/assets/images/mbr-192x192.jpg" alt="Mobirise" title="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <p class="mbr-text align-right links mbr-fonts-style display-7">
-                            <a href="#" class="text-black">ABOUT</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#" class="text-black">TERMS</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#" class="text-black">CAREERS</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#" class="text-black">CONTACT</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="footer-lower">
-                    <div class="media-container-row">
-                        <div class="col-md-12">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="media-container-row mbr-white">
-                        <div class="col-md-6 copyright">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2018 fastbuy.co - All Rights Reserved
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="social-list align-right">
-                                <div class="soc-item">
-                                    <a href="https://twitter.com/mobirise" target="_blank">
-                                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                                    </a>
-                                </div>
-                                <div class="soc-item">
-                                    <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
-                                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                                    </a>
-                                </div>
-                                <div class="soc-item">
-                                    <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                                        <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                                    </a>
-                                </div>
-                                <div class="soc-item">
-                                    <a href="https://instagram.com/mobirise" target="_blank">
-                                        <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                                    </a>
-                                </div>
-                                <div class="soc-item">
-                                    <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                        <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                                    </a>
-                                </div>
-                                <div class="soc-item">
-                                    <a href="https://www.behance.net/Mobirise" target="_blank">
-                                        <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 <script>
 function myFunction() {
   // Declare variables 
@@ -303,8 +224,7 @@ window.location.href = link;
   <script src="/assets/datatables/data-tables.bootstrap4.min.js"></script>
   <script src="/assets/theme/js/script.js"></script>
   <script src="/assets/formoid/formoid.min.js"></script>
-  
-  
-  <input name="animation" type="hidden">
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
   </body>
 </html>
