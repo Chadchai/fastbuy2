@@ -76,12 +76,12 @@
 
     
 
-    
+<div class="main">
         <div class="container" style="width:100%">
             <br>
             <br>
             <br>
-            <br>
+           
             <div class="row search">
             <div class="col-md-8">  
                 <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
@@ -94,33 +94,19 @@
                     <!-- <div class="container"> -->
             
                             
-                    <div class="col-md-4">
-                        <div class="dataTables_filter">
-                          <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                          <input class="form-control input-sm" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
-                          <button id="askprice" onclick="sendMail()">Ask Price </button>
-                          <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
-                         
-                          <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
-                         
-                           <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                   -->      </div> 
-                    </div>
+                   
                 </div>
-          <br>
-          <br>
- 
-            
+       
+         
+        
             <div class="grid" data-masonry='{ "itemSelector": ".grid-item"}'>
                     <% if (suppliers.length > 0) {%>
                       
                         <% suppliers.forEach((supplier, index) => { %>
             
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                             <div class="grid-item">
-                                   
-                              
-            
+                            
                             <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h3 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h3></h1>
                                 <input type="checkbox" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value)">
                                 <span class="checkmark" ></span>
@@ -128,7 +114,7 @@
                               </label>
                               
                              
-                        <div class="card-img"  >
+                        <div class="card-img" style="width:80%"  >
                       
                            
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
@@ -159,18 +145,117 @@
              
             
                 <% }) %>
-            
+           
        
                 <% } else { %>
                     <p class="text-center">No supplier found.</p>
                 <% } %>
             
         </div>
-       </div>
+        
+    </div>
+   
  
+       </div>
+    <!-- close col-md-8> -->
+    
+    
     </section>
+    <section class="cid-raqq2LH4NR" id="footer5-1n">
+
     
+
     
+        <div class="main">
+		<div class="container">
+			<div class="media-container-row">
+				<div class="col-md-3">
+					<div class="media-wrap">
+						<a href="https://mobirise.com/">
+						   <img src="/assets/images/mbr-192x192.jpg" alt="Mobirise" title="">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<p class="mbr-text align-right links mbr-fonts-style display-7">
+						<a href="#" class="text-black">ABOUT</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#" class="text-black">TERMS</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#" class="text-black">CAREERS</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#" class="text-black">CONTACT</a>
+					</p>
+				</div>
+			</div>
+			<div class="footer-lower">
+				<div class="media-container-row">
+					<div class="col-md-12">
+						<hr>
+					</div>
+				</div>
+				<div class="media-container-row mbr-white">
+					<div class="col-md-6 copyright">
+						<p class="mbr-text mbr-fonts-style display-7">
+							© Copyright 2018 fastbuy.co - All Rights Reserved
+						</p>
+					</div>
+					<div class="col-md-6">
+						<div class="social-list align-right">
+							<div class="soc-item">
+								<a href="https://twitter.com/mobirise" target="_blank">
+									<span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+								</a>
+							</div>
+							<div class="soc-item">
+								<a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+									<span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+								</a>
+							</div>
+							<div class="soc-item">
+								<a href="https://www.youtube.com/c/mobirise" target="_blank">
+									<span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+								</a>
+							</div>
+							<div class="soc-item">
+								<a href="https://instagram.com/mobirise" target="_blank">
+									<span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+								</a>
+							</div>
+							<div class="soc-item">
+								<a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
+									<span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
+								</a>
+							</div>
+							<div class="soc-item">
+								<a href="https://www.behance.net/Mobirise" target="_blank">
+									<span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+	</section>
+    <div class="sidenav" style="border-left: 5px solid rgb(133, 132, 132);">
+       
+        <div class="dataTables_filter">
+          <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+          <input class="form-control input-sm" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+          
+          <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
+          <br> 
+          <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
+          <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message" id="ListEmail"></textarea>
+            <br>          
+          
+          <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
+          <button id="askprice" class="btn btn-primary btn-lg">ขอราคา</button>
+          <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
+           <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+   -->      </div> 
+    
+</div>
+
 <script>
 function myFunction() {
   // Declare variables 
@@ -193,11 +278,14 @@ function addInList(checkbox,supplierId) {
 
 array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
 
+ 
+
 console.log(array);
     }else{
         array.indexOf(newItem) === -1 ? array.splice(array.indexOf(newItem)) : console.log("already removed");
         console.log(array);
    }
+   document.getElementById("ListEmail").value = array;
 };
 function sendMail() {
   // Declare variables 
