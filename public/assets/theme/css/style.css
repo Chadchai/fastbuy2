@@ -109,7 +109,10 @@ text-justify:right;
     right: 0;
     background-color:white;
     overflow-x: hidden;
-    padding-top: 100px;
+		padding-top: 100px;
+		padding-left: 5px;
+		padding-right: 5px;
+		border-left: 5px solid rgb(219, 218, 218);
 }
 
 
