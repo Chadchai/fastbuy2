@@ -281,21 +281,19 @@ function myFunction() {
 
 var array = [];
 function addInList(checkbox,supplierId) {
+    var newItem = supplierId;
 
     if(checkbox.checked == true){
-        var newItem = supplierId;
-
+      
 
 array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
 
- 
-
-console.log(array);
     }else{
-        array.indexOf(newItem) === -1 ? array.splice(array.indexOf(newItem)) : console.log("already removed");
-        console.log(array);
+        array.indexOf(newItem) !== -1 ? array.splice(array.indexOf(newItem),1): console.log("already removed");
+
    }
    document.getElementById("ListEmail").value = array;
+  
 };
 function sendMail() {
   // Declare variables 
