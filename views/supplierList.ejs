@@ -112,19 +112,24 @@
                             <div class="col-lg-4 col-md-6">
                             <div class="grid-item">
                             
-                            <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h4 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h4></h1>
+                            <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
+                                
+                            </h1>
+                                
                                 <input type="checkbox" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value)">
+                             
                                 <span class="checkmark" ></span>
+                                
                                 <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.sale_email %>">
                               </label>
-                              
+                             <!-- Trigger the modal with a button -->
+ 
                              
-                        <div class="card-img" style="width:90%;padding-left: 10%;max-height: 100px"  >
+                        <div class="card-img" style="width:90%;padding-left: 10%;padding-bottom: 20px"  >
                       
                            
-                            <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" alt="Mobirise"> 
+                            <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:100%" data-toggle="modal" data-target="#myModal<%= supplier.supplier_id %>" alt="Mobirise"> 
                         </div>
-                  <br>
                     
                         <div  class="card-box">
                             <h4 class="card-title mbr-fonts-style display-7">
@@ -141,12 +146,54 @@
                        
                      
                         </div>
+                              <!-- Modal -->
+  <div class="modal fade" id="myModal<%= supplier.supplier_id %>" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h6 class="modal-title">Modal Header</h6>
+        </div> -->
+        <div class="modal-body">
+                <div class="card-img" style="width:90%;padding-left: 10%;padding-bottom: 20px"  >
+                      
+                           
+                        <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:60%"  alt="Mobirise"> 
+                    </div>
                 
+            <div  class="card-box">
+                <h4 class="card-title mbr-fonts-style display-7">
+                        <%= supplier.supplier_name %>
+                </h4>
+                <p  class="mbr-text mbr-fonts-style align-left display-7">
+
+                       <%= supplier.supplier_info%>
+                       <br>
+                       <%= supplier.product_info %>
+                       <br>
+                        <%= supplier.address %>
+                        
+                       
+                        
+                </p>
+           
+         
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
                     </div>
               
  
                 </div>
-             
+
+      
+    </div>
+  </div>
              
             
                 <% }) %>
@@ -254,7 +301,7 @@
           <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
             
             <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
-            <textarea type="text" class="form-control" name="message" rows="10" data-form-field="Message" id="Message"></textarea>
+            <textarea type="text" class="form-control" name="message" rows="6" data-form-field="Message" id="Message"></textarea>
          
           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
           <label for="customer-img"><b>แนบไฟล์</b></label><br>
@@ -266,6 +313,10 @@
     
 </div>
 
+
+ 
+ 
+  
 <script>
 function myFunction() {
   // Declare variables 
