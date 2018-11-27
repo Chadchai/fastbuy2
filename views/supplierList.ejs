@@ -90,6 +90,11 @@
                  <%= businessType %>
             </h3> 
         </div>
+        <div class="col-md-4">
+            <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+            <input class="form-control input-sm" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+            
+        </div>
     
                     <!-- <div class="container"> -->
             
@@ -236,19 +241,24 @@
         </div>
     </div>
 	</section>
-    <div class="sidenav" style="border-left: 5px solid rgb(133, 132, 132);">
+    <div class="sidenav" >
        
         <div class="dataTables_filter">
-          <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-          <input class="form-control input-sm" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+          
+          <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
+          <textarea type="text" class="form-control" name="EmailList" rows="4" data-form-field="EmailList" id="ListEmail"></textarea>
+        
+            <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
+          <input class="form-control input-sm" id="Topic">
           
           <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
-          <br> 
-          <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
-          <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message" id="ListEmail"></textarea>
-            <br>          
-          
+            
+            <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
+            <textarea type="text" class="form-control" name="message" rows="10" data-form-field="Message" id="Message"></textarea>
+         
           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
+          <label for="customer-img"><b>แนบไฟล์</b></label><br>
+          <input type="file" name="image" id="attachment" class="" >
           <button id="askprice" class="btn btn-primary btn-lg">ขอราคา</button>
           <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
            <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
