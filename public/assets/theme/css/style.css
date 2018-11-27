@@ -138,10 +138,16 @@ text-justify:right;
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 
-	.sidenav {display:none;}
+	.sidenav {width: 250px;font-size: 14px;}
 	.sidenav a {display:none;}
-	.main {margin-right: 5px;font-size: 14px;}
+	.main {margin-right: 250px;font-size: 14px;}
 	}
-  
+  @media screen and (max-width: 450px) {
+
+		.sidenav {display:none;}
+		.sidenav a {display:none;}
+		.main {margin-right: 5px;font-size: 14px;}
+		}
+		
