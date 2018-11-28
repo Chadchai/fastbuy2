@@ -343,9 +343,12 @@ array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item alr
         array.indexOf(newItem) !== -1 ? array.splice(array.indexOf(newItem),1): console.log("already removed");
 
    }
-   document.getElementById("ListEmail").value = array;
+   localStorage.setItem("EmailList", array);
+   document.getElementById("ListEmail").value =  localStorage.getItem("EmailList");
   
 };
+localStorage.setItem("EmailList", array);
+document.getElementById("ListEmail").value =  localStorage.getItem("EmailList");
 function sendMail() {
   // Declare variables 
  
