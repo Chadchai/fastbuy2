@@ -116,11 +116,12 @@
                                 
                             </h1>
                                 
-                                <input type="checkbox" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value)">
+                                <input type="checkbox" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
                              
                                 <span class="checkmark" ></span>
                                 
                                 <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.sale_email %>">
+                                <input class="form-control input-sm" id="List_<%= supplier.supplier_id %>" value="<%= supplier.supplier_id %>">
                               </label>
                              <!-- Trigger the modal with a button -->
  
@@ -294,6 +295,7 @@
           
           <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
           <textarea type="text" class="form-control" name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail"></textarea>
+          <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId"></textarea>
         
             <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
           <input class="form-control input-sm" id="Topic">
@@ -330,25 +332,49 @@ function myFunction() {
  
 };
 
-var array = [];
-function addInList(checkbox,supplierId) {
-    var newItem = supplierId;
+var array;
+var array1;
+function addInList(checkbox,supplierEmail,supplierId) {
+    var newItem = supplierEmail;
+    var newItem1 = supplierId;
+array = document.getElementById("ListEmail").value.split(",");
+array1 = document.getElementById("ListId").value.split(",");
 
     if(checkbox.checked == true){
       
+        array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
+            array1.indexOf(newItem1) === -1 ? array1.push(newItem1) : console.log("This item already exists");
+           
 
-array.indexOf(newItem) === -1 ? array.push(newItem) : console.log("This item already exists");
-
-    }else{
+}
+else{
         array.indexOf(newItem) !== -1 ? array.splice(array.indexOf(newItem),1): console.log("already removed");
+        array1.indexOf(newItem1) !== -1 ? array1.splice(array1.indexOf(newItem1),1): console.log("already removed");
 
    }
-   localStorage.setItem("EmailList", array);
-   document.getElementById("ListEmail").value =  localStorage.getItem("EmailList");
-  
+   
+   sessionStorage.setItem("EmailList", array);
+   sessionStorage.setItem("Listid", array1);
+   document.getElementById("ListEmail").value =  sessionStorage.getItem("EmailList");
+   document.getElementById("ListId").value = sessionStorage.getItem("Listid");
 };
-localStorage.setItem("EmailList", array);
-document.getElementById("ListEmail").value =  localStorage.getItem("EmailList");
+
+
+document.getElementById("ListEmail").value =  sessionStorage.getItem("EmailList");
+document.getElementById("ListId").value = sessionStorage.getItem("Listid");
+var i;
+var idlist =  sessionStorage.getItem("Listid").split(",");
+console.log(idlist);
+for (i = 0; i < idlist.length; i++) {
+    if (idlist[i] !== ""){
+        var id_number = "check_"+ idlist[i]; 
+    console.log(id_number);
+    document.getElementById(id_number).checked = true;
+    }
+   
+    // 
+}
+
 function sendMail() {
   // Declare variables 
  
