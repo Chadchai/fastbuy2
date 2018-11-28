@@ -308,7 +308,7 @@
           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
           <label for="customer-img"><b>แนบไฟล์</b></label><br>
           <input type="file" name="image" id="attachment" class="" >
-          <button id="askprice" class="btn btn-primary btn-lg">ขอราคา</button>
+          <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button>
           <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
            <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
    -->      </div> 
@@ -378,12 +378,12 @@ for (i = 0; i < idlist.length; i++) {
 function sendMail() {
   // Declare variables 
  
-  var customerid = document.getElementById("customerID").value;
-//   console.log(customerid);
-var link ='/sendmail/' + customerid +"/17/" + array;
-window.location.href = link;
+//   var customerid = document.getElementById("customerID").value;
+// //   console.log(customerid);
+// var link ='/sendmail/' + customerid +"/17/" + array;
+// window.location.href = link;
 
- 
+ sessionStorage.clear();
 };
 
 </script>
