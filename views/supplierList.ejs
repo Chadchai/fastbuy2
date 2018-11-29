@@ -295,7 +295,7 @@
  
     <div class="sidenav" >
        
-        <div class="dataTables_filter">
+        <div class="dataTables_filter" id="formEmail">
           
           <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
           <textarea type="text" class="form-control" name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail"></textarea>
@@ -351,14 +351,16 @@
                                                 <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
                                                 <label for="customer-img"><b>แนบไฟล์</b></label><br>
                                                 <input type="file" name="image" id="attachment" class="" >
-                                                <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button>
-                                                <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
+                                               <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
                                                  <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                                          -->   
                                           
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button id="askprice" onclick="sendMail()" class="btn btn-primary">ขอราคา</button>
+                                             
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        
                                         </div>
                                       </div>
                                                     </div>
