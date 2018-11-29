@@ -74,9 +74,10 @@
         
 <section class="features18 popup-btn-cards cid-r9umpetzm0" id="features18-1g"></section>
 
-    
+ 
 
 <div class="main">
+      
         <div class="container" style="width:100%">
            
            
@@ -90,7 +91,7 @@
         </div>
         <div class="col-md-4">
             <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-            <input class="form-control input-sm" style="width:95%" id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+            <input class="form-control input-sm"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
             
         </div>
     
@@ -212,6 +213,10 @@
     
     
     </section>
+
+  
+     
+    
     <section class="cid-raqq2LH4NR" id="footer5-1n">
 
     
@@ -286,7 +291,8 @@
 			</div>
         </div>
     </div>
-	</section>
+    </section>
+ 
     <div class="sidenav" >
        
         <div class="dataTables_filter">
@@ -313,8 +319,52 @@
     
 </div>
 
+<div id="mySidenav" style="padding-top:200px;">
+        
+        <a href="#" id="price" data-toggle="modal" data-target="#myEmail">ขอราคา</a>
+        <a href="#" id="search">ค้นหา</a>
+      </div>
 
- 
+                               <!-- Modal -->
+                               <div class="modal fade" id="myEmail" role="dialog">
+                                    <div class="modal-dialog">
+                                    
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <!-- <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h6 class="modal-title">Modal Header</h6>
+                                        </div> -->
+                                        <div class="modal-body">
+                                                <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
+                                                <textarea type="text" class="form-control" name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail"></textarea>
+                                                <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId"></textarea>
+                                              
+                                                  <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
+                                                <input class="form-control input-sm" id="Topic" onchange="savedata()">
+                                                
+                                                <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
+                                                  
+                                                  <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
+                                                  <textarea type="text" class="form-control" name="message" onchange="savedata()" rows="6" data-form-field="Message" id="Message"></textarea>
+                                               
+                                                <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
+                                                <label for="customer-img"><b>แนบไฟล์</b></label><br>
+                                                <input type="file" name="image" id="attachment" class="" >
+                                                <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button>
+                                                <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
+                                                 <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                                         -->   
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                                    </div>
+                                              
+                                 
+                                                </div>
  
   
 <script>
