@@ -136,21 +136,34 @@ text-justify:right;
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+		.sidenav a {font-size: 18px;}
+		.mySidenav{display:block;}
+		.mySidenav a{display:block;}
+
 }
+@media screen and (max-width: 1800px) {
+
+	#mySidenav{display:none;}
+	}
 @media screen and (max-width: 1000px) {
 	.form-control input-sm { width:95%;}
 	.sidenav {width: 250px;font-size: 14px;}
 	.sidenav a {display:none;}
 	.main {margin-right: 250px;font-size: 14px;}
+	#mySidenav{display:none;}
 	}
+	
   @media screen and (max-width: 450px) {
 		.grid-item { width:100%;}
 		.form-control input-sm { width:100%;}
 		.sidenav {display:none;}
 		.sidenav a {display:none;}
+		#mySidenav{display:inline-block;}
 		.main {margin: 5px;font-size: 14px;}
-		}
+	
+}
+		
+		
 		.modal-header .close {
       background-color: #5cb85c;
       color:white !important;
@@ -173,6 +186,7 @@ text-justify:right;
 	font-size: 20px; /* Increase font size */
 	color: white; /* White text color */
 	border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+
 }
 
 #mySidenav a:hover {
