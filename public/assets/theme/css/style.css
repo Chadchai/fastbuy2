@@ -145,10 +145,10 @@ text-justify:right;
 	.main {margin-right: 250px;font-size: 14px;}
 	}
   @media screen and (max-width: 450px) {
-
+		.grid-item { width:100%;}
 		.sidenav {display:none;}
 		.sidenav a {display:none;}
-		.main {margin-right: 5px;font-size: 14px;}
+		.main {margin: 5px;font-size: 14px;}
 		}
 		.modal-header .close {
       background-color: #5cb85c;
