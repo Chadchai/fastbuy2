@@ -298,12 +298,12 @@
           <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId"></textarea>
         
             <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
-          <input class="form-control input-sm" id="Topic">
+          <input class="form-control input-sm" id="Topic" onchange="savedata()">
           
           <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
             
             <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
-            <textarea type="text" class="form-control" name="message" rows="6" data-form-field="Message" id="Message"></textarea>
+            <textarea type="text" class="form-control" name="message" onchange="savedata()" rows="6" data-form-field="Message" id="Message"></textarea>
          
           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
           <label for="customer-img"><b>แนบไฟล์</b></label><br>
@@ -358,8 +358,16 @@ else{
    document.getElementById("ListEmail").value =  sessionStorage.getItem("EmailList");
    document.getElementById("ListId").value = sessionStorage.getItem("Listid");
 };
+ 
+function savedata() {
+    var topic =  document.getElementById("Topic").value;
+    var message =  document.getElementById("Message").value;
+    sessionStorage.setItem("Topic", topic);
+   sessionStorage.setItem("Message", message);
 
-
+};
+document.getElementById("Topic").value =  sessionStorage.getItem("Topic");
+document.getElementById("Message").value = sessionStorage.getItem("Message");
 document.getElementById("ListEmail").value =  sessionStorage.getItem("EmailList");
 document.getElementById("ListId").value = sessionStorage.getItem("Listid");
 var i;
