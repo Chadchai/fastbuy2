@@ -213,4 +213,14 @@ text-justify:right;
 	top: 200px;
 	background-color: #555 /* Light Black */
 }
+
+.fa-bookmark-o {
+	position:absolute;
+	top:15px;
+	left:250px;
+	width: 10px;
+	height: 10px;
+
+
+}
 		

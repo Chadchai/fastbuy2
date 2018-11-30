@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 
 
@@ -110,18 +111,19 @@
             
                             <div class="col-lg-4 col-md-6">
                             <div class="grid-item">
-                            
-                            <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
+                                    <i class="fa fa-bookmark-o" href="#" style="font-size:24px;z-index:9; "></i>
+                            <label class="container-check" style="background-color:white" style="width:60%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
                                 
                             </h1>
                                 
-                                <input type="checkbox" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
+                                <input type="checkbox" style="width:60%" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
                              
-                                <span class="checkmark" ></span>
+                                <span class="checkmark"   > </span>
                                 
                                 <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.sale_email %>">
                                 <input class="form-control input-sm" id="List_<%= supplier.supplier_id %>" value="<%= supplier.supplier_id %>">
-                              </label>
+                               
+                            </label>
                              <!-- Trigger the modal with a button -->
  
                              
