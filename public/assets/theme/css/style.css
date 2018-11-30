@@ -36,6 +36,7 @@ text-justify:right;
 .container-check {
 	display: block;
 	position: relative;
+	width:50%;
 	background-color:whitesmoke;
 	padding-left: 35px;
 	margin-bottom: 5px;
@@ -69,6 +70,7 @@ text-justify:right;
   /* On mouse-over, add a grey background color */
   .container-check:hover input ~ .checkmark {
 	background-color: #ccc;
+	
   }
   
   /* When the checkbox is checked, add a blue background */
@@ -222,5 +224,26 @@ text-justify:right;
 	height: 10px;
 
 
+}
+.fa-bookmark-o:hover {
+	color:red;
+
+}
+.fa-bookmark-o :checked {
+	background-color: rgb(12, 240, 23);
+  }
+  
+.btn {
+	background-color: DodgerBlue; /* Blue background */
+	border: none; /* Remove borders */
+	color: white; /* White text */
+	padding: 12px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+	background-color: RoyalBlue;
 }
 		

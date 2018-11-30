@@ -111,9 +111,9 @@
             
                             <div class="col-lg-4 col-md-6">
                             <div class="grid-item">
-                                    <i class="fa fa-bookmark-o" href="#" style="font-size:24px;z-index:9; "></i>
-                            <label class="container-check" style="background-color:white" style="width:60%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
-                                
+                                 <a href="#" data-toggle="modal" data-target="#addAVL" onclick="showFormAVL()"  ><i class="fa fa-bookmark-o"  style="font-size:24px; "></i></a>
+                            <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
+                               
                             </h1>
                                 
                                 <input type="checkbox" style="width:60%" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
@@ -328,7 +328,45 @@
       </div>
 
                                <!-- Modal -->
-                               <div class="modal fade" id="myEmail" role="dialog">
+                               <div class="modal fade" id="addAVL" role="dialog">
+                                    <div class="modal-dialog">
+                                    
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                          <h3 class="modal-title">Add to AVL</h3>
+                                        </div> 
+                                        <div class="modal-body">
+                                                
+                                                  <label class="searchInfo mbr-fonts-style display-7">Supplier number</label>
+                                                <input class="form-control input-sm" id="supplierno" onchange="savedata()">
+                                                
+                                                  
+                                                  <label class="searchInfo mbr-fonts-style display-7">contact Email</label>  
+                                                  <input type="text" class="form-control" name="message" onchange="savedata()"  data-form-field="Message" id="Message1"></textarea>
+                                                  <label class="searchInfo mbr-fonts-style display-7">contact Number</label>  
+                                                  <input type="text" class="form-control" name="contactno" onchange="savedata()"  data-form-field="Message" id="Message1"></textarea>
+                                       
+                                               <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
+                                                 <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                                         -->   
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button id="askprice" onclick="sendMail()" class="btn btn-primary">ยืนยัน</button>
+                                             
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                        
+                                        </div>
+                                      </div>
+                                                    </div>
+                                              
+                                 
+                                                </div>
+ 
+                                                      <!-- Modal Add AVL -->
+                                <div class="modal fade" id="myEmail" role="dialog">
                                     <div class="modal-dialog">
                                     
                                       <!-- Modal content-->
@@ -367,8 +405,7 @@
                                               
                                  
                                                 </div>
- 
-  
+
 <script>
 function myFunction() {
   // Declare variables 
