@@ -141,7 +141,7 @@ text-justify:right;
 		.sidenav a {font-size: 18px;}
 		.mySidenav{display:block;}
 		.mySidenav a{display:block;}
-
+		.fa-bookmark-o {left:290px;}
 }
 @media screen and (max-width: 1800px) {
 
@@ -162,7 +162,7 @@ text-justify:right;
 		.sidenav a {display:none;}
 		#mySidenav{display:inline-block;}
 		.main {margin: 5px;font-size: 14px;}
-	
+		
 }
 		
 		
@@ -217,33 +217,21 @@ text-justify:right;
 }
 
 .fa-bookmark-o {
-	position:absolute;
+	position: absolute;;
 	top:15px;
-	left:250px;
+	right:20px;
 	width: 10px;
 	height: 10px;
-
+z-index: 1;
 
 }
 .fa-bookmark-o:hover {
 	color:red;
+	fill:purple;
+	
 
 }
 .fa-bookmark-o :checked {
 	background-color: rgb(12, 240, 23);
   }
   
-.btn {
-	background-color: DodgerBlue; /* Blue background */
-	border: none; /* Remove borders */
-	color: white; /* White text */
-	padding: 12px 16px; /* Some padding */
-	font-size: 16px; /* Set a font size */
-	cursor: pointer; /* Mouse pointer on hover */
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-	background-color: RoyalBlue;
-}
-		

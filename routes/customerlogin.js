@@ -233,7 +233,7 @@ if (typeof req.files.image !== "undefined"){
 let search ="";
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false
             });
             //console.log(result1);
         });
@@ -269,11 +269,76 @@ let search ="";
         });
     });
     },
+    getAVL: (req, res) => {
+       
+        let businessType = req.params.business_type;
+        let customerId = req.params.id;
+        let query = "SELECT avl.supplier_id, suppliers.supplier_name, suppliers.supplier_info, suppliers.product_info, suppliers.address, suppliers.sale_email, suppliers.Photo FROM avl" 
+        + " INNER JOIN suppliers ON avl.supplier_id=suppliers.supplier_id" +
+        " WHERE suppliers.business_type = 'Fabrication-Machining';"
+        let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
+
+         console.log(query);
+        // execute query
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+           
+            db.query(query1, (err, result1) => {
+                if (err) {
+                    res.redirect('/');
+                }
+                let search ="";
+            res.render('supplierList.ejs', {
+                title: "Welcome to Socka | View Players"
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true
+            });
+            //console.log(result1);
+        });
+    });
+    },
+    saveAVL: (req, res) => {
+       
+        let customer_id = req.body.customerid;
+        let supplier_id = req.body.supplierid;
+        let avl_number = req.body.supplierno;
+        let contact_no = req.body.contactNo;
+        let contact_email = req.body.contactEmail;
+
+      
+        // let query1 = "SELECT * FROM `suppliers` WHERE supplier_id = '" + supplier_id + "'";
+
+        // db.query(query1, (err, result) => {
+        //     if (err) {
+        //         return res.status(500).send(err);
+        //     } 
+                let query = "INSERT INTO `avl` (customer_id,supplier_id,avl_no,contact_number,contact_email) VALUES ('" +
+                customer_id + "', '" + supplier_id + "', '" + avl_number + "', '" + contact_no + "', '" + contact_email+ "')";
+                console.log(query);
+                 db.query(query, (err, result) => {
+                    if (err) {
+                     return res.status(500).send(err);
+                    }
+                    res.redirect('back');
+                   
+                 });
+            
+           
+                
+           
+
+            },
+
+
+
+
+
     sendMail: (req, res) => {
     let customerId = req.params.cid;
     let supplierId = req.params.sid;
     let supplierEmail = req.params.sidg.split(",");
-    console.log(supplierEmail);
+    // console.log(supplierEmail);
     let query = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "' ";
     let query1 = "SELECT * FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
     db.query(query, (err, result) => {

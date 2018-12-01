@@ -93,7 +93,19 @@
         <div class="col-md-4">
             <label class="searchInfo mbr-fonts-style display-7">Search:</label>
             <input class="form-control input-sm"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
-            
+            <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">AVL</h5>
+                               
+            </h1> 
+            <% if (checked) {%>    
+            <input type="checkbox"  id = "AVL" onchange="getAVL(this)" checked="checked">
+            <% } else { %>
+                <input type="checkbox"  id = "AVL" onchange="getAVL(this)"  >
+                <% } %>
+            <span class="checkmark"   > </span>
+         </label>  
+            <input type="hidden" name="business" id="business" class="form-control" value="<%= businessType %>">       
+                                                
+                             
         </div>
     
                     <!-- <div class="container"> -->
@@ -111,17 +123,20 @@
             
                             <div class="col-lg-4 col-md-6">
                             <div class="grid-item">
-                                 <a href="#" data-toggle="modal" data-target="#addAVL" onclick="showFormAVL()"  ><i class="fa fa-bookmark-o"  style="font-size:24px; "></i></a>
+                                 
+                                 <a data-toggle="modal" data-target="#addAVL" onclick="showAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)" ><i class="fa fa-bookmark-o"  style="font-size:24px; "></i></a>
                             <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
                                
                             </h1>
-                                
+                            
+
                                 <input type="checkbox" style="width:60%" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
                              
                                 <span class="checkmark"   > </span>
                                 
                                 <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.sale_email %>">
                                 <input class="form-control input-sm" id="List_<%= supplier.supplier_id %>" value="<%= supplier.supplier_id %>">
+                                <input class="form-control input-sm" id="Name_<%= supplier.supplier_id %>" value="<%= supplier.supplier_name %>">
                                
                             </label>
                              <!-- Trigger the modal with a button -->
@@ -327,7 +342,8 @@
         <a href="#" id="search">ค้นหา</a>
       </div>
 
-                               <!-- Modal -->
+                               <!-- Modal  add AVL-->
+
                                <div class="modal fade" id="addAVL" role="dialog">
                                     <div class="modal-dialog">
                                     
@@ -335,38 +351,42 @@
                                       <div class="modal-content">
                                         <div class="modal-header">
                                           <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                                          <h3 class="modal-title">Add to AVL</h3>
+                                          <h5 id="supplierAVLname" class="modal-title"></h5>
                                         </div> 
                                         <div class="modal-body">
-                                                
+                                                <form id="avl" class="add-player-form" action="/saveavl" method="post" enctype="multipart/form-data">
                                                   <label class="searchInfo mbr-fonts-style display-7">Supplier number</label>
-                                                <input class="form-control input-sm" id="supplierno" onchange="savedata()">
+                                                <input class="form-control input-sm" id="supplierno" name="supplierno" >
                                                 
-                                                  
                                                   <label class="searchInfo mbr-fonts-style display-7">contact Email</label>  
-                                                  <input type="text" class="form-control" name="message" onchange="savedata()"  data-form-field="Message" id="Message1"></textarea>
+                                                  <input type="text" class="form-control" name="contactEmail"  data-form-field="Message" id="contactEmail"></textarea>
                                                   <label class="searchInfo mbr-fonts-style display-7">contact Number</label>  
-                                                  <input type="text" class="form-control" name="contactno" onchange="savedata()"  data-form-field="Message" id="Message1"></textarea>
-                                       
+                                                  <input type="text" class="form-control" name="contactNo"  data-form-field="Message" id="contactNo"></textarea>
+                                                   <input type="hidden" name="supplierid"  id="supplierid" class="form-control">  
+                                                   <input type="hidden" name="customerid" id="customerid" class="form-control" value="<%= customer.customer_id %>">       
+                                                 
+                                                  <!-- <input type="hidden" id="suppliername" class="form-control">  -->
+                                                     
                                                <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
                                                  <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                                          -->   
                                           
                                         </div>
                                         <div class="modal-footer">
-                                                <button id="askprice" onclick="sendMail()" class="btn btn-primary">ยืนยัน</button>
-                                             
+                                              
+                                                <button type="submit" class="btn btn-primary">ยืนยัน</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
                                         
                                         </div>
+                                    </form>
                                       </div>
                                                     </div>
                                               
                                  
                                                 </div>
  
-                                                      <!-- Modal Add AVL -->
-                                <div class="modal fade" id="myEmail" role="dialog">
+                                                      <!-- Modal send Mail -->
+                                <div class="modal fade" id="myEmail" role="dialog" style="padding-top:80px">
                                     <div class="modal-dialog">
                                     
                                       <!-- Modal content-->
@@ -377,7 +397,7 @@
                                         </div> -->
                                         <div class="modal-body">
                                                 <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
-                                                <textarea type="text" class="form-control" name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail1"></textarea>
+                                                <textarea type="text" class="form-control" name="EmailList" rows="2" data-form-field="EmailList" id="ListEmail1"></textarea>
                                                 <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId1"></textarea>
                                               
                                                   <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
@@ -385,7 +405,7 @@
                                                 
                                                   
                                                   <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
-                                                  <textarea type="text" class="form-control" name="message" onchange="savedata()" rows="6" data-form-field="Message" id="Message1"></textarea>
+                                                  <textarea type="text" class="form-control" name="message" onchange="savedata()" rows="4" data-form-field="Message" id="Message1"></textarea>
                                                
                                                  <label for="customer-img"><b>แนบไฟล์</b></label><br>
                                                 <input type="file" name="image" id="attachment" class="" >
@@ -397,14 +417,13 @@
                                         <div class="modal-footer">
                                                 <button id="askprice" onclick="sendMail()" class="btn btn-primary">ขอราคา</button>
                                              
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
                                         
                                         </div>
                                       </div>
-                                                    </div>
-                                              
-                                 
-                                                </div>
+                                     </div>
+  
+                                     </div>
 
 <script>
 function myFunction() {
@@ -463,18 +482,55 @@ document.getElementById("Topic").value =  sessionStorage.getItem("Topic");
 document.getElementById("Message").value = sessionStorage.getItem("Message");
 document.getElementById("ListEmail").value =  sessionStorage.getItem("EmailList");
 document.getElementById("ListId").value = sessionStorage.getItem("Listid");
+
 var i;
 var idlist =  sessionStorage.getItem("Listid").split(",");
-console.log(idlist);
+// console.log(idlist);
 for (i = 0; i < idlist.length; i++) {
     if (idlist[i] !== ""){
         var id_number = "check_"+ idlist[i]; 
-    console.log(id_number);
+    // console.log(id_number);
     document.getElementById(id_number).checked = true;
     }
    
     // 
 }
+
+function showAVL(supplierName,supplierId) {
+    // console.log(supplierName);
+document.getElementById("supplierAVLname").textContent = "Do you want to add " +supplierName +" to your AVL? Please add more information below" ;
+document.getElementById("supplierid").value = supplierId;
+document.getElementById("suppliername").value = supplierName;
+};
+
+function getAVL (checkbox){
+    var custid = document.getElementById("customerID").value;
+    var business = document.getElementById("business").value;
+    
+    if(checkbox.checked == true){
+ 
+        window.location.href= '/getavl/'+ business + "/" + custid;
+    
+     
+       
+    } else {
+ 
+        window.location.href= '/getsupplierlist/'+ business + "/" + custid;
+      
+      
+ 
+    }
+
+
+};
+
+// function saveAVL(){
+// var suppid = document.getElementById("supplierid").value;
+// var custid = document.getElementById("customerID").value;
+
+//     window.location.href= '/saveavl/'+ custid + "/" + suppid;
+
+// }
 
 function sendMail() {
   // Declare variables 
