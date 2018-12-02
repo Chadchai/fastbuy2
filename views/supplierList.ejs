@@ -105,7 +105,8 @@
             <span class="checkmark"   > </span>
          </label>  
             <input type="hidden" name="business" id="business" class="form-control" value="<%= businessType %>">       
-                                                
+            <input type="hidden" name="avlList" id="avlList" class="form-control" value="<%= avls %>">       
+                                             
                              
         </div>
       
@@ -125,7 +126,7 @@
                             <div class="col-lg-4 col-md-6">
                                     <div class="grid-item">
                                 
-                                 <a data-toggle="modal" data-target="#addAVL" onclick="showAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)" ><i class="fa fa-bookmark"  style="font-size:24px;color:gray "></i></a>
+                                 <a data-toggle="modal"  data-target="#addAVL" onclick="showAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)" ><i id="avl_<%= supplier.supplier_id %>" class="fa fa-bookmark"  style="font-size:24px;color:gray "></i></a>
                         
                             <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
                                
@@ -332,7 +333,7 @@
           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
           <label for="customer-img"><b>แนบไฟล์</b></label><br>
           <input type="file" name="image" id="attachment" class="" >
-          <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button>
+          <button id="askprice" onclick="sendMail()" class="btn btn-primary">ขอราคา</button>
           <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
            <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
    -->      </div> 
@@ -418,7 +419,8 @@
                                           
                                         </div>
                                         <div class="modal-footer">
-                                                <button id="askprice" onclick="sendMail()" class="btn btn-primary">ขอราคา</button>
+
+                                                <button id="askprice"  class="btn btn-primary" onclick="sendMail()">ขอราคา</button>
                                              
                                             <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
                                         
@@ -507,12 +509,30 @@ var idlist =  sessionStorage.getItem("Listid").split(",");
 for (i = 0; i < idlist.length; i++) {
     if (idlist[i] !== ""){
         var id_number = "check_"+ idlist[i]; 
-    // console.log(id_number);
+    console.log(id_number);
+    if  (document.getElementById(id_number) !== null) {
     document.getElementById(id_number).checked = true;
+}
     }
    
     // 
 }
+
+ var avllist = document.getElementById("avlList").value.split(",");
+// console.log(avllist.length);
+ if (avllist.length > 0){
+for (i = 0; i < avllist.length; i++) {
+    
+        var avl_number = "avl_"+ avllist[i]; 
+//      console.log(avl_number);
+if  (document.getElementById(avl_number) !== null) {
+     document.getElementById(avl_number).style.color= "#4169E1";
+    }
+}
+   
+//     // 
+ }
+
 
 function showAVL(supplierName,supplierId) {
     // console.log(supplierName);
