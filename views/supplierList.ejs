@@ -554,9 +554,9 @@ for (i = 0; i < idlist.length; i++) {
    
     // 
 }
-
- var avllist = document.getElementById("avlList").value.split(",");
-// console.log(avllist.length);
+if (document.getElementById("avlList").value !== null){
+    var avllist = document.getElementById("avlList").value.split(",");
+console.log(avllist.length);
  if (avllist.length > 0){
 for (i = 0; i < avllist.length; i++) {
     
@@ -566,9 +566,11 @@ if  (document.getElementById(avl_number) !== null) {
      document.getElementById(avl_number).style.color= "#4169E1";
     }
 }
+}
+
    
 //     // 
- }
+ };
 
 
 function showAVL(supplierName,supplierId) {
