@@ -99,13 +99,15 @@
             </h1> 
             <% if (checked) {%>    
             <input type="checkbox"  id = "AVL" onchange="getAVL(this)" checked="checked">
+            
             <% } else { %>
                 <input type="checkbox"  id = "AVL" onchange="getAVL(this)"  >
+                <input type="hidden" name="avlList" id="avlList" class="form-control" value="<%= avls %>">       
+           
                 <% } %>
             <span class="checkmark"   > </span>
          </label>  
             <input type="hidden" name="business" id="business" class="form-control" value="<%= businessType %>">       
-            <input type="hidden" name="avlList" id="avlList" class="form-control" value="<%= avls %>">       
                                              
                              
         </div>
@@ -125,16 +127,21 @@
                         <% suppliers.forEach((supplier, index) => { %>
                             <div class="col-lg-4 col-md-6">
                                     <div class="grid-item">
-                                
-                                 <a data-toggle="modal"  data-target="#addAVL" onclick="showAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)" ><i id="avl_<%= supplier.supplier_id %>" class="fa fa-bookmark"  style="font-size:24px;color:gray "></i></a>
-                        
+                                            <% if (checked) {%>  
+                                 <a data-toggle="modal" data-target="#removeAVL" onclick="removeAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value, '<%= supplier.supplier_id %>' )" ><i id="avl_<%= supplier.supplier_id %>"><i id="avl_<%= supplier.supplier_id %>" class="fa fa-bookmark"  style="font-size:24px;color:#4169E1 "></i></a>
+                                 <% } else { %>
+                                    <a data-toggle="modal"  data-target="#addAVL" onclick="showAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)" ><i id="avl_<%= supplier.supplier_id %>" class="fa fa-bookmark"  style="font-size:24px;color:gray "></i></a>
+                               
+                                    <% } %> 
                             <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
                                
                             </h1>
                             
-
-                                <input type="checkbox" style="width:60%" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
                              
+                                <input type="checkbox" style="width:60%" id = "check_<%= supplier.supplier_id %>" onchange="addInList(this,document.getElementById(' <%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)">
+                                
+                               
+                                     
                                 <span class="checkmark"   > </span>
                                 
                                 <input class="form-control input-sm" id=" <%= supplier.supplier_id %>" value="<%= supplier.sale_email %>">
@@ -211,6 +218,7 @@
  
                 </div>
 
+                            
       
     </div>
   </div>
@@ -388,6 +396,35 @@
                                               
                                  
                                                 </div>
+
+                               <!-- Modal  Remove AVL-->
+
+                               <div class="modal fade" id="removeAVL" role="dialog">
+                                    <div class="modal-dialog">
+                                    
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                         
+                                                <h4 id="supplierAVLname1" class="modal-title"></h4>
+                                        </div> 
+                                        <form id="avl" class="add-player-form" action="/removeavl" method="post" enctype="multipart/form-data">
+                                          
+                                        <input type="hidden" name="supplierid1"  id="supplierid1" class="form-control">  
+                                        <input type="hidden" name="customerid1" id="customerid" class="form-control" value="<%= customer.customer_id %>">       
+                                                 
+                                        <div class="modal-footer">
+                                              
+                                                <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                        
+                                        </div>
+                                    </form>
+                                      </div>
+                                                    </div>
+                                              
+                                 
+                                                </div>
  
                                                       <!-- Modal send Mail -->
                                 <div class="modal fade" id="myEmail" role="dialog" style="padding-top:80px">
@@ -509,7 +546,7 @@ var idlist =  sessionStorage.getItem("Listid").split(",");
 for (i = 0; i < idlist.length; i++) {
     if (idlist[i] !== ""){
         var id_number = "check_"+ idlist[i]; 
-    console.log(id_number);
+    //console.log(id_number);
     if  (document.getElementById(id_number) !== null) {
     document.getElementById(id_number).checked = true;
 }
@@ -535,10 +572,17 @@ if  (document.getElementById(avl_number) !== null) {
 
 
 function showAVL(supplierName,supplierId) {
-    // console.log(supplierName);
+//console.log(supplierId);
 document.getElementById("supplierAVLname").textContent = "Do you want to add " +supplierName +" to your AVL? Please add more information below" ;
 document.getElementById("supplierid").value = supplierId;
 document.getElementById("suppliername").value = supplierName;
+};
+
+function removeAVL (supplierName,supplierId)  {
+// console.log(supplierId);
+    document.getElementById("supplierAVLname1").textContent = "Do you want to remove " +supplierName +" from your AVL?" ;
+document.getElementById("supplierid1").value = supplierId;
+document.getElementById("suppliername1").value = supplierName;
 };
 
 function getAVL (checkbox){

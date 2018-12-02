@@ -13,7 +13,7 @@ const app = express();
 
 // const {getHomePage} = require('./routes/index');
 // const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList,getSearchList,getAVL,getSearchAVL,saveAVL,sendMail} = require('./routes/customerlogin');
+const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList,getSearchList,getAVL,getSearchAVL,saveAVL,removeAVL,sendMail} = require('./routes/customerlogin');
 const {supplierSignupPage,addSupplier , supplierLoginPage,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
 const port = process.env.PORT || 8000;
@@ -75,6 +75,7 @@ app.post('/customer', customerLogin);
 app.get('/productlist/:id', productListPage);
 app.get('/suppliersummary/:id', supplierSummaryPage);
 app.post('/saveavl', saveAVL);
+app.post('/removeavl', removeAVL);
 app.get('/sendmail/:cid/:sid/:sidg', sendMail);
 
 // set the app to listen on the port

@@ -377,24 +377,48 @@ let search ="";
         //     if (err) {
         //         return res.status(500).send(err);
         //     } 
-                let query = "INSERT INTO `avl` (customer_id,supplier_id,avl_no,contact_number,contact_email) VALUES ('" +
+        let query1 = "SELECT * FROM avl WHERE customer_id = '" + customer_id + "' AND supplier_id = '" + supplier_id + "'";
+                let query2 = "INSERT INTO `avl` (customer_id,supplier_id,avl_no,contact_number,contact_email) VALUES ('" +
                 customer_id + "', '" + supplier_id + "', '" + avl_number + "', '" + contact_no + "', '" + contact_email+ "')";
-                console.log(query);
-                 db.query(query, (err, result) => {
-                    if (err) {
-                     return res.status(500).send(err);
-                    }
+               // console.log(query);
+               db.query(query1, (err, result1) => {
+                if (err) {
+                 return res.status(500).send(err);
+                }
+                if (result1.length == 0){
+                    db.query(query2, (err, result2) => {
+                        if (err) {
+                         return res.status(500).send(err);
+                        }
+
+                }
+            )} else {
+                console.log("Already AVL");
+
+            }
                     res.redirect('back');
                    
-                 });
+                 
             
-           
+                });
                 
            
 
             },
 
-
+            removeAVL: (req, res) => {
+                let customer_id = req.body.customerid1;
+                let supplier_id = req.body.supplierid1;
+                let query = "DELETE FROM avl WHERE `customer_id`= '" + customer_id + "' AND `supplier_id`= '" + supplier_id + "'";
+                //console.log(query);
+                 db.query(query, (err, result) => {
+                     if (err) {
+                        res.redirect('/');
+                  }
+                    res.redirect('back');
+                  });
+                
+            },
 
 
 
