@@ -218,7 +218,7 @@ if (typeof req.files.image !== "undefined"){
         let customerId = req.params.id;
         let query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + " ' ORDER BY supplier_id ASC"; // query database to get all the players
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
-
+        let query2 = "SELECT supplier_id FROM `avl` WHERE customer_id = '" + customerId + "'";
          //console.log(query1);
         // execute query
         db.query(query, (err, result) => {
@@ -230,14 +230,26 @@ if (typeof req.files.image !== "undefined"){
                 if (err) {
                     res.redirect('/');
                 }
+                db.query(query2, (err, result2) => {
+                    if (err) {
+                        res.redirect('/');
+                    }
+                            
+                 console.log(result2);  
+                      
+                
 let search ="";
+
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false,avls:result2
+           
             });
-            //console.log(result1);
-        });
+        });       
+               
     });
+});
+
     },
     getSearchList: (req, res) => {
        
@@ -319,7 +331,7 @@ let search ="";
                 if (err) {
                     res.redirect('/');
                 }
-                let search ="";
+               
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
                 ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true

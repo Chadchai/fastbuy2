@@ -216,7 +216,7 @@ text-justify:right;
 	background-color: #555 /* Light Black */
 }
 
-.fa-bookmark-o {
+.fa-bookmark {
 	position: absolute;;
 	top:15px;
 	right:20px;
@@ -225,13 +225,13 @@ text-justify:right;
 z-index: 1;
 
 }
-.fa-bookmark-o:hover {
+.fa-bookmark:hover {
 	color:red;
 	fill:purple;
 	
 
 }
-.fa-bookmark-o :checked {
+.fa-bookmark :checked {
 	background-color: rgb(12, 240, 23);
   }
   
