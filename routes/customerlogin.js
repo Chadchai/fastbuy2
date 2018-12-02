@@ -263,7 +263,7 @@ let search ="";
 
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false
             });
             //console.log(result1);
         });
@@ -275,10 +275,40 @@ let search ="";
         let customerId = req.params.id;
         let query = "SELECT avl.supplier_id, suppliers.supplier_name, suppliers.supplier_info, suppliers.product_info, suppliers.address, suppliers.sale_email, suppliers.Photo FROM avl" 
         + " INNER JOIN suppliers ON avl.supplier_id=suppliers.supplier_id" +
-        " WHERE suppliers.business_type = 'Fabrication-Machining';"
+        " WHERE suppliers.business_type = '" + businessType + "'";
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
 
-         console.log(query);
+        //  console.log(query);
+        // execute query
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+           
+            db.query(query1, (err, result1) => {
+                if (err) {
+                    res.redirect('/');
+                }
+                let search ="";
+            res.render('supplierList.ejs', {
+                title: "Welcome to Socka | View Players"
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true
+            });
+            //console.log(result1);
+        });
+    });
+    },
+    getSearchAVL: (req, res) => {
+       
+        let businessType = req.params.business_type;
+        let customerId = req.params.id;
+        let search = req.params.search;
+        let query = "SELECT avl.supplier_id, suppliers.supplier_name, suppliers.supplier_info, suppliers.product_info, suppliers.address, suppliers.sale_email, suppliers.Photo FROM avl" 
+        + " INNER JOIN suppliers ON avl.supplier_id=suppliers.supplier_id" +
+        " WHERE suppliers.business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; ;
+        let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
+
+        // console.log(query);
         // execute query
         db.query(query, (err, result) => {
             if (err) {

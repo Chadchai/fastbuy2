@@ -93,7 +93,8 @@
         <div class="col-md-4">
             <label class="searchInfo mbr-fonts-style display-7">Search:</label>
             <input class="form-control input-sm"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
-            <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">AVL</h5>
+            
+            <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">AVL</h5>
                                
             </h1> 
             <% if (checked) {%>    
@@ -107,7 +108,8 @@
                                                 
                              
         </div>
-    
+      
+        
                     <!-- <div class="container"> -->
             
                             
@@ -430,11 +432,26 @@ function myFunction() {
   // Declare variables 
   var search = document.getElementById("quicksearch").value; 
   var search1 = document.getElementById("quicksearch1").value; 
-  if (search !== ""){
+  var check_avl = document.getElementById("AVL").checked;
+  var custid = document.getElementById("customerID").value;
+    var business = document.getElementById("business").value;
+    
+  if (check_avl == false) {
+    if (search !== "" ){
     window.location.href= '/getsearchlist/' + search1 + "/" +search;
   } else {
     window.location.href= '/getsupplierlist/' + search1;
   }
+  }else {
+    if (search !== "" ){
+
+    window.location.href= '/getsearchavl/'+ business + "/" + custid +"/" +search;
+
+}else {
+    window.location.href= '/getavl/'+ business + "/" + custid;
+  }
+  }
+ 
  
 };
 

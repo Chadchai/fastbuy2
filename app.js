@@ -13,7 +13,7 @@ const app = express();
 
 // const {getHomePage} = require('./routes/index');
 // const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
-const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList,getSearchList,getAVL,saveAVL,sendMail} = require('./routes/customerlogin');
+const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList,getSearchList,getAVL,getSearchAVL,saveAVL,sendMail} = require('./routes/customerlogin');
 const {supplierSignupPage,addSupplier , supplierLoginPage,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
 const port = process.env.PORT || 8000;
@@ -59,6 +59,7 @@ app.get('/editsupplierconfig/:id', editSupplierConfigPage);
 app.get('/getsupplierlist/:business_type/:id', getSupplierList);
 app.get('/getAVL/:business_type/:id', getAVL);
 app.get('/getsearchlist/:business_type/:id/:search', getSearchList);
+app.get('/getsearchavl/:business_type/:id/:search', getSearchAVL);
 app.post('/editsupplier/:id', editSupplier);
 app.post('/editcustomer/:id', editCustomer);
 app.post('/editsupplierconfig/:id', editSupplierConfig);
