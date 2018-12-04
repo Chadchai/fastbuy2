@@ -424,53 +424,59 @@ let search ="";
 
     sendMail: (req, res) => {
     let customerId = req.params.cid;
-    let supplierId = req.params.sid;
+    let supplierId = req.params.sid.split(",");
+    let topic = req.params.topic;
+    let message = req.params.message;
     let supplierEmail = req.params.sidg.split(",");
-    // console.log(supplierEmail);
-    let query = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "' ";
-    let query1 = "SELECT * FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
+   
+     //console.log(supplierEmail);
+    let query = "SELECT customer_name FROM `customers` WHERE customer_id = '" + customerId + "' ";
+   // let query1 = "SELECT supplier_name FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
+   console.log(query);
     db.query(query, (err, result) => {
         if (err) {
             res.redirect('/');
         }
-    
-       
-        db.query(query1, (err, result1) => {
-            if (err) {
-                res.redirect('/');
-            }
-        
-            // let query2 = "INSERT INTO `rfq` (customer_id, customer_name,supplier_id, supplier_name) VALUES ('" +
-            // result[0].customer_id + "', '" + result[0].customer_name + "', '" + result1[0].supplier_id + "', '" + result1[0].supplier_name +  "')";
+        let customerName = result[0].customer_name;
+   
+    //console.log(customerName);
+        for( var i = 0; i < supplierId.length; i ++ ) {
             
-            // db.query(query2, (err, result2) => {
-            //     if (err) {
-            //         res.redirect('/');
-            //     }
-            //     console.log(result2.insertId);
-                // let query3 = "SELECT COUNT(rfq_id) AS numberofid FROM RFQ;";
-                // db.query(query3, (err, result3) => {
-                //     if (err) {
-                //         res.redirect('/');
-                //     }
+        let query2 = "INSERT INTO `rfq` (customer_id,customer_name ,supplier_id,topic,message) VALUES ('" +
+        customerId + "', '" + customerName + "', '" + supplierId[i] + "', '" + topic + "', '" + message + "')";
+        //console.log(query2);     
+    
+              db.query(query2, (err, result2) => {
+                  if (err) {
+                      res.redirect('/');
+                }
+                //console.log(result2.insertId);
+       
+    });
+     }
+    });
+            //      
+                //  let query3 = "SELECT COUNT(rfq_id) AS numberofid FROM RFQ;";
+                //  db.query(query3, (err, result3) => {
+                //      if (err) {
+                //          res.redirect('/');
+                //      }
                
         
     //         var supplierEmail = result1[0].email;
     //     var subject ="RFQ# " +  result2.insertId +" from " + result[0].customer_name;
     //    // +  result2[0].rfq_id +
-      var emailBody =  "";
+    // var emailBody =  "";
     //     // var attach = 'path';
     // for( var i = 0; i < supplierEmail.length; i ++ ) {
     // //   var mail = "mailto:"+supplierEmail[i]+"?subject= RFQ"+"&body="+encodeURIComponent(emailBody);
     // // res.redirect(mail);
     // console.log(supplierEmail[i]);
     // }
+    res.redirect('back');
+  
 
-    });
-    });
-   
 
-    }
-    
-};
-    
+
+}
+}

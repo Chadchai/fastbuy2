@@ -77,7 +77,7 @@ app.get('/productlist/:id', productListPage);
 app.get('/suppliersummary/:id', supplierSummaryPage);
 app.post('/saveavl', saveAVL);
 app.post('/removeavl', removeAVL);
-app.get('/sendmail/:cid/:sid/:sidg', sendMail);
+app.get('/sendmail/:cid/:sid/:sidg/:topic/:message', sendMail);
 
 
 // set the app to listen on the port

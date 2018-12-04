@@ -442,7 +442,7 @@
                                                 <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId1"></textarea>
                                               
                                                   <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
-                                                <input class="form-control input-sm" id="Topic" onchange="savedata()">
+                                                <input class="form-control input-sm" id="Topic1" onchange="savedata()">
                                                 
                                                   
                                                   <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
@@ -500,8 +500,8 @@ var array1;
 function addInList(checkbox,supplierEmail,supplierId) {
     var newItem = supplierEmail;
     var newItem1 = supplierId;
-array = document.getElementById("ListEmail").value.split(",");
-array1 = document.getElementById("ListId").value.split(",");
+array = document.getElementById("ListEmail").value.split(",").filter(Boolean);
+array1 = document.getElementById("ListId").value.split(",").filter(Number);
 
     if(checkbox.checked == true){
       
@@ -515,7 +515,7 @@ else{
         array1.indexOf(newItem1) !== -1 ? array1.splice(array1.indexOf(newItem1),1): console.log("already removed");
 
    }
-   
+   array1 = array1.filter(Number);
    sessionStorage.setItem("EmailList", array);
    sessionStorage.setItem("Listid", array1);
    document.getElementById("ListEmail").value =  sessionStorage.getItem("EmailList");
@@ -620,12 +620,16 @@ function getAVL (checkbox){
 function sendMail() {
   // Declare variables 
  
-//   var customerid = document.getElementById("customerID").value;
-// //   console.log(customerid);
-// var link ='/sendmail/' + customerid +"/17/" + array;
-// window.location.href = link;
-sessionStorage.clear();
-window.location.reload();
+ var customerid = document.getElementById("customerID").value;
+ var topic = document.getElementById("Topic1").value + document.getElementById("Topic").value;
+ var message = document.getElementById("Message1").value + document.getElementById("Message").value;
+
+ var link ='/sendmail/' + customerid +"/"+ array1 + "/" + array + "/" + topic + "/" + message;
+ console.log(link);
+ sessionStorage.clear();
+ window.location.href = link;
+
+//window.location.reload();
 };
 
 </script>
