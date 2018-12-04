@@ -53,6 +53,12 @@ module.exports = {
             ,message: ''
         });
     },
+    supplierInbox: (req, res) => {
+        res.render('SupplierInbox.ejs', {
+            title: "Welcome to Socka | Add a new player"
+            ,message: '', user_status: "loggined",
+        });
+    },
     supplierLogin: (req, res) =>  {
         var email= req.body.email;
         var password = req.body.password;
