@@ -432,7 +432,7 @@ let search ="";
      //console.log(supplierEmail);
     let query = "SELECT customer_name FROM `customers` WHERE customer_id = '" + customerId + "' ";
    // let query1 = "SELECT supplier_name FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
-   console.log(query);
+   //console.log(query);
     db.query(query, (err, result) => {
         if (err) {
             res.redirect('/');
@@ -441,20 +441,27 @@ let search ="";
    
     //console.log(customerName);
         for( var i = 0; i < supplierId.length; i ++ ) {
-            
-        let query2 = "INSERT INTO `rfq` (customer_id,customer_name ,supplier_id,topic,message) VALUES ('" +
-        customerId + "', '" + customerName + "', '" + supplierId[i] + "', '" + topic + "', '" + message + "')";
-        //console.log(query2);     
+            let query1 = "SELECT supplier_id,supplier_name FROM `suppliers` WHERE supplier_id = '" + supplierId[i] + "' ";
+        console.log(query1); 
+            db.query(query1, (err, result1) => {
+                if (err) {
+                    res.redirect('/');
+              }
+              
+        let query2 = "INSERT INTO `rfq` (customer_id,customer_name,supplier_id,supplier_name,topic,message) VALUES ('" +
+        customerId + "', '" + customerName + "', '" + result1[0].supplier_id + "', '"+ result1[0].supplier_name + "', '" + topic + "', '" + message + "')";
+        console.log(query2);     
     
               db.query(query2, (err, result2) => {
                   if (err) {
                       res.redirect('/');
                 }
                 //console.log(result2.insertId);
-       
+            });
     });
      }
     });
+
             //      
                 //  let query3 = "SELECT COUNT(rfq_id) AS numberofid FROM RFQ;";
                 //  db.query(query3, (err, result3) => {
