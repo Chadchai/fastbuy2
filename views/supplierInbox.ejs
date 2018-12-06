@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="/supplierinbox/<%= (supplier.supplier_id) %>">
+                            <a class="nav-link link text-white display-4" href="/supplierinbox/<%= supplier_id %>">
                                 <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                                 Inbox
                             </a>
@@ -114,7 +114,7 @@
                   <tr >
                    <!-- <td class="priority-1" data-label="Customer_name" style="width:250px;text-align:left"> <%= rfqlist.customer_name%> </td>
                      <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold">Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td>-->
-                    <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold"><%= rfqlist.customer_name%> <br> Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td> 
+                    <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold;color:blue"><%= rfqlist.customer_name%></a><br> <a style="font-weight:bold;color:green">Topic:</a><%= rfqlist.topic %> <br> <a style="font-weight:bold;color:green">Message:</a> <%= rfqlist.message %> </td> 
                       
                     <td class="priority-3">
                             
