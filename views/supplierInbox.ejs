@@ -79,24 +79,28 @@
       
         <div class="container" style="width:100%;padding-top: 100px ">
         <h1>Pending RFQ</h1>
-        <table>
+        <table class="table1">
                 <caption>Statement Summary</caption>
-                <thead>
-                  <tr>
-                    <th scope="col" style="text-align:left;">Customer</th>
-                    <th scope="col" style="text-align:left;" >Topic</th>
-                    <th scope="col" >Status</th>
-                    <th scope="col" data-date-format="DD MMM YYYY" >Date</th>
+                <thead >
+                  <tr class="tr1" >
+                    <th class="priority-1" scope="col" style="text-align:left;" >Name</th>
+                    <th class="priority-2" scope="col" style="text-align:left;" >Topic</th>
+                    <th class="priority-3" scope="col" >Status</th>
+                    <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
                   </tr>
+                  
                 </thead>
+                
                 <tbody>
                         <% if (rfqlists.length > 0) {%>
                       
                             <% rfqlists.forEach((rfqlist, index) => { %>
-                  <tr>
-                    <td data-label="Customer_name" style="width:250px;text-align:left"> <%= rfqlist.customer_name%> </td>
-                    <td data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold">Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td>
-                    <td class="dropdown">
+                  <tr >
+                    <td class="priority-1" data-label="Customer_name" style="width:250px;text-align:left"> <%= rfqlist.customer_name%> </td>
+                    <!-- <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold">Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td>-->
+                    <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold"><%= rfqlist.customer_name%> <br> Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td> 
+                      
+                    <td class="priority-3">
                             
                                     <select>
                                       <option value="0">Not submitted:</option>
@@ -107,8 +111,9 @@
                                 
                             
                             </td>
-                    <td data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
+                    <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
                   </tr>
+                 
                   <% }) %>
            
        

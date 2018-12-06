@@ -277,11 +277,19 @@ z-index: 1;
 	text-transform: uppercase;
   }
   
-  @media screen and (max-width: 400px) {
+  
+  @media screen and (max-width: 600px) {
 	table {
 	  border: 0;
 	  
 	}
+	.priority-1{
+		display:none;
+	}
+	.priority-3{
+		display:none;
+	}
+
 	.tr {display: none;};
 	table caption {
 	  font-size: 12px;
@@ -300,35 +308,16 @@ z-index: 1;
 	  display: none;
 	}
 	
-	table tr {
+	/* table tr {
 	  border-bottom: 3px solid #ddd;
 	  display: block;
 	  margin-bottom: .625em;
 	 
-	}
+	} */
 	
-	table td {
-	  border-bottom: 1px solid #ddd;
-	  display: block;
-	  font-size: 18px;
-	  text-align: right;
-	}
-	
-	table td::before {
-	  /*
-	  * aria-label has no advantage, it won't be read inside a table
-	  content: attr(aria-label);
-	  */
-	  content: attr(data-label);
-	  float: left;
-	  font-weight: bold;
-	  text-transform: uppercase;
-	}
-	
-	table td:last-child {
-	  border-bottom: 0;
-	}
   }
+	
+	
 
   /* The sidebar menu */
   .sidenav1 {
@@ -368,6 +357,32 @@ z-index: 1;
 .main1 {
     margin-left: 180px; /* Same as the width of the sidebar */
     padding: 0px 10px;
+}
+
+@media screen and (max-width: 1800px) and (min-width: 800px) {
+	
+
+
+
+
+}
+@media screen and (max-width: 800px) {
+	.sidenav1 {
+		display: none;
+	}
+	.main1 {
+		margin-left:10px;
+	}
+	.priority-1{
+		display:none;
+	}
+
+	
+	.tr1 {
+		display:none;
+	}
+
+
 }
 @media screen and (max-width: 600px) {
     .sidenav1 {display:none;}
