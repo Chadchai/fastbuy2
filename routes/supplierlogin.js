@@ -59,12 +59,12 @@ module.exports = {
         let rfqstatus = req.params.rfqstatus;
         
         let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%W %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "'"; // query database to get all the players
-        console.log(query);
+        // console.log(query);
         db.query(query, (err, result) => {
             if (err) {
                 res.redirect('/');
             }
-            console.log(result);
+            // console.log(result);
         res.render('SupplierInbox.ejs', {
             title: "Supplier Inbox"
             ,message: '', user_status: "loggined",rfqlists:result
