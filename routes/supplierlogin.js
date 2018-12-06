@@ -67,7 +67,7 @@ module.exports = {
             // console.log(result);
         res.render('supplierInbox.ejs', {
             title: "Supplier Inbox"
-            ,message: '', user_status:"loggined",rfqlists:result
+            ,message: '', user_status:"loggined",rfqlists:result,supplier_id:supplierId
         });
     });
     },
