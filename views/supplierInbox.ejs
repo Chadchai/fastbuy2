@@ -84,37 +84,39 @@
                 <caption>Statement Summary</caption>
                 <thead>
                   <tr>
-                    <th scope="col">Supplier Name</th>
-                    <th scope="col">Topic</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Date</th>
+                    <th scope="col" style="text-align:left;">Customer</th>
+                    <th scope="col" style="text-align:left;" >Topic</th>
+                    <th scope="col" >Status</th>
+                    <th scope="col" data-date-format="DD MMM YYYY" >Date</th>
                   </tr>
                 </thead>
                 <tbody>
+                        <% if (rfqlists.length > 0) {%>
+                      
+                            <% rfqlists.forEach((rfqlist, index) => { %>
                   <tr>
-                    <td data-label="Account">Visa - 3412</td>
-                    <td data-label="Due Date">04/01/2016</td>
-                    <td data-label="Amount">$1,190</td>
-                    <td data-label="Period">03/01/2016 - 03/31/2016</td>
+                    <td data-label="Customer_name" style="width:250px;text-align:left"> <%= rfqlist.customer_name%> </td>
+                    <td data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold">Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td>
+                    <td class="dropdown">
+                            
+                                    <select>
+                                      <option value="0">Not submitted:</option>
+                                      <option value="1">Submitted</option>
+                                  
+                               
+                                    </select>
+                                
+                            
+                            </td>
+                    <td data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
                   </tr>
-                  <tr>
-                    <td scope="row" data-label="Account">Visa - 6076</td>
-                    <td data-label="Due Date">03/01/2016</td>
-                    <td data-label="Amount">$2,443</td>
-                    <td data-label="Period">02/01/2016 - 02/29/2016</td>
-                  </tr>
-                  <tr>
-                    <td scope="row" data-label="Account">Corporate AMEX</td>
-                    <td data-label="Due Date">03/01/2016</td>
-                    <td data-label="Amount">$1,181</td>
-                    <td data-label="Period">02/01/2016 - 02/29/2016</td>
-                  </tr>
-                  <tr>
-                    <td scope="row" data-label="Acount">Visa - 3412</td>
-                    <td data-label="Due Date">02/01/2016</td>
-                    <td data-label="Amount">$842</td>
-                    <td data-label="Period">01/01/2016 - 01/31/2016</td>
-                  </tr>
+                  <% }) %>
+           
+       
+                <% } else { %>
+                    <p class="text-center">No RFQ yet.</p>
+                <% } %>
+                 
                 </tbody>
               </table>
 

@@ -54,10 +54,22 @@ module.exports = {
         });
     },
     supplierInbox: (req, res) => {
+
+        let supplierId = req.params.sid;
+        let rfqstatus = req.params.rfqstatus;
+        
+        let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%W %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "'"; // query database to get all the players
+        console.log(query);
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+            console.log(result);
         res.render('SupplierInbox.ejs', {
-            title: "Welcome to Socka | Add a new player"
-            ,message: '', user_status: "loggined",
+            title: "Supplier Inbox"
+            ,message: '', user_status: "loggined",rfqlists:result
         });
+    });
     },
     supplierLogin: (req, res) =>  {
         var email= req.body.email;
