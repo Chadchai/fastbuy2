@@ -373,7 +373,8 @@ z-index: 1;
 		display: none;
 	}
 	.main1 {
-		margin-left:10px;
+		margin-left:0px;
+		padding: 0px;
 	}
 	.priority-1{
 		display:none;
