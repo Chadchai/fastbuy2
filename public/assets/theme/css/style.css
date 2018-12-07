@@ -379,6 +379,10 @@ z-index: 1;
 	.priority-1{
 		display:none;
 	}
+	.container{
+		padding: 10px;
+	}
+
 
 
 }
