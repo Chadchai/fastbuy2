@@ -102,9 +102,10 @@
             
             <% } else { %>
                 <input type="checkbox"  id = "AVL" onchange="getAVL(this)"  >
-                <input type="hidden" name="avlList" id="avlList" class="form-control" value="<%= avls %>">       
+                  
            
                 <% } %>
+                <input type="hidden" name="avlList" id="avlList" class="form-control" value="<%= avls %>">    
             <span class="checkmark"   > </span>
          </label>  
             <input type="hidden" name="business" id="business" class="form-control" value="<%= businessType %>">       
@@ -562,7 +563,7 @@ if (document.getElementById("avlList").value !== null){
 for (i = 0; i < avllist.length; i++) {
     
         var avl_number = "avl_"+ avllist[i]; 
-//      console.log(avl_number);
+//console.log(avl_number);
 if  (document.getElementById(avl_number) !== null) {
      document.getElementById(avl_number).style.color= "#4169E1";
     }

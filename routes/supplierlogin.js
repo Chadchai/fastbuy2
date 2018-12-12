@@ -58,7 +58,7 @@ module.exports = {
         let supplierId = req.params.sid;
         let rfqstatus = req.params.rfqstatus;
         
-        let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%W %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date1 ASC";; // query database to get all the players
+        let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC";; // query database to get all the players
         // console.log(query);
         db.query(query, (err, result) => {
             if (err) {

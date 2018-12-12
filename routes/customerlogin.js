@@ -309,10 +309,11 @@ let search ="";
         let customerId = req.params.id;
         let query = "SELECT avl.supplier_id, suppliers.supplier_name, suppliers.supplier_info, suppliers.product_info, suppliers.address, suppliers.sale_email, suppliers.Photo FROM avl" 
         + " INNER JOIN suppliers ON avl.supplier_id=suppliers.supplier_id" +
-        " WHERE suppliers.business_type = '" + businessType + "'";
+        " WHERE suppliers.business_type = '" + businessType + "' AND customer_id = '" + customerId + "'";
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
-
-        //  console.log(query);
+        let query2 = "SELECT supplier_id FROM `avl` WHERE customer_id = '" + customerId + "'";
+       
+          //console.log(query);
         // execute query
         db.query(query, (err, result) => {
             if (err) {
@@ -323,14 +324,30 @@ let search ="";
                 if (err) {
                     res.redirect('/');
                 }
+                db.query(query2, (err, result2) => {
+                    if (err) {
+                        res.redirect('/');
+                    }
+                    var avl_no = [];    
+                    for (var i = 0; i < result2.length; i++) {
+                        if (result2[i] !== ""){
+                           
+                            avl_no.push(result2[i].supplier_id);
+                        }
+                        //console.log(avl_no);
+                        // 
+                    }
+
+
                 let search ="";
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true,avls:avl_no
             });
-            //console.log(result1);
+           // console.log(result);
         });
     });
+});
     },
     getSearchAVL: (req, res) => {
        
@@ -342,7 +359,7 @@ let search ="";
         " WHERE suppliers.business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; ;
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
 
-        // console.log(query);
+        console.log(query2);
         // execute query
         db.query(query, (err, result) => {
             if (err) {
@@ -356,7 +373,7 @@ let search ="";
                
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true,avls:avl_no
             });
             //console.log(result1);
         });
@@ -442,7 +459,7 @@ let search ="";
     //console.log(customerName);
         for( var i = 0; i < supplierId.length; i ++ ) {
             let query1 = "SELECT supplier_id,supplier_name FROM `suppliers` WHERE supplier_id = '" + supplierId[i] + "' ";
-        console.log(query1); 
+        //console.log(query1); 
             db.query(query1, (err, result1) => {
                 if (err) {
                     res.redirect('/');
