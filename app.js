@@ -64,7 +64,7 @@ app.post('/editsupplier/:id', editSupplier);
 app.post('/editcustomer/:id', editCustomer);
 app.post('/editsupplierconfig/:id', editSupplierConfig);
 app.get('/suppliersignup', supplierSignupPage);
-app.get('/supplierinbox/:sid', supplierInbox);
+app.get('/supplierinbox/:sid/:pageno', supplierInbox);
 app.get('/customersignup', customerSignupPage);
 app.get('/supplierlogin', supplierLoginPage);
 // app.get('/supplier', supplierPage);

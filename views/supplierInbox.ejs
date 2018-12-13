@@ -83,8 +83,7 @@
 
         <div class="sidenav1">
                 <a href="#">Pending</a>
-                <a href="#">Wait to confirm</a>
-                <a href="#">Completed</a>
+                <a href="#">Submitted</a>
                
               </div>
               
@@ -96,7 +95,7 @@
         <div class="container" style="width:100%;padding-top: 100px ">
         <h1>Pending RFQ</h1>
         <table class="table1">
-                <caption>Statement Summary</caption>
+                
                 <thead >
                   <tr class="tr1" >
                    
@@ -139,8 +138,19 @@
                  
                 </tbody>
               </table>
-
-<p>&larr; Drag window (in editor or full page view) to see the effect. &rarr;</p>
+              <div class="center">
+                <div class="pagination" style="padding-top:20px">
+                <a href="#">&laquo;</a>
+                 <% for ( var i=1; i <= maxPage; i++ ) {%>
+               
+                <a id=<%= i %> href="/supplierinbox/<%= supplier_id %>/<%= i %>"> <%= i %> </a>
+                <% } %> 
+               
+                <a href="#">&raquo;</a>
+                </div>
+              </div>
+              <!-- <caption>Statement Summary</caption>
+<p>&larr; Drag window (in editor or full page view) to see the effect. &rarr;</p> -->
 
 </div>
 

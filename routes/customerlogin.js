@@ -216,6 +216,7 @@ if (typeof req.files.image !== "undefined"){
        
         let businessType = req.params.business_type;
         let customerId = req.params.id;
+        let pageNo = req.params.pageno;
         let query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + " ' ORDER BY supplier_id ASC"; // query database to get all the players
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
         let query2 = "SELECT supplier_id FROM `avl` WHERE customer_id = '" + customerId + "'";
@@ -243,6 +244,7 @@ if (typeof req.files.image !== "undefined"){
                        
                         // 
                     }
+                
                     //console.log(avl_no);
                 
 let search ="";
@@ -267,7 +269,7 @@ let search ="";
         
         // console.log(search);
     
-              query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; // query database to get all the players
+              query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR product_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; // query database to get all the players
        
          let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
 
@@ -356,10 +358,10 @@ let search ="";
         let search = req.params.search;
         let query = "SELECT avl.supplier_id, suppliers.supplier_name, suppliers.supplier_info, suppliers.product_info, suppliers.address, suppliers.sale_email, suppliers.Photo FROM avl" 
         + " INNER JOIN suppliers ON avl.supplier_id=suppliers.supplier_id" +
-        " WHERE suppliers.business_type = '" + businessType + "' AND (supplier_name LIKE '%" + search + "%' OR supplier_info LIKE '%" + search + "%' OR address LIKE '%" + search + "% ') ORDER BY supplier_id ASC"; ;
+        " WHERE suppliers.business_type = '" + businessType + "' AND (suppliers.supplier_name LIKE '%" + search + "%' OR suppliers.supplier_info LIKE '%" + search + "%' OR suppliers.product_info LIKE '%" + search + "%' OR suppliers.address LIKE '%" + search + "% ') ORDER BY avl.supplier_id ASC"; ;
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
-
-        console.log(query2);
+        let query2 = "SELECT supplier_id FROM `avl` WHERE customer_id = '" + customerId + "'";
+     
         // execute query
         db.query(query, (err, result) => {
             if (err) {
@@ -370,6 +372,20 @@ let search ="";
                 if (err) {
                     res.redirect('/');
                 }
+                
+                db.query(query2, (err, result2) => {
+                    if (err) {
+                        res.redirect('/');
+                    }
+                    var avl_no = [];    
+                    for (var i = 0; i < result2.length; i++) {
+                        if (result2[i] !== ""){
+                           
+                            avl_no.push(result2[i].supplier_id);
+                        }
+                        //console.log(avl_no);
+                        // 
+                    }
                
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
@@ -377,6 +393,7 @@ let search ="";
             });
             //console.log(result1);
         });
+    });
     });
     },
     saveAVL: (req, res) => {

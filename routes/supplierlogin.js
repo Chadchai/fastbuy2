@@ -57,19 +57,32 @@ module.exports = {
 
         let supplierId = req.params.sid;
         let rfqstatus = req.params.rfqstatus;
+        let pageNo = req.params.pageno;
+        let maxPage;
+        let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC"; // query database to get all the players
+        let query1 = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
         
-        let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC";; // query database to get all the players
         // console.log(query);
         db.query(query, (err, result) => {
             if (err) {
                 res.redirect('/');
             }
-            // console.log(result);
+            if (result.length != ""){
+           maxPage = Math.ceil(result.length/10);
+        } else {
+            maxPage = 0;
+        }
+        db.query(query1, (err, result1) => {
+            if (err) {
+                res.redirect('/');
+            }
+            
         res.render('supplierInbox.ejs', {
             title: "Supplier Inbox"
-            ,message: '', user_status:"loggined",rfqlists:result,supplier_id:supplierId
+            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage
         });
     });
+});
     },
     supplierLogin: (req, res) =>  {
         var email= req.body.email;
