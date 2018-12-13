@@ -14,7 +14,7 @@ const app = express();
 // const {getHomePage} = require('./routes/index');
 // const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
 const {getHome,customerSignupPage,addCustomer, customerLogin, customerLoginPage,editCustomerPage,editCustomer,productListPage,getSupplierList,getSearchList,getAVL,getSearchAVL,saveAVL,removeAVL,sendMail} = require('./routes/customerlogin');
-const {supplierSignupPage,addSupplier, supplierLoginPage,supplierInbox,supplierLogin,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
+const {supplierSignupPage,addSupplier, supplierLoginPage,supplierInbox,supplierLogin,updateStatus,editSupplierConfigPage,editSupplierPage,editSupplier,editSupplierConfig,supplierSummaryPage} = require('./routes/supplierlogin');
 
 const port = process.env.PORT || 8000;
 
@@ -77,6 +77,7 @@ app.get('/productlist/:id', productListPage);
 app.get('/suppliersummary/:id', supplierSummaryPage);
 app.post('/saveavl', saveAVL);
 app.post('/removeavl', removeAVL);
+app.post('/updatestatus', updateStatus);
 app.get('/sendmail/:cid/:sid/:sidg/:topic/:message', sendMail);
 
 

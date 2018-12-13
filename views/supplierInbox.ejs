@@ -100,8 +100,9 @@
                   <tr class="tr1" >
                    
                     <th class="priority-2" scope="col" style="text-align:left;" >Topic</th>
-                    <th class="priority-3" scope="col" >Status</th>
+                    <!-- <th class="priority-3" scope="col" >Status</th> -->
                     <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
+                    <th class="priority-3" scope="col" ></th>
                   </tr>
                   
                 </thead>
@@ -115,7 +116,7 @@
                      <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold">Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td>-->
                     <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold;color:blue"><%= rfqlist.customer_name%></a><br> <a style="font-weight:bold;color:green">Topic:</a><%= rfqlist.topic %> <br> <a style="font-weight:bold;color:green">Message:</a> <%= rfqlist.message %> </td> 
                       
-                    <td class="priority-3">
+                    <!-- <td class="priority-3">
                             
                                     <select>
                                       <option value="0">Not submitted:</option>
@@ -125,9 +126,10 @@
                                     </select>
                                 
                             
-                            </td>
+                            </td> -->
                     <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
-                  </tr>
+                    <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Update</button></td>
+                </tr>
                  
                   <% }) %>
            
@@ -161,7 +163,7 @@
     
 
     
-                <div class="main">
+        
                 <div class="container">
                     <div class="media-container-row">
                         <div class="col-md-3">
@@ -229,10 +231,43 @@
                         </div>
                     </div>
                 </div>
-            </div>
+      
             </section>
- 
+             <!-- Modal Update Status-->
 
+             <div class="modal fade" id="updateStatus" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                     
+                            <h4 class="modal-title"> ยืนยันส่งราคานี้แล้ว?</h4>
+                    </div> 
+                    <form id="status1" class="add-player-form" action="/updatestatus" method="post" enctype="multipart/form-data">
+                      
+                    <input type="hidden" name="rfqid1"  id="rfqid1" class="form-control">  
+                
+                    <div class="modal-footer">
+                          
+                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                    
+                    </div>
+                </form>
+                  </div>
+                                </div>
+                          
+             
+                            </div>
+
+<script>
+function updateStatus(rfqId) {
+
+    document.getElementById("rfqid1").value = rfqId;
+}
+
+</script>
 
 
             <script src="/assets/web/assets/jquery/jquery.min.js"></script>

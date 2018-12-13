@@ -59,8 +59,8 @@ module.exports = {
         let rfqstatus = req.params.rfqstatus;
         let pageNo = req.params.pageno;
         let maxPage;
-        let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC"; // query database to get all the players
-        let query1 = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
+        let query = "SELECT rfq_id,supplier_id FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NULL  ORDER BY rfq_date DESC"; // query database to get all the players
+        let query1 = "SELECT rfq_id,customer_name,topic,message,rfq_status,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NULL ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
         if (pageNo === "") {
             pageNo= 1;
         }
@@ -142,6 +142,19 @@ module.exports = {
             });
         });
       
+    },
+    updateStatus: (req, res) => {
+        let rfqId = req.body.rfqid1;
+        
+        let query = "UPDATE `rfq` SET `rfq_status` = 'submitted' WHERE `rfq_id` = '" + rfqId + "'";
+        //console.log(query);
+         db.query(query, (err, result) => {
+             if (err) {
+                res.redirect('/');
+          }
+            res.redirect('back');
+          });
+        
     },
     editSupplierPage: (req, res) => {
         let supplierId = req.params.id;

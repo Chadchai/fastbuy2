@@ -273,7 +273,7 @@ z-index: 1;
  
   
   table th {
-		background-color:lightgreen;
+		background-color:lightblue;
 	font-size: 18px;
 	letter-spacing: .1em;
 	text-transform: uppercase;
@@ -467,3 +467,19 @@ z-index: 1;
 	}
 	
 	.pagination a:hover:not(.active) {background-color: #ddd;}
+	.button2 {
+		background-color: #f4511e;
+		border: none;
+		color: white;
+		padding: 8px 16px;
+		text-align: center;
+		font-size: 16px;
+		margin: 4px 2px;
+		opacity: 0.6;
+		transition: 0.3s;
+		display: inline-block;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	
+	.button2:hover {opacity: 1}
