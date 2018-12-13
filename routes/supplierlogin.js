@@ -61,7 +61,9 @@ module.exports = {
         let maxPage;
         let query = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC"; // query database to get all the players
         let query1 = "SELECT customer_name,topic,message,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + " ' ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
-        
+        if (pageNo === "") {
+            pageNo= 1;
+        }
         // console.log(query);
         db.query(query, (err, result) => {
             if (err) {
