@@ -155,7 +155,7 @@ text-justify:right;
 	#mySidenav{display:none;}
 	}
 	
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 600px) {
 		.grid-item { width:100%;}
 		.form-control input-sm { width:100%;}
 		.sidenav {display:none;}
@@ -212,8 +212,13 @@ text-justify:right;
 	background-color: #f44336; /* Red */
 }
 
-#contact {
-	top: 200px;
+#pendingrfq {
+	top: 180px;
+	background-color: #f44336; /* Red */
+}
+
+#submitrfq {
+	top: 225px;
 	background-color: #555 /* Light Black */
 }
 
@@ -368,7 +373,7 @@ z-index: 1;
 
 
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 600px) {
 	.sidenav1 {
 		display: none;
 	}

@@ -25,6 +25,8 @@
   
   
 </head>
+
+
 <body>
     <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-e">
 
@@ -236,10 +238,9 @@
          
             <div id="mySidenav" style="padding-top:200px;">
         
-                <a href="/supplierinbox/<%= supplier_id %>/1" style="font-size: 12px;" >Pending RFQ</a>
-                <a href="/suppliersubmit/<%= supplier_id %>/1"  >Submitted RFQ</a>
+                <a href="/supplierinbox/<%= supplier_id %>/1" style="font-size: 10px;" id="pendingrfq">Pending RFQ</a>
+                <a href="/suppliersubmit/<%= supplier_id %>/1" style="font-size: 10px;" id="submitrfq"  >Submitted RFQ</a>
               </div>
-     
              <!-- Modal Update Status-->
 
              <div class="modal fade" id="updateStatus" role="dialog">
