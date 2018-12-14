@@ -104,7 +104,9 @@
                     <th class="priority-2" scope="col" style="text-align:left;" >Topic</th>
                     <!-- <th class="priority-3" scope="col" >Status</th> -->
                     <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
+                    <% if ( title  == "Pending RFQ") {%>
                     <th class="priority-3" scope="col" ></th>
+                       <% } %>
                   </tr>
                   
                 </thead>
@@ -130,8 +132,10 @@
                             
                             </td> -->
                     <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
+                    <% if (title  == "Pending RFQ") {%>
                     <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Submit</button></td>
                 </tr>
+                <% } %>
                  
                   <% }) %>
            
