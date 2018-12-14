@@ -85,6 +85,7 @@
 
         <div class="sidenav1">
                 <a href="/supplierinbox/<%= supplier_id %>/1">Pending RFQ</a>
+                <br>
                 <a href="/suppliersubmit/<%= supplier_id %>/1">Submitted RFQ</a>
                
               </div>
@@ -96,17 +97,21 @@
       
         <div class="container" style="width:100%;padding-top: 100px ">
         <h1><%= title %></h1>
+        <% if (rfqlists.length > 0) {%>
         <table class="table1">
-            <% if (rfqlists.length > 0) {%>
+           
                 <thead >
                   <tr class="tr1" >
                    
                     <th class="priority-2" scope="col" style="text-align:left;" >Topic</th>
                     <!-- <th class="priority-3" scope="col" >Status</th> -->
-                    <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
+                   
                     <% if ( title  == "Pending RFQ") {%>
+                        <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
                     <th class="priority-3" scope="col" ></th>
-                       <% } %>
+                       <% } else { %>
+                        <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Submitted Date</th>
+                        <% } %>
                   </tr>
                   
                 </thead>
@@ -131,24 +136,24 @@
                                 
                             
                             </td> -->
-                    <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
+                   
                     <% if (title  == "Pending RFQ") {%>
-                    <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Submit</button></td>
+                        <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
+                        <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Submit</button></td>
                 </tr>
-                <% } %>
-                 
+                <% } else { %>
+                    <td class="priority-4" data-label="submitted date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
+                    <% } %>
                   <% }) %>
            
        
-                <% } else { %>
-                    <div class="col-md-12">
-                    <h3 class="text-center">No Pending RFQ.</h3>
-                </div>
-                <% } %>
+                
                  
                 </tbody>
+             
+                
               </table>
-              <div class="center">
+              <div class="center" >
                 <div class="pagination" style="padding-top:20px">
                 <a href="#">&laquo;</a>
                  <% for ( var i=1; i <= maxPage; i++ ) {%>
@@ -159,6 +164,12 @@
                 <a href="#">&raquo;</a>
                 </div>
               </div>
+              <% } else { %>
+                <div class="col-md-12" style="padding-bottom:50px;color: blue">
+                <h3 class="text-center">No Pending RFQ.</h3>
+            </div>
+            <% } %>
+              
               <!-- <caption>Statement Summary</caption>
 <p>&larr; Drag window (in editor or full page view) to see the effect. &rarr;</p> -->
 
