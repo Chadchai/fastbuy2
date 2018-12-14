@@ -142,6 +142,9 @@ text-justify:right;
 		.mySidenav{display:block;}
 		.mySidenav a{display:block;}
 		.fa-bookmark-o {left:290px;}
+		.button2 {
+			font-size: 30px;
+		}
 }
 @media screen and (max-width: 1800px) {
 
@@ -162,7 +165,9 @@ text-justify:right;
 		.sidenav a {display:none;}
 		#mySidenav{display:inline-block;}
 		.main {margin: 5px;font-size: 14px;}
-		
+		.button2 {
+			font-size: 10px;
+		}
 }
 		
 		
@@ -387,15 +392,13 @@ z-index: 1;
 	.container{
 		padding: 10px;
 	}
-
+.button2 {
+	font-size: 10px;
+}
 
 
 }
-@media screen and (max-width: 600px) {
-    .sidenav1 {display:none;}
-	.sidenav1 a {display:none;}
-	.main1 {margin-left: 10px;} 
-}
+
 /*the container must be positioned relative:*/
 .custom-select {
 	position: relative;
@@ -488,3 +491,11 @@ z-index: 1;
 	}
 	
 	.button2:hover {opacity: 1}
+	@media screen and (max-width: 600px) {
+    .sidenav1 {display:none;}
+	.sidenav1 a {display:none;}
+	.main1 {margin-left: 10px;} 
+	.button2 {
+		font-size: 12px;
+	}
+}
