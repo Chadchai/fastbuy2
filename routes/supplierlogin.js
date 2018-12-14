@@ -336,7 +336,7 @@ if (typeof req.files.image !== "undefined"){
                 y[i] = results[i].COUNT;
             }
         });
-            let query1 = "SELECT customer_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  customer_name ORDER BY COUNT DESC;"
+            let query1 = "SELECT customer_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  customer_name ORDER BY COUNT DESC LIMIT 0,5;"
             db.query(query1, (err, results) => {
                 if (err) {
                     return res.status(500).send(err);
@@ -345,7 +345,7 @@ if (typeof req.files.image !== "undefined"){
                 c = [];
                 q = [];
                 for( var i in results ) {
-                    c[i] = results[i].customer_name;
+                    c[i] = results[i].customer_name.substr(0, 8);
                     q[i] = results[i].COUNT;
                 }
            

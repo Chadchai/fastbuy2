@@ -599,5 +599,49 @@ let search ="";
 
 
 
-}
+},
+customerSummaryPage: (req, res) => {
+    let customerId = req.params.id;
+    let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && customer_id = '" + customerId + "' GROUP BY  MONTH(rfq_date) ORDER BY MONTH(rfq_date) DESC;"
+    db.query(query, (err, results) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        
+        x = [];
+        y = [];
+        for( var i in results ) {
+            x[i] = results[i].rfqdate;
+            y[i] = results[i].COUNT;
+        }
+    });
+        let query1 = "SELECT supplier_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && customer_id = '" + customerId + "' GROUP BY  supplier_name ORDER BY COUNT DESC LIMIT 0,5;"
+        db.query(query1, (err, results) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            
+            c = [];
+            q = [];
+            for( var i in results ) {
+                c[i] = (results[i].supplier_name).substr(0, 8);
+                q[i] = results[i].COUNT;
+            }
+       
+    res.render('customerSummary.ejs', {
+        title: "RFQ Summary"
+        ,message: '', user_status: "loggined",customer_id:customerId,months:x,rfqqty:y,supplier:c,rfqqty1:q
+    });
+    // console.log(x);
+    // console.log(y);
+    // console.log(supplierId);
+
+    // console.log(query);
+    // console.log(results);
+   
+    
+
+});
+},
+
 }
