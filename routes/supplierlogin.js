@@ -80,7 +80,40 @@ module.exports = {
             }
             
         res.render('supplierInbox.ejs', {
-            title: "Supplier Inbox"
+            title: "Pending RFQ"
+            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage
+        });
+    });
+});
+    },
+    supplierSubmit: (req, res) => {
+
+        let supplierId = req.params.sid;
+     
+        let pageNo = req.params.pageno;
+        let maxPage;
+        let query = "SELECT rfq_id,supplier_id FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NULL  ORDER BY rfq_date DESC"; // query database to get all the players
+        let query1 = "SELECT rfq_id,customer_name,topic,message,rfq_status,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status = 'submitted' ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
+        if (pageNo === "") {
+            pageNo= 1;
+        }
+        // console.log(query);
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+            if (result.length != ""){
+           maxPage = Math.ceil(result.length/10);
+        } else {
+            maxPage = 0;
+        }
+        db.query(query1, (err, result1) => {
+            if (err) {
+                res.redirect('/');
+            }
+            
+        res.render('supplierInbox.ejs', {
+            title: "Submitted RFQ"
             ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage
         });
     });

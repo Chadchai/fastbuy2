@@ -82,18 +82,18 @@
        
 
         <div class="sidenav1">
-                <a href="#">Pending</a>
-                <a href="#">Submitted</a>
+                <a href="/supplierinbox/<%= supplier_id %>/1">Pending RFQ</a>
+                <a href="/suppliersubmit/<%= supplier_id %>/1">Submitted RFQ</a>
                
               </div>
-              
+ 
       
             <div class="col-lg-10 col-md-10 col-xs-12"  >
                      
 <div class="main1" style="width:100%">
       
         <div class="container" style="width:100%;padding-top: 100px ">
-        <h1>Pending RFQ</h1>
+        <h1><%= title %></h1>
         <table class="table1">
                 
                 <thead >
@@ -233,6 +233,13 @@
                 </div>
       
             </section>
+         
+            <div id="mySidenav" style="padding-top:200px;">
+        
+                <a href="/supplierinbox/<%= supplier_id %>/1" style="font-size: 12px;" >Pending RFQ</a>
+                <a href="/suppliersubmit/<%= supplier_id %>/1"  >Submitted RFQ</a>
+              </div>
+     
              <!-- Modal Update Status-->
 
              <div class="modal fade" id="updateStatus" role="dialog">
@@ -260,6 +267,7 @@
                           
              
                             </div>
+                    
 
 <script>
 function updateStatus(rfqId) {
