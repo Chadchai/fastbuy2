@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="/assets/images/logo2.png" type="image/x-icon">
   <meta name="description" content="Web Builder Description">
-  <title>Supplier List</title>
+  <title>Customer Inbox</title>
   <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/assets/tether/tether.min.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
@@ -50,27 +50,26 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                        <li class="nav-item">
+                                <a class="nav-link link text-white display-4" href="/productlist/<%= customer_id %>">
+                                    <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                                    View suppliers
+                                </a>
+                            </li>
                     <li class="nav-item">
-                        <a class="nav-link link text-white display-4" href="/editsupplier/<%= supplier_id %>">
+                        <a class="nav-link link text-white display-4" href="/editcustomer/<%= customer_id %>">
                             <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
-                            Edit Profile 
+                            Edit Profile
                         </a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="/editsupplierconfig/<%= supplier_id %>">
-                                <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
-                                Set config
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="/supplierinbox/<%= supplier_id %>/1">
-                                <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
-                                Inbox
-                            </a>
-                        </li>
-
+                        <a class="nav-link link text-white display-4" href="/customerinbox/<%= customer_id %>/1">
+                            <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                            Inbox
+                        </a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link link text-white display-4" href="/suppliersummary/<%= supplier_id %>"><span class="mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
+                        <a class="nav-link link text-white display-4" href="/supplierlogin"><span class="mbri-cash mbr-iconfont mbr-iconfont-btn"></span>
                             
                             Summary
                         </a>
@@ -78,15 +77,14 @@
                 
             </div>
     </nav>
-
-            <% } %>
+    <% } %>
 </section>
        
 
         <div class="sidenav1">
-                <a href="/supplierinbox/<%= supplier_id %>/1">Pending RFQ</a>
-                <br>
-                <a href="/suppliersubmit/<%= supplier_id %>/1">RFQ History</a>
+                <a href="/customerinbox/<%= customer_id %>/1">Pending RFQ</a>
+                             <br>
+                <a href="/customersubmit/<%= customer_id %>/1">RFQ History</a>
                
               </div>
  
@@ -110,7 +108,7 @@
                         <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
                     <th class="priority-3" scope="col" ></th>
                        <% } else { %>
-                        <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Submitted Date</th>
+                        <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Received Date</th>
                         <% } %>
                   </tr>
                   
@@ -123,7 +121,7 @@
                   <tr >
                    <!-- <td class="priority-1" data-label="Customer_name" style="width:250px;text-align:left"> <%= rfqlist.customer_name%> </td>
                      <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold">Topic:</a> <%= rfqlist.topic %> <br> <a style="font-weight:bold">Message:</a> <%= rfqlist.message %> </td>-->
-                    <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold;color:blue"><%= rfqlist.customer_name%></a><br> <a style="font-weight:bold;color:green">Topic:</a><%= rfqlist.topic %> <br> <a style="font-weight:bold;color:green">Message:</a> <%= rfqlist.message %> </td> 
+                    <td class="priority-2" data-label="Topic" style="text-align:left;width:700px"><a style="font-weight:bold;color:blue"><%= rfqlist.supplier_name%></a><br> <a style="font-weight:bold;color:green">Topic:</a><%= rfqlist.topic %> <br> <a style="font-weight:bold;color:green">Message:</a> <%= rfqlist.message %> </td> 
                       
                     <!-- <td class="priority-3">
                             
@@ -139,10 +137,10 @@
                    
                     <% if (title  == "Pending RFQ") {%>
                         <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
-                        <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Submit</button></td>
+                        <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Receive</button></td>
                 </tr>
                 <% } else { %>
-                    <td class="priority-4" data-label="submitted date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
+                    <td class="priority-4" data-label="Received date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
                     <% } %>
                   <% }) %>
            
@@ -158,7 +156,7 @@
                 <a href="#">&laquo;</a>
                  <% for ( var i=1; i <= maxPage; i++ ) {%>
                
-                <a id=<%= i %> href="/supplierinbox/<%= supplier_id %>/<%= i %>"> <%= i %> </a>
+                <a id=<%= i %> href="/customerinbox/<%= customer_id %>/<%= i %>"> <%= i %> </a>
                 <% } %> 
                
                 <a href="#">&raquo;</a>
@@ -255,8 +253,8 @@
          
             <div id="mySidenav" style="padding-top:200px;">
         
-                <a href="/supplierinbox/<%= supplier_id %>/1" style="font-size: 10px;" id="pendingrfq">Pending RFQ</a>
-                <a href="/suppliersubmit/<%= supplier_id %>/1" style="font-size: 10px;" id="submitrfq"  >Submitted RFQ</a>
+                <a href="/customerinbox/<%= customer_id %>/1" style="font-size: 10px;" id="pendingrfq">Pending RFQ</a>
+                <a href="/customersubmit/<%= customer_id %>/1" style="font-size: 10px;" id="submitrfq"  >Submitted RFQ</a>
               </div>
              <!-- Modal Update Status-->
 
@@ -267,7 +265,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                      
-                            <h4 class="modal-title"> ยืนยันส่งราคานี้แล้ว?</h4>
+                            <h4 class="modal-title"> ยืนยันได้รับราคาแล้ว?</h4>
                     </div> 
                     <form id="status1" class="add-player-form" action="/updatestatus" method="post" enctype="multipart/form-data">
                       

@@ -52,6 +52,7 @@ module.exports = {
 
 });
     },
+  
     customerLogin: (req, res) =>  {
         var email= req.body.email;
         var password = req.body.password;
@@ -97,6 +98,19 @@ module.exports = {
             ,message: ''
         });
     },
+    // customerPage : (req, res) =>  {
+    //     let customerId = req.params.id;
+    //     let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "' ";
+    //     db.query(query1, (err, result1) => {
+    //         if (err) {
+    //             return res.status(500).send(err);
+    //         }
+    //         res.render('customerPage.ejs', {
+    //             title: "Welcome to Socka | View Players"
+    //             , customer: result1[0], user_status: "loggined",
+    //         });
+    //     });
+    // },
     editCustomerPage: (req, res) => {
         let customerId = req.params.id;
         let query = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "' ";
@@ -212,11 +226,77 @@ if (typeof req.files.image !== "undefined"){
         });
              
     },
+    customerInbox: (req, res) => {
+
+        let customerId = req.params.cid;
+        let rfqstatus = req.params.rfqstatus;
+        let pageNo = req.params.pageno;
+        let maxPage;
+        let query = "SELECT rfq_id,customer_id FROM `rfq` WHERE customer_id = '" + customerId + "' AND rfq_status IS NULL  ORDER BY rfq_date DESC"; // query database to get all the players
+        let query1 = "SELECT rfq_id,supplier_name,topic,message,rfq_status,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE customer_id = '" + customerId + "' AND rfq_status IS NULL ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
+        if (pageNo === "") {
+            pageNo= 1;
+        }
+        // console.log(query);
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+            if (result.length != ""){
+           maxPage = Math.ceil(result.length/10);
+        } else {
+            maxPage = 0;
+        }
+        db.query(query1, (err, result1) => {
+            if (err) {
+                res.redirect('/');
+            }
+            
+        res.render('customerInbox.ejs', {
+            title: "Pending RFQ"
+            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage
+        });
+    });
+});
+    },
+    customerSubmit: (req, res) => {
+
+        let customerId = req.params.cid;
+     
+        let pageNo = req.params.pageno;
+        let maxPage;
+        let query = "SELECT rfq_id,customer_id FROM `rfq` WHERE customer_id = '" + customerId + "' AND rfq_status IS NULL  ORDER BY rfq_date DESC"; // query database to get all the players
+        let query1 = "SELECT rfq_id,supplier_name,topic,message,rfq_status,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE customer_id = '" + customerId + "' AND rfq_status = 'submitted' ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
+        if (pageNo === "") {
+            pageNo= 1;
+        }
+        // console.log(query);
+        db.query(query, (err, result) => {
+            if (err) {
+                res.redirect('/');
+            }
+            if (result.length != ""){
+           maxPage = Math.ceil(result.length/10);
+        } else {
+            maxPage = 0;
+        }
+        db.query(query1, (err, result1) => {
+            if (err) {
+                res.redirect('/');
+            }
+            
+        res.render('customerInbox.ejs', {
+            title: "Received RFQ"
+            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage
+        });
+    });
+});
+    },
     getSupplierList: (req, res) => {
        
         let businessType = req.params.business_type;
         let customerId = req.params.id;
-        let pageNo = req.params.pageno;
+        
         let query = "SELECT * FROM `suppliers` WHERE business_type = '" + businessType + " ' ORDER BY supplier_id ASC"; // query database to get all the players
         let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'" // query database to get all the players
         let query2 = "SELECT supplier_id FROM `avl` WHERE customer_id = '" + customerId + "'";
@@ -484,7 +564,7 @@ let search ="";
               
         let query2 = "INSERT INTO `rfq` (customer_id,customer_name,supplier_id,supplier_name,topic,message) VALUES ('" +
         customerId + "', '" + customerName + "', '" + result1[0].supplier_id + "', '"+ result1[0].supplier_name + "', '" + topic + "', '" + message + "')";
-        console.log(query2);     
+        //console.log(query2);     
     
               db.query(query2, (err, result2) => {
                   if (err) {
