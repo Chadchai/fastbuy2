@@ -97,7 +97,7 @@
         <div class="container" style="width:100%;padding-top: 100px ">
         <h1><%= title %></h1>
         <table class="table1">
-                
+            <% if (rfqlists.length > 0) {%>
                 <thead >
                   <tr class="tr1" >
                    
@@ -112,7 +112,7 @@
                 </thead>
                 
                 <tbody>
-                        <% if (rfqlists.length > 0) {%>
+                        
                       
                             <% rfqlists.forEach((rfqlist, index) => { %>
                   <tr >
@@ -141,7 +141,9 @@
            
        
                 <% } else { %>
-                    <p class="text-center">No RFQ yet.</p>
+                    <div class="col-md-12">
+                    <h3 class="text-center">No Pending RFQ.</h3>
+                </div>
                 <% } %>
                  
                 </tbody>
