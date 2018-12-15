@@ -34,8 +34,8 @@ module.exports = {
                 message = 'Username already exists';
           
             } else {
-                let query = "INSERT INTO `suppliers` (supplier_name, supplier_info, email, password) VALUES ('" +
-                supplier_name + "', '" + supplier_info + "', '" + email + "', '" + password +  "')";
+                let query = "INSERT INTO `suppliers` (supplier_name, supplier_info, email, password,Photo) VALUES ('" +
+                supplier_name + "', '" + supplier_info + "', '" + email + "', '" + password +  "' , 'default-image.png' )";
             db.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).send(err);
