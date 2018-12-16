@@ -157,10 +157,12 @@
                 <div class="pagination" style="padding-top:20px">
                 <a href="#">&laquo;</a>
                  <% for ( var i=1; i <= maxPage; i++ ) {%>
-               
-                <a id=<%= i %> href="/supplierinbox/<%= supplier_id %>/<%= i %>"> <%= i %> </a>
-                <% } %> 
-               
+                    <% if (i  == pageNo) {%>
+                <a id=<%= i %> href="/supplierinbox/<%= supplier_id %>/<%= i %>" class="active" > <%= i %> </a>
+                <% } else { %>
+                    <a id=<%= i %> href="/supplierinbox/<%= supplier_id %>/<%= i %>"> <%= i %> </a>
+                    <% } %> 
+                <% } %>
                 <a href="#">&raquo;</a>
                 </div>
               </div>

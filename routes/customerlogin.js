@@ -254,7 +254,7 @@ if (typeof req.files.image !== "undefined"){
             
         res.render('customerInbox.ejs', {
             title: "Pending RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage
+            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo
         });
     });
 });
@@ -287,7 +287,7 @@ if (typeof req.files.image !== "undefined"){
             
         res.render('customerInbox.ejs', {
             title: "Received RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage
+            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo
         });
     });
 });
@@ -561,11 +561,16 @@ let search ="";
                 if (err) {
                     res.redirect('/');
               }
-              
+              if (message !== null){
+            
         let query2 = "INSERT INTO `rfq` (customer_id,customer_name,supplier_id,supplier_name,topic,message) VALUES ('" +
         customerId + "', '" + customerName + "', '" + result1[0].supplier_id + "', '"+ result1[0].supplier_name + "', '" + topic + "', '" + message + "')";
         //console.log(query2);     
-    
+    } else {
+        let query2 = "INSERT INTO `rfq` (customer_id,customer_name,supplier_id,supplier_name,topic) VALUES ('" +
+        customerId + "', '" + customerName + "', '" + result1[0].supplier_id + "', '"+ result1[0].supplier_name + "', '" + topic + "')";
+       
+    }
               db.query(query2, (err, result2) => {
                   if (err) {
                       res.redirect('/');

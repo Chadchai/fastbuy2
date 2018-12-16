@@ -81,7 +81,7 @@ module.exports = {
             
         res.render('supplierInbox.ejs', {
             title: "Pending RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage
+            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo
         });
     });
 });
@@ -114,7 +114,7 @@ module.exports = {
             
         res.render('supplierInbox.ejs', {
             title: "Submitted RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage
+            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo
         });
     });
 });
