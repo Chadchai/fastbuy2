@@ -74,7 +74,7 @@ module.exports = {
                 res.redirect('/');
             }
             if (result.length != ""){
-                count = result.length;
+                pendingRFQ = result.length;
            maxPage = Math.ceil(result.length/10);
         } else {
             maxPage = 0;
@@ -85,7 +85,7 @@ module.exports = {
             }
             
         res.render('supplierInbox.ejs', {
-            title: "ราคาที่ยังไม่ได้ส่ง"
+            title: "ยังไม่ได้ส่งราคา"
             ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
@@ -269,7 +269,7 @@ if (typeof req.files.image !== "undefined"){
             }
             res.render('supplierPage.ejs', {
                 title: "Welcome to Socka | View Players"
-                , supplier: result1[0], user_status: "loggined",
+                , supplier: result1[0], user_status: "loggined",count:pendingRFQ
             });
         });
                
@@ -299,7 +299,7 @@ if (typeof req.files.image !== "undefined"){
             }
             res.render('supplierPage.ejs', {
                 title: "Welcome to Socka | View Players"
-                , supplier: result1[0], user_status: "loggined",
+                , supplier: result1[0], user_status: "loggined",count:pendingRFQ
             });
         });
     }
@@ -329,7 +329,7 @@ if (typeof req.files.image !== "undefined"){
                 }
                 res.render('supplierPage.ejs', {
                     title: "Welcome to Socka | View Players"
-                    , supplier: result1[0], user_status: "loggined",
+                    , supplier: result1[0], user_status: "loggined",count:pendingRFQ
                 });
             });
         });
