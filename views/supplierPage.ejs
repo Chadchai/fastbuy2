@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
+
+
   
 </head>
 <body>
@@ -62,7 +62,9 @@
                                 <a class="nav-link link text-white display-4" href="/supplierinbox/<%= (supplier.supplier_id) %>/1">
                                     <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                                     Inbox
+                                    <span class="dynamic-badge" data-badge="<%= (count) %>"></span>
                                 </a>
+                                
                             </li>
 
                     <li class="nav-item">
@@ -259,7 +261,7 @@
             <div class="media-container-row">
                 <div class="col-md-3">
                     <div class="media-wrap">
-                        <a href="https://mobirise.com/">
+                        <a href="https://fastbuyco.herokuapp.com/">
                            <img src="/assets/images/mbr-192x192.jpg" alt="Mobirise" title="">
                         </a>
                     </div>
@@ -336,6 +338,7 @@
   <script src="/assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
   <script src="/assets/theme/js/script.js"></script>
   <script src="/assets/formoid/formoid.min.js"></script>
+
   
   
   <input name="animation" type="hidden">

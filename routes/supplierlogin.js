@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 var cloudinary = require('cloudinary');
+var pendingRFQ;
 
 cloudinary.config({ 
     cloud_name: 'hdzvdkljx', 
@@ -10,6 +11,8 @@ cloudinary.config({
   
 module.exports = {
    
+    
+
     supplierSignupPage: (req, res) => {
         res.render('supplierSignup.ejs', {
             title: "Welcome to Socka | Add a new player"
@@ -59,6 +62,7 @@ module.exports = {
         let rfqstatus = req.params.rfqstatus;
         let pageNo = req.params.pageno;
         let maxPage;
+       
         let query = "SELECT rfq_id,supplier_id FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NULL  ORDER BY rfq_date DESC"; // query database to get all the players
         let query1 = "SELECT rfq_id,customer_name,topic,message,rfq_status,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NULL ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
         if (pageNo === "") {
@@ -70,6 +74,7 @@ module.exports = {
                 res.redirect('/');
             }
             if (result.length != ""){
+                count = result.length;
            maxPage = Math.ceil(result.length/10);
         } else {
             maxPage = 0;
@@ -80,8 +85,8 @@ module.exports = {
             }
             
         res.render('supplierInbox.ejs', {
-            title: "Pending RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo
+            title: "ราคาที่ยังไม่ได้ส่ง"
+            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
 });
@@ -113,8 +118,8 @@ module.exports = {
             }
             
         res.render('supplierInbox.ejs', {
-            title: "Submitted RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo
+            title: "ประวัติการขอราคา"
+            ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
 });
@@ -136,10 +141,18 @@ module.exports = {
           if(results.length >0){
             if(results[0].password == password){
                 var supp_id = results[0].supplier_id;
+                let query1 = "SELECT rfq_id FROM `rfq` WHERE supplier_id = '" + supp_id + "' AND rfq_status IS NULL";
+                db.query(query1, (err, result1) => {
+                    if (err) {
+                        return res.status(500).send(err);
+                    }
+                  
+                    pendingRFQ = result1.length;
                 res.render('supplierPage.ejs', {
                     title: "Welcome to Socka | View Players"
-                    , supplier: results[0], user_status: "loggined",
+                    , supplier: results[0], user_status: "loggined",count:pendingRFQ
                 });
+            });
                 //   res.redirect('/supplier');
                   
             }
@@ -351,7 +364,7 @@ if (typeof req.files.image !== "undefined"){
            
         res.render('supplierSummary.ejs', {
             title: "Welcome to Socka | Add a new player"
-            ,message: '', user_status: "loggined",supplier_id:supplierId,months:x,rfqqty:y,customer:c,rfqqty1:q
+            ,message: '', user_status: "loggined",supplier_id:supplierId,months:x,rfqqty:y,customer:c,rfqqty1:q,count:pendingRFQ
         });
         // console.log(x);
         // console.log(y);
