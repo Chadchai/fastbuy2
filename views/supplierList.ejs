@@ -636,11 +636,13 @@ function sendMail() {
  var customerid = document.getElementById("customerID").value;
  var topic = document.getElementById("Topic1").value + document.getElementById("Topic").value;
  var message = document.getElementById("Message1").value + document.getElementById("Message").value;
-if (message == "") {
-    message= "No message";
-} 
 
- var link ='/sendmail/' + customerid +"/"+ array1 + "/" + array + "/" + topic + "/" + message;
+if (message =="") {
+    var link ='/sendmail/' + customerid +"/"+ array1 + "/" + array + "/" + topic + "/no message" ;
+} else {
+    var link ='/sendmail/' + customerid +"/"+ array1 + "/" + array + "/" + topic + "/" + message;
+}
+
  console.log(link);
  sessionStorage.clear();
  window.location.href = link;
