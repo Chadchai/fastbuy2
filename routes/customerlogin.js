@@ -262,7 +262,7 @@ if (typeof req.files.image !== "undefined"){
             }
             
         res.render('customerInbox.ejs', {
-            title: "ยังไม่ได้รับราคา"
+            title: "Pending RFQ"
             ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
@@ -296,7 +296,7 @@ if (typeof req.files.image !== "undefined"){
             }
             
         res.render('customerInbox.ejs', {
-            title: "ประวัติการขอราคา"
+            title: "RFQ History"
             ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });

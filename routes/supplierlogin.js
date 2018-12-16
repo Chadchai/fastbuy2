@@ -85,7 +85,7 @@ module.exports = {
             }
             
         res.render('supplierInbox.ejs', {
-            title: "ยังไม่ได้ส่งราคา"
+            title: "Pending RFQ"
             ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
@@ -118,7 +118,7 @@ module.exports = {
             }
             
         res.render('supplierInbox.ejs', {
-            title: "ประวัติการขอราคา"
+            title: "RFQ History"
             ,message: '', user_status:"loggined",rfqlists:result1,supplier_id:supplierId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
