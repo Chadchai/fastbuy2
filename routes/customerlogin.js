@@ -1,7 +1,7 @@
 const fs = require('fs');
 var cloudinary = require('cloudinary');
 const querystring = require('querystring');  
-
+var pendingRFQ;
 cloudinary.config({ 
     cloud_name: 'hdzvdkljx', 
     api_key: '245568641867713', 
@@ -68,11 +68,19 @@ module.exports = {
           // console.log('The solution is: ', results);
           if(results.length >0){
             if(results[0].password == password){
+                let cust_id = results[0].customer_id;
+                let query1 = "SELECT rfq_id FROM `rfq` WHERE customer_id = '" + cust_id + "' AND rfq_status IS NULL";
+                db.query(query1, (err, result1) => {
+                    if (err) {
+                        return res.status(500).send(err);
+                    }
+                    pendingRFQ = result1.length;
                 //console.log(results[0]);
                 res.render('productList.ejs', {
                     title: "Welcome to Socka | View Players"
-                    ,customer: results[0], user_status: "loggined"
+                    ,customer: results[0], user_status: "loggined",count:pendingRFQ
                 });
+            });
                 //   res.redirect('/supplier');
                   
             }
@@ -121,7 +129,7 @@ module.exports = {
             res.render('editcustomer.ejs', {
                 title: "Edit  Customer"
                 ,customer: result[0]
-                ,message: '',user_status:"loggined"
+                ,message: '',user_status:"loggined",count:pendingRFQ
             });
         });
     },
@@ -172,7 +180,7 @@ if (typeof req.files.image !== "undefined"){
             }
             res.render('customerPage.ejs', {
                 title: "Welcome to Socka | View Players"
-                , customer: result1[0], user_status: "loggined",
+                , customer: result1[0], user_status: "loggined",count:pendingRFQ
             });
         });
                
@@ -202,7 +210,7 @@ if (typeof req.files.image !== "undefined"){
             }
             res.render('customerPage.ejs', {
                 title: "Welcome to Socka | View Players"
-                , customer: result1[0], user_status: "loggined",
+                , customer: result1[0], user_status: "loggined",count:pendingRFQ
             });
         });
     }
@@ -221,7 +229,7 @@ if (typeof req.files.image !== "undefined"){
             res.render('productList.ejs', {
                 title: "Edit  Customer"
                 ,customer: result[0]
-                ,message: '',user_status:"loggined"
+                ,message: '',user_status:"loggined",count:pendingRFQ
             });
         });
              
@@ -243,6 +251,7 @@ if (typeof req.files.image !== "undefined"){
                 res.redirect('/');
             }
             if (result.length != ""){
+                pendingRFQ = result.length;
            maxPage = Math.ceil(result.length/10);
         } else {
             maxPage = 0;
@@ -253,8 +262,8 @@ if (typeof req.files.image !== "undefined"){
             }
             
         res.render('customerInbox.ejs', {
-            title: "ราคาที่ยังไม่ได้รับ"
-            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo
+            title: "ยังไม่ได้รับราคา"
+            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
 });
@@ -276,6 +285,7 @@ if (typeof req.files.image !== "undefined"){
                 res.redirect('/');
             }
             if (result.length != ""){
+              pendingRFQ = result.length;
            maxPage = Math.ceil(result.length/10);
         } else {
             maxPage = 0;
@@ -287,7 +297,7 @@ if (typeof req.files.image !== "undefined"){
             
         res.render('customerInbox.ejs', {
             title: "ประวัติการขอราคา"
-            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo
+            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
 });
@@ -331,7 +341,7 @@ let search ="";
 
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false,avls:avl_no
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false,avls:avl_no,count:pendingRFQ
            
             });
         });       
@@ -378,7 +388,7 @@ let search ="";
                     }
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false,avls:avl_no
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:false,avls:avl_no,count:pendingRFQ
             });
             
         });
@@ -424,7 +434,7 @@ let search ="";
                 let search ="";
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true,avls:avl_no
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true,avls:avl_no,count:pendingRFQ
             });
            // console.log(result);
         });
@@ -469,7 +479,7 @@ let search ="";
                
             res.render('supplierList.ejs', {
                 title: "Welcome to Socka | View Players"
-                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true,avls:avl_no
+                ,suppliers: result,customer: result1[0],user_status:"loggined",businessType:businessType,search:search,checked:true,avls:avl_no,count:pendingRFQ
             });
             //console.log(result1);
         });
@@ -635,7 +645,7 @@ customerSummaryPage: (req, res) => {
        
     res.render('customerSummary.ejs', {
         title: "RFQ Summary"
-        ,message: '', user_status: "loggined",customer_id:customerId,months:x,rfqqty:y,supplier:c,rfqqty1:q
+        ,message: '', user_status: "loggined",customer_id:customerId,months:x,rfqqty:y,supplier:c,rfqqty1:q,count:pendingRFQ
     });
     // console.log(x);
     // console.log(y);
