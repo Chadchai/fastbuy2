@@ -184,7 +184,7 @@ module.exports = {
             res.render('editSupplierConfig.ejs', {
                 title: "Edit  Supplier"
                 ,supplier: result[0]
-                ,message: '',user_status:"loggined"
+                ,message: '',user_status:"loggined",count:pendingRFQ
             });
         });
       
