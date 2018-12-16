@@ -637,7 +637,7 @@ function sendMail() {
  var topic = document.getElementById("Topic1").value + document.getElementById("Topic").value;
  var message = document.getElementById("Message1").value + document.getElementById("Message").value;
 if (message == "") {
-    topic = " No message";
+    message= "No message";
 } 
 
  var link ='/sendmail/' + customerid +"/"+ array1 + "/" + array + "/" + topic + "/" + message;
