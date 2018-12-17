@@ -205,6 +205,19 @@ module.exports = {
           });
         
     },
+    rejectRFQ: (req, res) => {
+        let rfqId = req.body.rfqid1;
+        
+        let query = "UPDATE `rfq` SET `rfq_status` = 'rejected' WHERE `rfq_id` = '" + rfqId + "'";
+        //console.log(query);
+         db.query(query, (err, result) => {
+             if (err) {
+                res.redirect('/');
+          }
+            res.redirect('back');
+          });
+        
+    },
     editSupplierPage: (req, res) => {
         let supplierId = req.params.id;
         let query = "SELECT * FROM `suppliers` WHERE supplier_id = '" + supplierId + "' ";
