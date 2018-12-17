@@ -111,7 +111,7 @@ module.exports = {
             if (result.length != ""){
 
            maxPage = Math.ceil(result.length/10);
-           console.log(query);
+           //console.log(query);
         } else {
             maxPage = 0;
         }
