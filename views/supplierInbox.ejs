@@ -140,8 +140,8 @@
                    
                     <% if (title  == "Pending RFQ") {%>
                         <td class="priority-4" data-label="date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
-                        <td><button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Submit</button>
-                            <button id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Reject</button>
+                        <td><button style="background-color:green"  id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateStatus" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Submit</button>
+                            <button  style="background-color:red"  id=button_<%= rfqlist.rfq_id %> class="button2" data-toggle="modal" data-target="#updateReject" onclick=updateStatus(<%= rfqlist.rfq_id %>) >Reject</button>
                         </td>
                 </tr>
                 <% } else { %>
@@ -260,7 +260,7 @@
          
             <div id="mySidenav" style="padding-top:200px;">
         
-                <a href="/supplierinbox/<%= supplier_id %>/1" style="font-size: 10px;" id="pendingrfq">RFQ ที่ยังไม่ได้ส่ง</a>
+                <a href="/supplierinbox/<%= supplier_id %>/1" style="font-size: 10px" id="pendingrfq">RFQ ที่ยังไม่ได้ส่ง</a>
                 <a href="/suppliersubmit/<%= supplier_id %>/1" style="font-size: 10px;" id="submitrfq"  >ประวัติการขอราคา</a>
               </div>
              <!-- Modal Update Status-->
@@ -290,13 +290,49 @@
                           
              
                             </div>
+                            <!-- Modal Update Status Reject-->
+
+             <div class="modal fade" id="updateReject" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                     
+                            <h4 class="modal-title"> ไม่สามารถส่งราคาได้เพราะ?</h4>
+                    </div> 
+                    <form id="status2" class="add-player-form" action="/rejectrfq" method="post" enctype="multipart/form-data">
+                      
+                    <input type="text" name="rfqid2"  id="rfqid2" class="form-control">  
+                    <select name="reason" id="reason" class="custom-select">
+                        <option value="no product">ไม่มีสินค้า</option>
+                        <option value="empty stock">สินค้าหมด</option>
+                        <option value="not capable">ผลิตไม่ได้</option>
+                        <option value="leadtime">ไม่ได้ตาม leadtime ที่ต้องการ</option>
+                        <option value="unidentify">ไม่ระบุ</option>
+                      </select>
+                    <div class="modal-footer">
+                          
+                            <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                    
+                    </div>
+                </form>
+                  </div>
+                                </div>
+                          
+             
+                            </div>
                     
 
 <script>
 function updateStatus(rfqId) {
 
     document.getElementById("rfqid1").value = rfqId;
+    document.getElementById("rfqid2").value = rfqId;
+   //console.log(rfqId);
 }
+
 
 </script>
 

@@ -206,9 +206,9 @@ module.exports = {
         
     },
     rejectRFQ: (req, res) => {
-        let rfqId = req.body.rfqid1;
-        
-        let query = "UPDATE `rfq` SET `rfq_status` = 'rejected' WHERE `rfq_id` = '" + rfqId + "'";
+        let rfqId = req.body.rfqid2;
+        let reason = req.body.reason;
+        let query = "UPDATE `rfq` SET `rfq_status` = 'rejected', `reason` = '" + reason + "' WHERE `rfq_id` = '" + rfqId + "'";
         //console.log(query);
          db.query(query, (err, result) => {
              if (err) {
