@@ -99,7 +99,7 @@ module.exports = {
         let pageNo = req.params.pageno;
         let maxPage;
         let query = "SELECT rfq_id,supplier_id FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NOT NULL  ORDER BY rfq_date DESC"; // query database to get all the players
-        let query1 = "SELECT rfq_id,customer_name,topic,message,rfq_status,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NOT NULL ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
+        let query1 = "SELECT rfq_id,customer_name,topic,message,rfq_status,reason,DATE_FORMAT(rfq_date,'%a %e %b %Y') AS rfq_date1 FROM `rfq` WHERE supplier_id = '" + supplierId + "' AND rfq_status IS NOT NULL ORDER BY rfq_date DESC LIMIT " + (pageNo-1)*10 + ", 10"; // query database to get all the players
         if (pageNo === "") {
             pageNo= 1;
         }
