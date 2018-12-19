@@ -111,6 +111,7 @@
                         <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Date</th>
                     <th class="priority-3" scope="col" ></th>
                        <% } else { %>
+                        <th class="priority-4" scope="col"  >Status</th>
                         <th class="priority-4" scope="col" data-date-format="DD MMM YYYY" >Submitted Date</th>
                         <% } %>
                   </tr>
@@ -145,6 +146,7 @@
                         </td>
                 </tr>
                 <% } else { %>
+                    <td class="priority-4" data-label="submitted date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_status %> </td>
                     <td class="priority-4" data-label="submitted date" data-date-format="DD MMM YYYY" style="width:200px"><%= rfqlist.rfq_date1 %> </td>
                     <% } %>
                   <% }) %>
