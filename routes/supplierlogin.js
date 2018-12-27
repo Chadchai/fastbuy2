@@ -248,15 +248,15 @@ module.exports = {
        
 if (typeof req.files.image !== "undefined"){
     let uploadedFile = req.files.image;
-    let image_name = uploadedFile.name;
+    let image_name = uploadedFile.name.substr(0, 20);
     let fileExtension = uploadedFile.mimetype.split('/')[1];
   
     // let image_name1 = uploadedFile.name.split('.')[0];
     // let colinary_url = 'https://api.cloudinary.com/v1_1/hdzvdkljx/upload';
     // var cloudinary_upload_preset ='pqoenb7k';
-    image_name = supplierName + '.' + fileExtension;
+    image_name = supplierName.substr(0, 20) + '.' + fileExtension;
     //image_name = customerName + '.' + fileExtension;
-    let filename = 'supplier_logo/' + supplierName
+    let filename = 'supplier_logo/' + supplierName.substr(0, 20);
     
         if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
             // upload the file to the /public/assets/img directory
