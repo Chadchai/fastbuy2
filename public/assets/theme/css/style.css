@@ -23,8 +23,20 @@ text-overflow: ellipsis;
 	border: 1px solid hsla(240, 1%, 64%, 0.5);
 text-justify:right;
 }
+.grid-item1 { 
+	width: 87%; 
+	height: 300px; 
+padding: 5px;
+margin: 1px;
+overflow: hidden;
+
+text-overflow: ellipsis; 
+	border: 1px solid hsla(240, 1%, 64%, 0.5);
+text-justify:right;
+}
 
 .grid-item--width2 { width: 400px; }
+.grid-item1--width2 { width: 400px; }
 .ellipsis {
 	text-overflow: ellipsis;
   
@@ -135,7 +147,11 @@ text-justify:right;
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
 }
+.main1 {
 
+	font-size: 28px; /* Increased text to enable scrolling */
+	padding: 0px 10px;
+}
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
 		.sidenav a {font-size: 18px;}
@@ -160,6 +176,7 @@ text-justify:right;
 	
   @media screen and (max-width: 600px) {
 		.grid-item { width:100%;}
+		.grid-item1 { width:100%;}
 		.form-control input-sm { width:100%;}
 		.sidenav {display:none;}
 		.sidenav a {display:none;}

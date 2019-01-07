@@ -655,5 +655,45 @@ customerSummaryPage: (req, res) => {
 
 });
 },
+getBiddingList: (req, res) => {
+    let customerId = req.params.cid;
+    let query = "SELECT post_id,customer_name,project_name,scope,requirement,leadtime,DATE_FORMAT(deadline,'%Y-%m-%d') as deadline1 FROM `bidding_room` WHERE customer_id = '" + customerId + "'";
+    let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'";
+
+    db.query(query, (err, result) => {
+        if (err) {
+            res.redirect('/');
+        }
+       // console.log(query);  
+        db.query(query1, (err, result1) => {
+            if (err) {
+                res.redirect('/');
+            }
+        res.render('biddingRoom.ejs', {
+            title: "List of bidding"
+            ,biddings: result,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ
+        });
+    });
+
+    });
+},
+updatePost: (req, res) => {
+    let postId = req.params.id;
+    let projectName = req.body.project_name;
+    let projectScope = req.body.scope;
+    let requirement = req.body.requirement;
+    let leadtime = req.body.leadtime;
+    let deadline = req.body.deadline;
+    let query = "UPDATE `bidding_room` SET `project_name` = '" + projectName + "', `scope` = '" + projectScope  + "', `requirement` = '" + requirement + "', `leadtime` = '" + leadtime + "', `deadline` = '" + deadline + "' WHERE `post_id` = '" + postId + "'";
+            
+   // console.log(query);        
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.redirect('back');
+                   
+    });
+},
 
 }
