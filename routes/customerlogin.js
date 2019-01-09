@@ -671,12 +671,34 @@ getBiddingList: (req, res) => {
             }
         res.render('biddingRoom.ejs', {
             title: "List of bidding"
-            ,biddings: result,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ
+            ,biddings: result,customername:result1[0].customer_name,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ
         });
     });
 
     });
 },
+addPost: (req, res) => {
+    let custId = req.params.cid;
+    let custName = req.body.customer_name;
+    let projectName = req.body.project_name;
+    let projectScope = req.body.scope;
+    let requirement = req.body.requirement;
+    let leadtime = req.body.leadtime;
+    let deadline = req.body.deadline;
+  
+    let query = "INSERT INTO `bidding_room` (customer_id,customer_name,project_name,scope, requirement, leadtime, deadline) VALUES ('" +
+    + custId + "', '"  + custName + "', '"  + projectName + "', '" + projectScope + "', '" + requirement + "', '" + leadtime + "', '" + deadline +  "')";     
+    //console.log(query);  
+
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.redirect('back');
+                   
+    });
+},
+
 updatePost: (req, res) => {
     let postId = req.params.id;
     let projectName = req.body.project_name;
