@@ -614,7 +614,7 @@ let search ="";
 },
 customerSummaryPage: (req, res) => {
     let customerId = req.params.id;
-    let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && customer_id = '" + customerId + "' GROUP BY  MONTH(rfq_date) ORDER BY MONTH(rfq_date) DESC;"
+    let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' OR YEAR(rfq_date) = '2019' && customer_id = '" + customerId + "' GROUP BY  MONTH(rfq_date) ORDER BY rfq_date DESC;"
     db.query(query, (err, results) => {
         if (err) {
             return res.status(500).send(err);
@@ -627,7 +627,7 @@ customerSummaryPage: (req, res) => {
             y[i] = results[i].COUNT;
         }
     });
-        let query1 = "SELECT supplier_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && customer_id = '" + customerId + "' GROUP BY  supplier_name ORDER BY COUNT DESC LIMIT 0,5;"
+        let query1 = "SELECT supplier_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' OR YEAR(rfq_date) = '2019' && customer_id = '" + customerId + "' GROUP BY  supplier_name ORDER BY COUNT DESC LIMIT 0,5;"
         db.query(query1, (err, results) => {
             if (err) {
                 return res.status(500).send(err);
@@ -657,7 +657,7 @@ customerSummaryPage: (req, res) => {
 },
 getBiddingList: (req, res) => {
     let customerId = req.params.cid;
-    let query = "SELECT post_id,customer_name,project_name,scope,requirement,leadtime,DATE_FORMAT(deadline,'%Y-%m-%d') as deadline1 FROM `bidding_room` WHERE customer_id = '" + customerId + "'";
+    let query = "SELECT post_id,customer_name,project_name,scope,requirement,leadtime,DATE_FORMAT(deadline,'%Y-%m-%d') as deadline1,DATEDIFF( deadline,CURDATE()) AS DateDiff FROM `bidding_room` WHERE customer_id = '" + customerId + "'";
     let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'";
 
     db.query(query, (err, result) => {
@@ -671,7 +671,7 @@ getBiddingList: (req, res) => {
             }
         res.render('biddingRoom.ejs', {
             title: "List of bidding"
-            ,biddings: result,customername:result1[0].customer_name,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ
+            ,biddings: result,customerid:customerId,customername:result1[0].customer_name,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ
         });
     });
 
@@ -708,7 +708,7 @@ updatePost: (req, res) => {
     let deadline = req.body.deadline;
     let query = "UPDATE `bidding_room` SET `project_name` = '" + projectName + "', `scope` = '" + projectScope  + "', `requirement` = '" + requirement + "', `leadtime` = '" + leadtime + "', `deadline` = '" + deadline + "' WHERE `post_id` = '" + postId + "'";
             
-   // console.log(query);        
+   //console.log(query);        
     db.query(query, (err, result) => {
         if (err) {
             return res.status(500).send(err);
