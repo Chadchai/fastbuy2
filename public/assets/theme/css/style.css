@@ -18,7 +18,7 @@
 padding: 5px;
 margin: 1px;
 overflow: hidden;
-font-size:15px;
+
 
 text-overflow: ellipsis; 
 	border: 1px solid hsla(240, 1%, 64%, 0.5);
@@ -386,7 +386,7 @@ z-index: 1;
 
 /* Style page content */
 .main1 {
-    margin-left: 200px; /* Same as the width of the sidebar */
+    margin-left: 250px; /* Same as the width of the sidebar */
     padding: 0px 10px;
 }
 
