@@ -90,13 +90,12 @@
 
 <div class="main1">
 
-        <div class="container" style="width:100%">
+        <div class="container">
            
            
-            <div class="row search" style="padding-top:100px">
-            <div class="col-md-12" >  
-                <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
-                        Bidding room </h2>
+            <div class="row search">
+            <div class="col-md-12" style="padding-top:100px" >  
+                <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">Bidding room </h2>
           
                         <button type="button" class="fa fa-plus-circle fa-6"  data-toggle="modal" data-target="#addPost">เพิ่มประกาศงาน</button>
            
@@ -115,26 +114,26 @@
                  
                       
                         <% biddings.forEach((bidding, index) => { %>
-                            <div class="col-lg-4 col-md-6" style="text-align:center">
+                            <div class="col-lg-4 col-md-6" style="text-align:center;font-size: 30%;" >
                                
                                     <div class="grid-item" >
                                         <div class="col-md-12" style="text-align: right">
                                             <% if (Number(bidding.DateDiff) >=0) {%>  
-                                        <h5 style="color:green"> Remaining days:  <%= bidding.DateDiff %></h5>
+                                        <h5 style="color:green;font-size: 15px"> Remaining days:  <%= bidding.DateDiff %></h5>
                                         <% } else { %>
-                                            <h5 style="color:red"> Expired </h5>
+                                            <h5 style="color:red;font-size: 15px"> Expired </h5>
                                         <% } %> 
                                     </div>
                                         <div  class="card-box" style="align-items: center">
                                           
-                                                <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542473970/company_logo/<%= customer_photo %>" data-toggle="modal" data-target="#myModal_<%= bidding.post_id %>" alt="">
+                                                <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542473970/company_logo/<%= customer_photo %>" data-toggle="modal" style="width:70%" data-target="#myModal_<%= bidding.post_id %>" alt="">
             
-                                            <h4 class="card-title mbr-fonts-style display-7">
+                                            <h4 class="card-title mbr-fonts-style display-7" >
                                                     <%= bidding.customer_name %>
                                                     <%= bidding.bidding_id %>
                                                 
                                             </h4>
-                                            <p  class="mbr-text mbr-fonts-style align-left display-7">
+                                            <p  class="mbr-text mbr-fonts-style align-left display-7" style="font-size:15px">
                 
                                                    <%= bidding.project_name%>
                                                    <br>
@@ -162,8 +161,7 @@
   
             <div class="modal-body">
                     <div class="card-img" style="width:60%;padding-left: 10%;padding-bottom:0px;display:inline-block "  >
-                          
-                               
+                        
                             <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542473970/company_logo/<%= customer_photo %>" class="player-img" style="height:60%"  alt="Mobirise"> 
                             <h4 class="card-title mbr-fonts-style display-7">
                                     <%= bidding.customer_name %>
@@ -197,8 +195,8 @@
                     </div>
                            
                     <!-- Edit Post-->
-                    <div class="modal fade" id="editPost<%= bidding.post_id %>" role="dialog"  style="height:100%">
-                            <div class="modal-dialog" style="width:120%">
+                    <div class="modal fade" id="editPost<%= bidding.post_id %>" role="dialog" >
+                            <div class="modal-dialog" style="width:100%">
                             
                               <!-- Modal content-->
                               <div class="modal-content">
@@ -221,15 +219,15 @@
                                                 <form id="editPost" class="add-player-form" action="/updatepost/<%= bidding.post_id %>" method="post" enctype="multipart/form-data">
                                                     <div class="form-row">
                                                            
-                                                        <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-12" >
                                                                 <label style=" font-weight: bold;font-size: 17px">Project Name</label>
-                                                            <input type="text" class="form-control" name="project_name" id="project_name" value="<%= bidding.project_name%>" placeholder="Project name" required>
+                                                            <input type="text" class="form-control" name="project_name" id="project_name"  value="<%= bidding.project_name%>" placeholder="Project name" required>
                                                         </div>
-                                                        <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-12" >
                                                                 <label style=" font-weight: bold;font-size: 17px">Scope of project</label>
-                                                            <input type="text" class="form-control" name="scope" id="scope" value="<%= bidding.scope %>" placeholder="Project scope" required>
+                                                            <input type="text" class="form-control" name="scope" id="scope"  value="<%= bidding.scope %>" placeholder="Project scope" required>
                                                         </div>
-                                                        <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-12" >
                                                                 <label style=" font-weight: bold;font-size: 17px">Project requirements</label>
                                                             <input type="text" class="form-control" name="requirement" id="requirement" value="<%= bidding.requirement %>" placeholder="Project requirement" required>
                                                         </div>
