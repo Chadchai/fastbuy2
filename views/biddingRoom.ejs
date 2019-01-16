@@ -206,10 +206,11 @@
                             
                               <!-- Modal content-->
                               <div class="modal-content">
-                                <!-- <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  <h6 class="modal-title">Modal Header</h6>
-                                </div> -->
+                                 <div class="modal-header">
+                                        <h4 class="card-title mbr-fonts-style display-7">
+                                                แก้ไขประกาศ 
+                                         </h4>
+                                </div> 
                                 <div class="modal-body">
                                         <!-- <div class="card-img" style="width:40%;padding-left: 10%;padding-bottom: 5px"  >
                                               
@@ -218,9 +219,7 @@
                                             </div> -->
                                         
                                     <div  class="card-box" style="text-align:left">
-                                        <h4 class="card-title mbr-fonts-style display-7">
-                                               แก้ไขประกาศ 
-                                        </h4>
+                                      
                                         <p  class="mbr-text mbr-fonts-style align-left display-7">
                                                 <form id="editPost"  action="/updatepost/<%= bidding.post_id %>" method="post" enctype="multipart/form-data">
                                                     <div class="form-row input-group-sm">
@@ -318,10 +317,6 @@
                             <form id="editPost" class="add-player-form" action="/addpost/<%= customer %>" method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                
-                                <div class="form-group col-md-12 input-group-sm"  >
-                                   
-                                <input type="hidden" class="form-control" name="customer_name" id="customer_name" value="<%= customername %>"  placeholder="Customer name" required>
-                            </div>
                                     <div class="form-group col-md-12 input-group-sm">
                                             <label style=" font-weight: bold;font-size: 15px">ชื่อโครงการ</label>
                                         <input type="text" class="form-control" name="project_name" id="project_name" placeholder="Project name" required>
@@ -346,6 +341,10 @@
                                 
                                             <input type="hidden" class="form-control" name="customer_id" id="customer_id" value="<%= customer %>" placeholder="customer id" required>
                                         </div> 
+                                        <div class="form-group col-md-12 input-group-sm"  >
+                                   
+                                                <input type="hidden" class="form-control" name="customer_name" id="customer_name" value="<%= customername %>"  placeholder="Customer name" required>
+                                            </div>
                                 </div>
                                 <div class="modal-footer">
 
