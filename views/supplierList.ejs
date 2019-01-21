@@ -105,7 +105,7 @@
         </div>
         <div class="col-md-4">
             <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-            <input class="form-control input-sm"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+            <input class="form-control input-group-sm"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
             
             <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">AVL</h5>
                                
@@ -342,16 +342,16 @@
  
     <div class="sidenav" >
        
-        <div class="dataTables_filter" id="formEmail">
+        <div class="dataTables_filter " id="formEmail">
           
           <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
-          <textarea type="text" class="form-control" name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail"></textarea>
+          <textarea type="text" class="form-control " name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail"></textarea>
           <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId"></textarea>
         
             <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
-          <input class="form-control input-sm" id="Topic" onchange="savedata()">
+          <input class="form-control input-xs" id="Topic" onchange="savedata()">
           
-          <input class="form-control input-sm" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
+          <input class="form-control input-xs" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
             
             <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
             <textarea type="text" class="form-control" name="message" onchange="savedata()" rows="6" data-form-field="Message" id="Message"></textarea>

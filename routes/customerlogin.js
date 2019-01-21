@@ -657,9 +657,20 @@ customerSummaryPage: (req, res) => {
 },
 getBiddingList: (req, res) => {
     let customerId = req.params.cid;
-    let query = "SELECT post_id,customer_name,project_name,scope,requirement,leadtime,DATE_FORMAT(deadline,'%Y-%m-%d') as deadline1,DATEDIFF( deadline,CURDATE()) AS DateDiff FROM `bidding_room` WHERE customer_id = '" + customerId + "'";
+    let status = req.params.sta;
+    let query;
+    //console.log(status);
+    if (status == "active" ) {
+        
+        query = "SELECT post_id,customer_name,project_name,scope,requirement,leadtime,DATE_FORMAT(deadline,'%Y-%m-%d') as deadline1,DATEDIFF( deadline,CURDATE()) AS DateDiff FROM `bidding_room` WHERE customer_id = '" + customerId + "' AND DATEDIFF( deadline,CURDATE()) >= '0' ";
+  
+    } else {
+        
+        query = "SELECT post_id,customer_name,project_name,scope,requirement,leadtime,DATE_FORMAT(deadline,'%Y-%m-%d') as deadline1,DATEDIFF( deadline,CURDATE()) AS DateDiff FROM `bidding_room` WHERE customer_id = '" + customerId + "' AND DATEDIFF( deadline,CURDATE()) < '0' ";
+  
+    }
     let query1 = "SELECT * FROM `customers` WHERE customer_id = '" + customerId + "'";
-
+    //console.log(query);
     db.query(query, (err, result) => {
         if (err) {
             res.redirect('/');

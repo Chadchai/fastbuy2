@@ -86,7 +86,7 @@ app.post('/removeavl', removeAVL);
 app.post('/updatestatus', updateStatus);
 app.post('/rejectrfq', rejectRFQ);
 app.get('/sendmail/:cid/:sid/:sidg/:topic/:message', sendMail);
-app.get('/biddinglist/:cid', getBiddingList);
+app.get('/biddinglist/:cid/:sta', getBiddingList);
 
 // set the app to listen on the port
 app.listen(port, () => {

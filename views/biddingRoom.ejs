@@ -86,11 +86,11 @@
         
 
         <div class="sidenav1" style="height:300px">
-                <a href="">ประกาศที่ยังไม่หมดอายุ</a>
+                <a href="/biddinglist/<%= customerid %>/active">ประกาศที่ยังไม่หมดอายุ</a>
                              <br>
-                <a href="">ประกาศที่หมดอายุแล้ว</a>
-                <br>
-                <a href="">ประกาศที่จบไปแล้ว</a>
+                <a href="/biddinglist/<%= customerid %>/expired">ประกาศที่หมดอายุแล้ว</a>
+                <!-- <br>
+                <a href="">ประกาศที่จบไปแล้ว</a> -->
               </div>
  
 
@@ -240,6 +240,7 @@
                                                                 <label style=" font-weight: bold;font-size: 15px">ระยะเวลาโครงการ(วัน)</label>
                                                             <input type="text" class="form-control input-sm" name="leadtime" id="leadtime" value="<%= bidding.leadtime %>" placeholder="Project Leadtime" required>
                                                         </div>
+                                                   
                                                         <div class="form-group col-md-6 input-group-sm">
                                                                 <label style=" font-weight: bold;font-size: 15px">ส่งราคาภายในวันที่</label>
                                                             <input type="date"  class="form-control input-sm" name="deadline" id="deadline" value="<%= bidding.deadline1 %>" placeholder="Project Deadline" required>
