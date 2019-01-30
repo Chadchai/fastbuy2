@@ -682,7 +682,7 @@ getBiddingList: (req, res) => {
             }
         res.render('biddingRoom.ejs', {
             title: "List of bidding"
-            ,biddings: result,customerid:customerId,customername:result1[0].customer_name,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ
+            ,biddings: result,customerid:customerId,customername:result1[0].customer_name,customer_photo:result1[0].photo,user_status:"loggined",customer:customerId,count:pendingRFQ,post_status:status
         });
     });
 

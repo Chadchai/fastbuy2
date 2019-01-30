@@ -86,12 +86,19 @@
         
 
         <div class="sidenav1" style="height:300px">
-                <a href="/biddinglist/<%= customerid %>/active">ประกาศที่ยังไม่หมดอายุ</a>
+            <% if (post_status == "active") {%>
+                <a href="/biddinglist/<%= customerid %>/active" style="color:blue">ประกาศที่ยังไม่หมดอายุ</a>
                              <br>
                 <a href="/biddinglist/<%= customerid %>/expired">ประกาศที่หมดอายุแล้ว</a>
                 <!-- <br>
                 <a href="">ประกาศที่จบไปแล้ว</a> -->
+                <% } else { %>
+                    <a href="/biddinglist/<%= customerid %>/active" >ประกาศที่ยังไม่หมดอายุ</a>
+                    <br>
+       <a href="/biddinglist/<%= customerid %>/expired" style="color:blue">ประกาศที่หมดอายุแล้ว</a>
+                    <% } %>
               </div>
+              
  
 
 <div class="main1">
