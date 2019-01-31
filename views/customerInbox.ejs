@@ -89,10 +89,15 @@
        
 
         <div class="sidenav1">
-                <a href="/customerinbox/<%= customer_id %>/1">RFQ ที่ยังไม่ได้รับ</a>
+                <% if (message == "pending") {%>
+                <a href="/customerinbox/<%= customer_id %>/1" style="color:blue">RFQ ที่ยังไม่ได้รับ</a>
                              <br>
                 <a href="/customersubmit/<%= customer_id %>/1">ประวัติการขอราคา</a>
-               
+                <% } else { %>
+                    <a href="/customerinbox/<%= customer_id %>/1" >RFQ ที่ยังไม่ได้รับ</a>
+                    <br>
+       <a href="/customersubmit/<%= customer_id %>/1" style="color:blue">ประวัติการขอราคา</a>
+                    <% } %>
               </div>
  
       

@@ -263,7 +263,7 @@ if (typeof req.files.image !== "undefined"){
             
         res.render('customerInbox.ejs', {
             title: "Pending RFQ"
-            ,message: '', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
+            ,message: 'pending', user_status:"loggined",rfqlists:result1,customer_id:customerId,maxPage:maxPage,pageNo:pageNo,count:pendingRFQ
         });
     });
 });
