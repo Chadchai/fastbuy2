@@ -352,7 +352,7 @@ if (typeof req.files.image !== "undefined"){
     },
     supplierSummaryPage: (req, res) => {
         let supplierId = req.params.id;
-        let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  MONTH(rfq_date) ORDER BY MONTH(rfq_date) DESC;"
+        let query = "SELECT DATE_FORMAT(rfq_date,'%b-%y') as rfqdate, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' OR YEAR(rfq_date) = '2019' && supplier_id = '" + supplierId + "' GROUP BY  MONTH(rfq_date) ORDER BY rfq_date DESC;"
         db.query(query, (err, results) => {
             if (err) {
                 return res.status(500).send(err);
@@ -365,7 +365,7 @@ if (typeof req.files.image !== "undefined"){
                 y[i] = results[i].COUNT;
             }
         });
-            let query1 = "SELECT customer_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' && supplier_id = '" + supplierId + "' GROUP BY  customer_name ORDER BY COUNT DESC LIMIT 0,5;"
+            let query1 = "SELECT customer_name, COUNT(*) COUNT FROM rfq WHERE YEAR(rfq_date) = '2018' OR YEAR(rfq_date) = '2019' && supplier_id = '" + supplierId + "' GROUP BY  customer_name ORDER BY COUNT DESC LIMIT 0,5;"
             db.query(query1, (err, results) => {
                 if (err) {
                     return res.status(500).send(err);

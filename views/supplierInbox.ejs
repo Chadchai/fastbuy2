@@ -85,9 +85,17 @@
        
 
         <div class="sidenav1">
-                <a href="/supplierinbox/<%= supplier_id %>/1">RFQ ที่ยังไม่ได้ส่ง</a>
-                <br>
-                <a href="/suppliersubmit/<%= supplier_id %>/1">ประวัติการขอราคา</a>
+                <% if (title  == "Pending RFQ") {%>
+                    <a href="/supplierinbox/<%= supplier_id %>/1" style="color:blue" >RFQ ที่ยังไม่ได้ส่ง</a>
+                    <br>
+                    <a href="/suppliersubmit/<%= supplier_id %>/1">ประวัติการขอราคา</a>
+                    <% } else { %>
+                        <a href="/supplierinbox/<%= supplier_id %>/1" >RFQ ที่ยังไม่ได้ส่ง</a>
+                        <br>
+                        <a href="/suppliersubmit/<%= supplier_id %>/1" style="color:blue">ประวัติการขอราคา</a>
+
+                        <% } %>
+               
                
               </div>
  
