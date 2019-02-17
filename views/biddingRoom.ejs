@@ -456,6 +456,20 @@
         </div>
     </div>
     </section>
+    <div id="mySidenav" style="padding-top:200px;">
+        
+        <% if (post_status == "active") {%>
+            <a href="/biddinglist/<% customerid %>/active" style="color:blue;font-size: 10px" id="pendingrfq">ประกาศที่ยังไม่หมดอายุ</a>
+                         <br>
+            <a href="/biddinglist/<% customerid %>/expired" style="font-size: 10px" id="submitrfq">ประกาศที่หมดอายุแล้ว</a>
+            <!-- <br>
+            <a href="">ประกาศที่จบไปแล้ว</a> -->
+            <% } else { %>
+                <a href="/biddinglist/<% customerid %>/active" style="font-size: 10px" id="pendingrfq">ประกาศที่ยังไม่หมดอายุ</a>
+                <br>
+   <a href="/biddinglist/<% customerid %>/expired" style="color:blue;font-size: 10px" id="submitrfq">ประกาศที่หมดอายุแล้ว</a>
+                <% } %>
+       </div>
 </div>
    
   <script src="/assets/web/assets/jquery/jquery.min.js"></script>

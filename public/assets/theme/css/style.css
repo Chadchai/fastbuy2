@@ -164,11 +164,9 @@ text-justify:right;
 			font-size: 30px;
 		}
 }
+
 @media screen and (max-width: 1800px) {
-.modal {max-height:100%;overflow:auto};
-	#mySidenav{display:none;}
-	}
-@media screen and (max-width: 1000px) {
+	.modal {max-height:100%;overflow:auto};
 	.form-control input-sm { width:95%;}
 	.sidenav {width: 250px;font-size: 14px;}
 	.sidenav a {display:none;}
