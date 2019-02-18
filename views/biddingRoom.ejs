@@ -127,7 +127,7 @@
                  
                       
                         <% biddings.forEach((bidding, index) => { %>
-                            <div class="col-lg-4 col-md-6" style="text-align:center;font-size: 30%;" >
+                            <div class="col-lg-4 col-md-6" style="text-align:center;font-size: 30%" >
                                
                                     <div class="grid-item" >
                                         <div class="col-md-12" style="text-align: right">
@@ -459,15 +459,15 @@
     <div id="mySidenav" style="padding-top:200px;">
         
         <% if (post_status == "active") {%>
-            <a href="/biddinglist/<% customerid %>/active" style="color:blue;font-size: 10px" id="pendingrfq">ประกาศที่ยังไม่หมดอายุ</a>
+            <a href="/biddinglist/<%= customerid %>/active" style="color:blue;font-size: 10px" id="pendingrfq">ประกาศที่ยังไม่หมดอายุ</a>
                          <br>
-            <a href="/biddinglist/<% customerid %>/expired" style="font-size: 10px" id="submitrfq">ประกาศที่หมดอายุแล้ว</a>
+            <a href="/biddinglist/<%= customerid %>/expired" style="font-size: 10px" id="submitrfq">ประกาศที่หมดอายุแล้ว</a>
             <!-- <br>
             <a href="">ประกาศที่จบไปแล้ว</a> -->
             <% } else { %>
-                <a href="/biddinglist/<% customerid %>/active" style="font-size: 10px" id="pendingrfq">ประกาศที่ยังไม่หมดอายุ</a>
+                <a href="/biddinglist/<%= customerid %>/active" style="font-size: 10px" id="pendingrfq">ประกาศที่ยังไม่หมดอายุ</a>
                 <br>
-   <a href="/biddinglist/<% customerid %>/expired" style="color:blue;font-size: 10px" id="submitrfq">ประกาศที่หมดอายุแล้ว</a>
+   <a href="/biddinglist/<%= customerid %>/expired" style="color:blue;font-size: 10px" id="submitrfq">ประกาศที่หมดอายุแล้ว</a>
                 <% } %>
        </div>
 </div>
