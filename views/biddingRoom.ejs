@@ -108,7 +108,7 @@
            
             <div class="row search">
             <div class="col-md-12" style="padding-top:100px;text-align: right" >  
-               <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">Bidding room </h2>
+               <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">ประกาศงานจัดซื้อ-จัดจ้าง </h2>
                <span>
                         <button type="button" class="fa fa-plus-circle fa-6"  data-toggle="modal" data-target="#addPost" style="font-size:20px;color: firebrick">เพิ่มประกาศงาน</button>
                     </span> 
@@ -201,7 +201,7 @@
                     <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#editPost<%= bidding.post_id %>"> + Suppliers</button>
                     <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#editPost<%= bidding.post_id %>">แก้ไข</button>
            
-              <button type="button" class="btn btn-sm" data-dismiss="modal">ลบ</button>
+              <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#deletePost" onclick=deletePost(<%= bidding.post_id %>) >ลบ</button>
             </div>
           </div>
                         </div>
@@ -258,7 +258,7 @@
                                                     <div class="modal-footer">
                     
                                                             <button type="submit" class="btn btn-sm" >อัพเดต</button>
-                                                      <button type="button" class="btn btn-sm" data-dismiss="modal">ปิด</button>
+                                                      <button type="button" class="btn btn-sm" data-dismiss="modal" >ปิด</button>
                                                      
                                                     </div>
                                                 </form>
@@ -277,6 +277,34 @@
                                         </div> 
                                         </div>
                            <!-- End Edit Post-->
+                           <!-- Modal delete Post-->
+
+             <div class="modal fade" id="deletePost" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                         
+                                <h4 class="modal-title"> ยืนยันลบประกาศนี้?</h4>
+                        </div> 
+                        <form id="status1" class="add-player-form" action="/removepost" method="post" enctype="multipart/form-data">
+                          
+                        <input type="hidden" name="postId"  id="postId" class="form-control">  
+                    
+                        <div class="modal-footer">
+                              
+                                <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                        
+                        </div>
+                    </form>
+                      </div>
+                                    </div>
+                              
+                 
+                                </div>
+                        
                         </div>
                 <% }) %>
            
@@ -473,7 +501,17 @@
                 <% } %>
        </div>
 </div>
-   
+
+<script>
+        function deletePost(postId) {
+        
+            document.getElementById("postId").value = postId;
+           
+           //console.log(rfqId);
+        }
+        
+        
+        </script>
   <script src="/assets/web/assets/jquery/jquery.min.js"></script>
   <script src="/assets/popper/popper.min.js"></script>
   <script src="/assets/tether/tether.min.js"></script>

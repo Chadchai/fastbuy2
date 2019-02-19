@@ -728,5 +728,19 @@ updatePost: (req, res) => {
                    
     });
 },
+deletePost: (req, res) => {
+    let postId = req.body.postId;
+   
+    let query = "DELETE FROM bidding_room WHERE post_id = " + postId ;
+
+   //console.log(query);        
+    db.query(query, (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.redirect('back');
+                   
+    });
+},
 
 }
