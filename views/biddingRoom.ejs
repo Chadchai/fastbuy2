@@ -137,20 +137,19 @@
                                             <h5 style="color:red;font-size: 15px"> Expired </h5>
                                         <% } %> 
                                     </div>
-                                        <div  class="card-box" style="align-items: center">
-                                          
+                                        <div  class="card-box" style="align-items: left">
+                                             
                                                 <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542473970/company_logo/<%= customer_photo %>" data-toggle="modal" style="height:100px;padding-bottom: 10px" data-target="#myModal_<%= bidding.post_id %>" alt="">
-            
-                                            <h4 class="card-title mbr-fonts-style display-7" >
-                                                    <%= bidding.customer_name %>
-                                                    <!-- <%= bidding.bidding_id %> -->
+                                               <!-- <%= bidding.customer_name %>  -->
+                                            <!-- <h4 class="card-title mbr-fonts-style display-7"  >
+                                                   
+                                                     <%= bidding.bidding_id %> 
                                                 
-                                            </h4>
+                                            </h4> -->
                                             <p  class="mbr-text mbr-fonts-style align-left display-7" style="font-size:15px">
-                
-                                                   <%= bidding.project_name%>
-                                                   <br>
-                                                 
+                                                    <%= bidding.project_name%>
+                                                </p>
+                                            <p  class="mbr-text mbr-fonts-style align-left display-7" style="font-size:12px">
                                                    - <%= bidding.scope %>
                                                     <br>
                                                    - <%= bidding.requirement %>
