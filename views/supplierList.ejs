@@ -166,21 +166,21 @@
                              <!-- Trigger the modal with a button -->
  
                              
-                        <div class="card-img" style="width:90%;padding-left: 10%;padding-bottom: 20px"  >
+                        <div class="card-img" style="width:80%;padding-left: 10%;padding-bottom: 20px"  >
                       
                            
-                            <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:80%" data-toggle="modal" data-target="#myModal<%= supplier.supplier_id %>" alt="Mobirise"> 
+                            <img src="https://res.cloudinary.com/hdzvdkljx/image/upload/v1542551745/supplier_logo/<%= supplier.Photo %>" class="player-img" style="height:60%" data-toggle="modal" data-target="#myModal<%= supplier.supplier_id %>" alt="Mobirise"> 
                         </div>
                     
                         <div  class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7">
-                                    <%= supplier.supplier_name %>
+                            <h4 class="card-title mbr-fonts-style display-7" style="font-size:14px">
+                                   <%= supplier.supplier_name %>
                             </h4>
-                            <p  class="mbr-text mbr-fonts-style align-left display-7">
+                            <p  class="mbr-text mbr-fonts-style align-left display-7" style="font-size:12px">
 
-                                   <%= supplier.supplier_info%>
+                                  - <%= supplier.supplier_info%>
                                    <br>
-                                    <%= supplier.address %>
+                                  -  <%= supplier.address %>
                                    
                                     
                             </p>
@@ -205,10 +205,10 @@
                     </div>
                 
             <div  class="card-box">
-                <h4 class="card-title mbr-fonts-style display-7">
+                <h4 class="card-title mbr-fonts-style display-7" style="font-size:15px">
                         <%= supplier.supplier_name %>
                 </h4>
-                <p  class="mbr-text mbr-fonts-style align-left display-7">
+                <p  class="mbr-text mbr-fonts-style align-left display-7" style="font-size:15px">
 
                        <%= supplier.supplier_info%>
                        <br>
