@@ -197,7 +197,7 @@
             </div>
             <div class="modal-footer">
 
-                    <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#editPost<%= bidding.post_id %>">Suppliers</button>
+                    <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#addSupplier<%= bidding.post_id %>">Suppliers</button>
                     <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#editPost<%= bidding.post_id %>">แก้ไข</button>
            
               <button type="button" class="btn btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#deletePost" onclick=deletePost(<%= bidding.post_id %>) >ลบ</button>
@@ -276,6 +276,65 @@
                                         </div> 
                                         </div>
                            <!-- End Edit Post-->
+                    <!-- Add Suppliers -->
+                    <div class="modal fade" id="addSupplier<%= bidding.post_id %>" role="dialog" >
+                            <div class="modal-dialog" style="width:100%">
+                            
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                        <h4 class="card-title mbr-fonts-style display-7">
+                                                เพิ่ม Suppliers 
+                                         </h4>
+                                </div> 
+                                <div class="modal-body">
+                            
+                                        
+                                    <div  class="card-box" style="text-align:left">
+                                      
+                                            <div class="form-group col-md-12 input-group-sm " >
+                                                          
+                                                    <input type="text" class="form-control input-sm" name="project_name1" id="project_name1"  placeholder="ชื่อ Suppliers" >
+                                                    <button id="myBtn" class="btn btn-sm" onclick="addSupplier(document.getElementById('project_name1').value)">Button</button>
+                                                   
+                                                </div>
+                                                   <div class="form-group col-md-6 input-group-sm " >
+                                                   </div>
+                                                <form id="addSupplier"  action="/addsupplier/<%= bidding.post_id %>" method="post" enctype="multipart/form-data">
+                                                    <div class="form-row input-group-sm">
+                                                            <!-- <label style=" font-weight: bold;font-size: 15px">ชื่อ Suppliers</label> -->
+                                                        
+                                                        <div class="form-group col-md-12 input-group-sm" >
+                                                               
+                                                    <textarea id="listsupplier" name="listsupplier" type="text" rows="6" class="form-control input-sm" name="scope" id="scope"  placeholder="ชื่อ Suppliers" >""</textarea>
+
+                                                        </div>
+                                                  
+                                                    </div>
+                                                    <div class="modal-footer">
+                    
+                                                      <!-- <button type="submit" class="btn btn-sm" >อัพเดต</button> -->
+                                                      <button type="button" class="btn btn-sm" data-dismiss="modal" >ปิด</button>
+                                                     
+                                                    </div>
+                                                </form>
+                                                
+                                               
+                                                
+                                        </p>
+                                   
+                                 
+                                    </div>
+                                </div>
+                      
+                              </div>
+                                            </div>
+                                      
+                                        </div> 
+                                       
+                           <!-- End Add Suppliers -->
+
+
                            <!-- Modal delete Post-->
 
              <div class="modal fade" id="deletePost" role="dialog">
@@ -507,6 +566,23 @@
             document.getElementById("postId").value = postId;
            
            //console.log(rfqId);
+        }
+        var array;
+        function addSupplier(suppliername) {
+            array = document.getElementById("listsupplier").value.split(",").filter(Boolean);
+            array.indexOf(suppliername) === -1 ? array.push(suppliername) : console.log("This item already exists");
+
+           console.log(suppliername);
+            document.getElementById("listsupplier").value = array;
+            
+            sessionStorage.setItem("listsupplier", array);
+   document.getElementById("listsupplier").value =  sessionStorage.getItem("listsupplier");
+// input.addEventListener("keyup", function(event) {
+//   if (event.keyCode === 13) {
+//    event.preventDefault();
+   
+//   }
+//});
         }
         
         
