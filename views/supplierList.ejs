@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/assets/animatecss/animate.min.css">
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
-  <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 
@@ -103,13 +103,15 @@
 
             <!-- <i class="fa fa-plus-circle fa-6" aria-hidden="true"></i> -->
         </div>
+   
         <div class="col-md-4">
-            <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-            <input class="form-control input-group-sm"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
-            
+      <br>
+            <input  type="text" placeholder="Search........" class="form-control input-group" style="height:5px"  id="quicksearch" value="<%= search %>" onkeypress="if (event.keyCode==13){ myFunction();return false;}">
+            <!-- <label class="searchInfo mbr-fonts-style display-7">Search:</label> -->
             <label class="container-check" style="background-color:white"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">AVL</h5>
                                
             </h1> 
+       
             <% if (checked) {%>    
             <input type="checkbox"  id = "AVL" onchange="getAVL(this)" checked="checked">
             
@@ -139,7 +141,7 @@
                  
                       
                         <% suppliers.forEach((supplier, index) => { %>
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-3 col-md-6">
                                     <div class="grid-item">
                                             <% if (checked) {%>  
                                  <a data-toggle="modal" data-target="#removeAVL" onclick="removeAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value, '<%= supplier.supplier_id %>' )" ><i id="avl_<%= supplier.supplier_id %>"><i id="avl_<%= supplier.supplier_id %>" class="fa fa-bookmark"  style="font-size:24px;color:#4169E1 "></i></a>
@@ -147,7 +149,7 @@
                                     <a data-toggle="modal"  data-target="#addAVL" onclick="showAVL(document.getElementById('Name_<%= supplier.supplier_id %>').value,document.getElementById('List_<%= supplier.supplier_id %>').value)" ><i id="avl_<%= supplier.supplier_id %>" class="fa fa-bookmark"  style="font-size:24px;color:gray "></i></a>
                                
                                     <% } %> 
-                            <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h5 style="color: rgb(130, 133, 131);font-weight: bold">ขอราคา</h5>
+                            <label class="container-check" style="background-color:white" style="width:50%"> <h1 class="card-title mbr-fonts-style display-7" ><h7 style="color: rgb(130, 133, 131);font-weight: bold;font-size: 15px">ขอราคา</h7>
                                
                             </h1>
                             
@@ -224,7 +226,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
         </div>
       </div>
                     </div>
@@ -344,22 +346,22 @@
        
         <div class="dataTables_filter " id="formEmail">
           
-          <label class="searchInfo mbr-fonts-style display-7">Email List:</label>
+          <label class="searchInfo mbr-fonts-style display-7" style="font-size: 12px">Email List:</label>
           <textarea type="text" class="form-control " name="EmailList" rows="3" data-form-field="EmailList" id="ListEmail"></textarea>
           <textarea type="hidden" class="form-control" name="ListId" rows="3" data-form-field="IdList" id="ListId"></textarea>
         
-            <label class="searchInfo mbr-fonts-style display-7">Topic:</label>
+            <label class="searchInfo mbr-fonts-style display-7 " style="font-size: 12px">Topic:</label>
           <input class="form-control input-xs" id="Topic" onchange="savedata()">
           
           <input class="form-control input-xs" id="customerID" type="hidden" value="<%= customer.customer_id %>"> 
             
-            <label class="searchInfo mbr-fonts-style display-7">ข้อความ:</label>  
+            <label class="searchInfo mbr-fonts-style display-7" style="font-size: 12px">ข้อความ:</label>  
             <textarea type="text" class="form-control" name="message" onchange="savedata()" rows="6" data-form-field="Message" id="Message"></textarea>
          
           <input class="form-control input-sm" id="quicksearch1" type="hidden" value="<%= businessType %>/<%= customer.customer_id %>"> 
-          <label for="customer-img"><b>แนบไฟล์</b></label><br>
+          <label for="customer-img" style="font-size: 12px"><b>แนบไฟล์</b></label><br>
           <input type="file" name="image" id="attachment" class="" >
-          <button id="askprice" onclick="sendMail()" class="btn btn-primary">ขอราคา</button>
+          <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-sm">ขอราคา</button>
           <!-- <button id="askprice" onclick="sendMail()" class="btn btn-primary btn-lg">ขอราคา</button> -->
            <!-- <input type="text" class="form-control input-sm" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
    -->      </div> 
@@ -404,8 +406,8 @@
                                         </div>
                                         <div class="modal-footer">
                                               
-                                                <button type="submit" class="btn btn-primary">ยืนยัน</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                <button type="submit" class="btn btn-primary btn-sm">ยืนยัน</button>
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">ยกเลิก</button>
                                         
                                         </div>
                                     </form>
@@ -434,7 +436,7 @@
                                         <div class="modal-footer">
                                               
                                                 <button type="submit" class="btn btn-primary">ยืนยัน</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">ยกเลิก</button>
                                         
                                         </div>
                                     </form>
@@ -475,9 +477,9 @@
                                         </div>
                                         <div class="modal-footer">
 
-                                                <button id="askprice"  class="btn btn-primary" onclick="sendMail()">ขอราคา</button>
+                                                <button id="askprice"  class="btn btn-primary btn-sm" onclick="sendMail()">ขอราคา</button>
                                              
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">ยกเลิก</button>
                                            
                                         
                                         </div>

@@ -659,9 +659,9 @@ a:hover {
   box-shadow: none;
   color: #565656;
   font-family: 'Rubik', sans-serif;
-  font-size: 1rem;
-  line-height: 1.43;
-  min-height: 3.5em;
+  font-size: 0.8rem;
+  line-height: 1.0;
+  min-height: 2.5em;
   padding: 1.07em .5em;
 }
 .form-control > .mbr-iconfont {
@@ -818,15 +818,15 @@ pre {
 /* Headers*/
 .header13 .form-inline input[type="email"],
 .header14 .form-inline input[type="email"] {
-  border-radius: 100px;
+  border-radius: 50px;
 }
 .header13 .form-inline input[type="text"],
 .header14 .form-inline input[type="text"] {
-  border-radius: 100px;
+  border-radius: 50px;
 }
 .header13 .form-inline input[type="tel"],
 .header14 .form-inline input[type="tel"] {
-  border-radius: 100px;
+  border-radius: 50px;
 }
 .header13 .form-inline a.btn,
 .header14 .form-inline a.btn {
