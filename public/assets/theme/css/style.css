@@ -17,13 +17,17 @@
 	height: 250px; 
 padding: 2px;
 margin: 1px;
+
 overflow: hidden;
 
-
 text-overflow: ellipsis; 
+
 	border: 1px solid hsla(240, 1%, 64%, 0.5);
 text-justify:right;
 }
+/* .grid-item:hover {
+  overflow: visible;
+} */
 .grid-item1 { 
 	width: 87%; 
 	height: 300px; 
@@ -39,13 +43,14 @@ text-justify:right;
 .grid-item--width2 { width: 400px; }
 .grid-item1--width2 { width: 400px; }
 .ellipsis {
-	text-overflow: ellipsis;
+
   
 	/* Required for text-overflow to do anything */
-	white-space: nowrap;
+	
 	overflow: hidden;
+	text-overflow: ellipsis;
 	}
-	input[type=text] {
+	input[type=text1] {
 		 width: 300px; 
 		box-sizing: border-box;
 		border: 2px solid #ccc;
@@ -61,7 +66,7 @@ text-justify:right;
 		transition: width 0.4s ease-in-out;
 	}
 	
-	input[type=text]:focus {
+	input[type=text1]:focus {
 		width: 100%;
 	}
   /* Customize the label (the container) */
