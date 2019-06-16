@@ -99,7 +99,7 @@
                             
                                   <div class="form-group col-md-3">
                                         <label for="position" style=" font-weight: bold;">Maximum Credit term</label>
-                                        <select id="position" name="credit_term" class="form-control" required>
+                                        <select id="position" style="padding-top:10px"  name="credit_term" class="form-control" required>
                                             <option selected><%= supplier.credit_term %></option>
                                             <option>0 days</option>
                                             <option>15 days</option>
@@ -112,13 +112,12 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                             <label for="position" style=" font-weight: bold;">Specific Area</label>
-                                            <select id="position" name="specific_area" class="form-control" required>
+                                            <select id="position"  style="padding-top:10px;padding-bottom:10px"  name="specific_area" class="form-control" required>
                                                     <option selected><%= supplier.specific_area %></option>
                                                     <option>ไม่ระบุ</option>
                                                     <option>กรุงเทพและปริมณฑล</option>
                                                     <option>ในจังหวัดเดียวกันเท่านั้น</option>
-
-                                                
+          
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
